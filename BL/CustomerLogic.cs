@@ -223,7 +223,7 @@ namespace BL
         //    }
         //    return false;
         //} 
-        public List<CustomerDto> SerachCustomer(SearchDto s)
+        public List<CustomerDto> SearchCustomer(SearchDto s)
         {
             List<Customer> Customers = db.Customers.ToList();
             if (s.Name != null && s.Name != "")

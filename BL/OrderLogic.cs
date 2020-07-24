@@ -13,11 +13,11 @@ namespace BL
         {
             return (OrderToDto(db.Orders.FirstOrDefault(o => o.Id == id)));
         }
-        public List<OrderDto> GetOrdersByCustomer(CustomerDto customer)
+        public List<OrderDto> GetOrdersByCustomerId(int custId)
         {
             List<Order> AllOrders = new List<Order>();
            
-            AllOrders = db.Orders.Where(o1 => o1.Id == customer.Id).ToList();
+            AllOrders = db.Orders.Where(o1 => o1.CustomerId== custId).ToList();
             foreach (var o in db.Orders)
             {
                
