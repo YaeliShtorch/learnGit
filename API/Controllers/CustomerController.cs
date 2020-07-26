@@ -16,6 +16,8 @@ namespace API.Controllers
     public class CustomerController : ApiController
     {
         CustomerLogic ML = new CustomerLogic();
+
+
         //[Route("GetExample")]
         //[HttpGet]
         //public string GetCustomerExample(int id)
