@@ -56,6 +56,7 @@ namespace API.Controllers
         //Get Customer by Identity number
 
         [Route("GetIN")]
+
         [HttpGet]
         public CustomerDto GetCustomerIN(string identityNumber)
         {
@@ -157,7 +158,7 @@ namespace API.Controllers
             try
             {
 
-                return ML.SerachCustomer(um);
+                return ML.SearchCustomer(um);
             }
             catch (Exception e)
             {
