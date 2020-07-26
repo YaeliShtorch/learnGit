@@ -27,7 +27,6 @@ namespace API.Controllers
         [HttpGet]
         public DriverDto GetDriver(int id)
         {
-            id = 5;
             return (ML.GetDriverId(id));
         }
         //Get Driver by user name ans password
