@@ -36,5 +36,12 @@ namespace API.Controllers
             return ML.GetOrdersByCustomerId(id);
         }
 
+        [Route("Delete")]
+        [HttpDelete]
+        public void deletOrderbyId(int id)
+        {
+            ML.DeleteOrder(id);
+        }
+
     }
 }

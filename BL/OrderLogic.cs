@@ -46,6 +46,7 @@ namespace BL
         public void DeleteOrder(int id)
         {
             db.Orders.Remove(db.Orders.FirstOrDefault(o => o.Id == id));
+            db.SaveChanges();
         }
 
         public void UpdateOrder(OrderDto UpOrder)
