@@ -64,6 +64,7 @@ namespace BL
             Ezer.SiteAdress = UpOrder.SiteAdress;
             Ezer.StartTime = UpOrder.StartTime;
             Ezer.Status = UpOrder.Status;
+            db.SaveChanges();
 
 
         }

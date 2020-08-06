@@ -37,10 +37,17 @@ namespace API.Controllers
         }
 
         [Route("Delete")]
-        [HttpDelete]
+        [HttpGet]
         public void deletOrderbyId(int id)
         {
             ML.DeleteOrder(id);
+        }
+
+        [Route("Update")]
+        [HttpPost]
+        public void updateOrder(OrderDto o)
+        {
+            ML.UpdateOrder(o);
         }
 
     }

@@ -24,7 +24,7 @@ namespace BL
 
             return (CustomerToDto(db.Customers.FirstOrDefault(m => m.UserName == UserName && m.Password == Password)));
 
-        }
+      }
         public CustomerDto GetCustomerUN(string UserName)
         {
             //  ShachlavDB db = new ShachlavDB();
