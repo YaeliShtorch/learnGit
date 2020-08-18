@@ -86,6 +86,7 @@
     <Compile Include="Provider.cs" />
     <Compile Include="ShachlavDB.cs" />
     <Compile Include="Vehicle.cs" />
+    <Compile Include="VehicleType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

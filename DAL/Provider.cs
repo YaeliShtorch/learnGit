@@ -26,7 +26,7 @@ namespace DAL
         [Required]
         public string Password { get; set; }
 
-        public string comments { get; set; }
+        public string Comments { get; set; }
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }

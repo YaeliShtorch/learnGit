@@ -36,7 +36,7 @@ namespace DAL
         public bool Status { get; set; }
         public bool IsDone { get; set; }
         
-        public string comments { get; set; }
+        public string Comments { get; set; }
        
         public virtual ICollection<MaterialTypeOrder> MaterialTypeOrders { get; set; }
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }

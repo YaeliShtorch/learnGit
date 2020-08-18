@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DAL;
 namespace BL
 {
-    public class DriverLogic:BaseLogic
+    public class DriverLogic : BaseLogic
     {
         public DriverDto GetDriverId(int id)
         {
@@ -235,7 +235,47 @@ namespace BL
         }
         public void O()
         {
-Console.WriteLine("ll");
+            Console.WriteLine("ll");
         }
+
+        public List<VehicleTypeDto> GetAllVehicleTypes()
+        {
+            List<VehicleTypeDto> vehicleTypesDtoList = new List<VehicleTypeDto>();
+            foreach (VehicleType vT in db.VehicleType.ToList())
+            {
+                vehicleTypesDtoList.Add(VehicleTypeToDto(vT));
+            }
+            return vehicleTypesDtoList;
+        }
+
+        public void addVehicleType(VehicleTypeDto v)
+        {
+            db.VehicleType.Add(VehicleTypetoDal(v));
+            db.SaveChanges();
+        }
+
+        public VehicleTypeDto VehicleTypeToDto(VehicleType Vtdal)
+        {
+            if (Vtdal != null)
+                return new VehicleTypeDto()
+                {
+                    Id = Vtdal.Id,
+                    VType = Vtdal.VType
+                };
+            else return null;
+        }
+        
+        public VehicleType VehicleTypetoDal(VehicleTypeDto v)
+        {
+            if (v != null)
+                return new VehicleType()
+                {
+                    Id = v.Id,
+                    VType = v.VType
+                };
+            else return null;
+
+        }
+      
     }
 }

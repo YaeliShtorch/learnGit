@@ -23,6 +23,7 @@ namespace BL
         public TimeSpan EndTime { get; set; }
         public bool IsIssue { get; set; }
         public bool Status { get; set; }
+        public string Comments { get; set; }
      
     }
 }

@@ -264,6 +264,7 @@ namespace BL
         //    Ezer.Email = UpProvider.Email;          
         //    Ezer.UserName = UpProvider.UserName;
         //    Ezer.Password = UpProvider.Password;
+        //    Ezer.Comments = UpProvider.Comments,
 
 
         //}
@@ -290,7 +291,8 @@ namespace BL
         //        CellNumber=Pdto.CellNumber,
         //        Email=Pdto.Email,
         //        UserName=Pdto.UserName,
-        //        Password=Pdto.Password
+        //        Password=Pdto.Password,
+        //        Comments=Pdto.Comments,
         //    };
         //}
         //public ProviderDto ProviderToDto(Provider Pdal)
@@ -305,7 +307,8 @@ namespace BL
         //        CellNumber = Pdal.CellNumber,
         //        Email = Pdal.Email,
         //        UserName = Pdal.UserName,
-        //        Password = Pdal.Password
+        //        Password = Pdal.Password,
+        //        Comments=Pdal.Comments,
         //    };
         //}
     }

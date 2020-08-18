@@ -64,6 +64,7 @@ namespace BL
             Ezer.SiteAdress = UpOrder.SiteAdress;
             Ezer.StartTime = UpOrder.StartTime;
             Ezer.Status = UpOrder.Status;
+            Ezer.Comments = UpOrder.Comments;
             db.SaveChanges();
 
 
@@ -94,7 +95,8 @@ namespace BL
                 PumpType = Odto.PumpType,
                 SiteAdress = Odto.SiteAdress,
                 StartTime = Odto.StartTime,
-                Status = Odto.Status
+                Status = Odto.Status,
+                Comments=Odto.Comments
             };
         }
         public OrderDto OrderToDto(Order Odal)
@@ -113,7 +115,8 @@ namespace BL
                 PumpType=Odal.PumpType,
                 SiteAdress=Odal.SiteAdress,
                 StartTime=Odal.StartTime,
-                Status=Odal.Status
+                Status=Odal.Status,
+                Comments=Odal.Comments
             };
         }
         public List<OrderDto> OrdersToDto(List<Order> Odal)
@@ -134,7 +137,8 @@ namespace BL
                     PumpType = od.PumpType,
                     SiteAdress = od.SiteAdress,
                     StartTime = od.StartTime,
-                    Status = od.Status
+                    Status = od.Status,
+                    Comments=od.Comments
                 });
 
             }

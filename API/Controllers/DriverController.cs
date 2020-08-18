@@ -163,5 +163,23 @@ namespace API.Controllers
                 return null;
             }
         }
+
+        //get vehicle types
+        [Route("getAllVehicleTypes")]
+        [HttpGet]
+        public List<VehicleTypeDto> GetVehicleTypes()
+        {
+
+            return ML.GetAllVehicleTypes();
+        }
+
+        //add vehicle type
+        [Route("AddVehicleType")]
+        // get במקום post cors originלבנתיים עד שנסדר את ה
+        [HttpGet]
+        public void addVehicleType(VehicleTypeDto vT)
+        {
+            ML.addVehicleType(vT);
+        }
     }
 }
