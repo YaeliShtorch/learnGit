@@ -75,6 +75,11 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="DriverWork.cs" />
+    <Compile Include="Migrations\202008181124454_InitialCreate.cs" />
+    <Compile Include="Migrations\202008181124454_InitialCreate.Designer.cs">
+      <DependentUpon>202008181124454_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +90,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202008181124454_InitialCreate.resx">
+      <DependentUpon>202008181124454_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

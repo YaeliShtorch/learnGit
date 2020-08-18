@@ -12,7 +12,7 @@ namespace BL
    
         public int CustomerId { get; set; }
        
-        public DateTime OrderTime { get; set; }
+        public DateTime OrderDate { get; set; }
 
         public string Element { get; set; }
         public string SiteAdress { get; set; }

@@ -23,8 +23,8 @@ namespace DAL
         public virtual DbSet<Vehicle> Vehicle { get; set; }
 
         public ShachlavDB():base(@"data source=(localdb)\mssqllocaldb;initial catalog=DAL.ShachlavDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
-        { 
-
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ShachlavDB, DAL.Migrations.Configuration>());
         }
 
     }

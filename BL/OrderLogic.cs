@@ -53,7 +53,7 @@ namespace BL
         {
             Order Ezer = db.Orders.FirstOrDefault(o => o.Id == UpOrder.Id);
 
-            Ezer.OrderTime = UpOrder.OrderTime;
+            Ezer.OrderDate = UpOrder.OrderDate;
             Ezer.CustomerId = UpOrder.CustomerId;
             Ezer.ConcreteCheck = UpOrder.ConcreteCheck;
             Ezer.Element = UpOrder.Element;
@@ -84,7 +84,7 @@ namespace BL
             return new Order()
             {
                 Id = Odto.Id,
-                OrderTime = Odto.OrderTime,
+                OrderDate = Odto.OrderDate,
                 CustomerId = Odto.CustomerId,
                 ConcreteCheck = Odto.ConcreteCheck,
                 Element = Odto.Element,
@@ -103,7 +103,7 @@ namespace BL
             return new OrderDto()
             {
                 Id = Odal.Id,
-                OrderTime = Odal.OrderTime,
+                OrderDate = Odal.OrderDate,
                 CustomerId = Odal.CustomerId,
                 ConcreteCheck = Odal.ConcreteCheck,
                 Element=Odal.Element,
@@ -124,7 +124,7 @@ namespace BL
                 oDto.Add(new OrderDto()
                 {
                     Id = od.Id,
-                    OrderTime = od.OrderTime,
+                    OrderDate = od.OrderDate,
                     CustomerId = od.CustomerId,
                     ConcreteCheck = od.ConcreteCheck,
                     Element = od.Element,

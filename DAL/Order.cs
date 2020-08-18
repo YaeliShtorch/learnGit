@@ -18,8 +18,6 @@ namespace DAL
         [Required]
         public DateTime OrderDate { get; set; }
         [Required]
-        public DateTime OrderTime { get; set; }
-        [Required]
         public string Element { get; set; }
         [Required]
         public string SiteAdress { get; set; }
@@ -37,6 +35,8 @@ namespace DAL
         [Required]
         public bool Status { get; set; }
         public bool IsDone { get; set; }
+        
+        public string comments { get; set; }
        
         public virtual ICollection<MaterialTypeOrder> MaterialTypeOrders { get; set; }
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
