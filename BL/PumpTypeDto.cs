@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class VehicleTypeDto
+    public class PumpTypeDto
     {
         public int Id { get; set; }
-        public string VType { get; set; }
+        public string PType { get; set; }
     }
 }

@@ -34,10 +34,9 @@ C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\bin\Debug\Newtonsoft.
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\bin\Debug\System.Web.Http.xml
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\bin\Debug\System.Web.Http.Cors.xml
-C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.Migrations.InitialCreate.resources
+C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.dll
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.pdb
-C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.Migrations.InitialCreate.resources
-C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.csproj.GenerateResource.cache

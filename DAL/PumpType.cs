@@ -7,12 +7,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DAL
 {
-    public class VehicleType
+    public class PumpType
     {
         [Key]
         public int Id { get; set; }
-        public string VType { get; set; }
+        public string PType { get; set; }
         public virtual ICollection<Vehicle> DriverWork { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
 
     }
 }

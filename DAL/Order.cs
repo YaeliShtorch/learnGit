@@ -23,9 +23,10 @@ namespace DAL
         public string SiteAdress { get; set; }
         [Required]
         public bool ConcreteCheck { get; set; }
+
         [Required]
         public bool PumpNeeded { get; set; }
-        public string PumpType { get; set; }
+        public int PumpId { get; set; }
         [Required]
         public TimeSpan StartTime { get; set; }
         [Required]
@@ -35,9 +36,9 @@ namespace DAL
         [Required]
         public bool Status { get; set; }
         public bool IsDone { get; set; }
-        
+
         public string Comments { get; set; }
-       
+
         public virtual ICollection<MaterialTypeOrder> MaterialTypeOrders { get; set; }
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
         public virtual ICollection<DriverWork> DriverWorks { get; set; }

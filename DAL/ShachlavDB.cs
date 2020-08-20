@@ -21,7 +21,7 @@ namespace DAL
         public virtual DbSet<OrderDetails> OrderDetails { get; set; }
         public virtual DbSet<Provider> Provider { get; set; }
         public virtual DbSet<Vehicle> Vehicle { get; set; }
-        public virtual DbSet<VehicleType> VehicleType { get; set; }
+        public virtual DbSet<PumpType> PumpType { get; set; }
 
         public ShachlavDB():base(@"data source=(localdb)\mssqllocaldb;initial catalog=DAL.ShachlavDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {

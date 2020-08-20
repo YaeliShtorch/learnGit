@@ -238,40 +238,53 @@ namespace BL
             Console.WriteLine("ll");
         }
 
-        public List<VehicleTypeDto> GetAllVehicleTypes()
+        public List<PumpTypeDto> GetAllPumpTypes()
         {
-            List<VehicleTypeDto> vehicleTypesDtoList = new List<VehicleTypeDto>();
-            foreach (VehicleType vT in db.VehicleType.ToList())
+            List<PumpTypeDto> vehicleTypesDtoList = new List<PumpTypeDto>();
+            foreach (PumpType vT in db.PumpType.ToList())
             {
-                vehicleTypesDtoList.Add(VehicleTypeToDto(vT));
+                vehicleTypesDtoList.Add(PumpTypeToDto(vT));
             }
             return vehicleTypesDtoList;
         }
 
-        public void addVehicleType(VehicleTypeDto v)
+        public void addPumpType(PumpTypeDto p)
         {
-            db.VehicleType.Add(VehicleTypetoDal(v));
-            db.SaveChanges();
+            //check there is no such instance;
+            PumpType ezer =db.PumpType.FirstOrDefault(x => x.PType == p.PType);
+            if (ezer == null) { 
+            db.PumpType.Add(PumpTypetoDal(p));
+                db.SaveChanges();
+            }
+          
         }
 
-        public VehicleTypeDto VehicleTypeToDto(VehicleType Vtdal)
+        //delete vehicle type
+        public void deletePumpType(int id)
+        {
+            db.PumpType.Remove(db.PumpType.FirstOrDefault(o => o.Id == id));
+            db.SaveChanges();
+
+        }
+
+        public PumpTypeDto PumpTypeToDto(PumpType Vtdal)
         {
             if (Vtdal != null)
-                return new VehicleTypeDto()
+                return new PumpTypeDto()
                 {
                     Id = Vtdal.Id,
-                    VType = Vtdal.VType
+                    PType = Vtdal.PType
                 };
             else return null;
         }
         
-        public VehicleType VehicleTypetoDal(VehicleTypeDto v)
+        public PumpType PumpTypetoDal(PumpTypeDto v)
         {
             if (v != null)
-                return new VehicleType()
+                return new PumpType()
                 {
-                    Id = v.Id,
-                    VType = v.VType
+                    //Id = v.Id,
+                    PType = v.PType
                 };
             else return null;
 

@@ -18,7 +18,7 @@ namespace BL
         public string SiteAdress { get; set; }
         public bool ConcreteCheck { get; set; }
         public bool PumpNeeded { get; set; }
-        public string PumpType { get; set; }
+        public int PumpId { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
         public bool IsIssue { get; set; }

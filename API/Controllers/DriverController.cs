@@ -165,21 +165,48 @@ namespace API.Controllers
         }
 
         //get vehicle types
-        [Route("getAllVehicleTypes")]
+        [Route("getAllPumpTypes")]
         [HttpGet]
-        public List<VehicleTypeDto> GetVehicleTypes()
+        public List<PumpTypeDto> GetVehicleTypes()
         {
 
-            return ML.GetAllVehicleTypes();
+            return ML.GetAllPumpTypes();
         }
 
         //add vehicle type
-        [Route("AddVehicleType")]
-        // get במקום post cors originלבנתיים עד שנסדר את ה
-        [HttpGet]
-        public void addVehicleType(VehicleTypeDto vT)
+        [Route("AddPumpType")]
+        [HttpPost]
+        public IHttpActionResult addVehicleType(PumpTypeDto pT)
         {
-            ML.addVehicleType(vT);
+            try
+            {
+                ML.addPumpType(pT);
+                Console.WriteLine("dfd");
+                return Ok("pppp0");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+            
         }
+
+        //delete vehicle type
+        [Route("DeletePumpType")]
+        [HttpGet]
+        public IHttpActionResult DeletePumpType(int id)
+        {
+            try
+            {
+                ML.deletePumpType(id);
+                return Ok("pppp0");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+
+        }
+
     }
 }

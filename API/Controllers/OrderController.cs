@@ -38,16 +38,36 @@ namespace API.Controllers
 
         [Route("Delete")]
         [HttpGet]
-        public void deletOrderbyId(int id)
+        public IHttpActionResult deletOrderbyId(int id)
         {
-            ML.DeleteOrder(id);
+         
+            try
+            {
+                ML.DeleteOrder(id);;
+                return Ok("pppp0");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+
         }
 
         [Route("Update")]
         [HttpPost]
-        public void updateOrder(OrderDto o)
+        public IHttpActionResult updateOrder(OrderDto o)
         {
-            ML.UpdateOrder(o);
+            
+            try
+            {
+                ML.UpdateOrder(o);
+                Console.WriteLine("dfd");
+                return Ok("pppp0");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
         }
 
     }
