@@ -35,12 +35,9 @@ namespace BL
 
         public List<CustomerDto> GetAllCustomers()
         {
-            List<CustomerDto> AllCustomers = new List<CustomerDto>();
-            foreach (var m in db.Customers)
-            {
-                AllCustomers.Add(CustomerToDto(m));
-            }
-            return AllCustomers;
+            List<Customer> AllCustomers = new List<Customer>();
+            AllCustomers = db.Customers.ToList();
+            return CustomerListToDto(AllCustomers);
         }
         public CustomerDto GetCustomerIN(string identityNumber)
         {
@@ -179,7 +176,9 @@ namespace BL
                     Email = Mdal.Email,
                     BirthDate = Mdal.BirthDate,
                     UserName = Mdal.UserName,
-                    Password = Mdal.Password
+                    Password = Mdal.Password,
+                    CompanyName=Mdal.CompanyName,
+                    BusinessCode=Mdal.BusinessCode
                 };
             else return null;
         }

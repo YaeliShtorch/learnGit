@@ -73,7 +73,7 @@ namespace API
         }
 
 
-        //public void Application_BeginRequest(object sender, EventArgs e)
+        //public j Application_BeginRequest(object sender, EventArgs e)
         //{
         //    string httpOrigin = Request.Params["HTTP_ORIGIN"];
         //    if (httpOrigin == null) httpOrigin = "*";

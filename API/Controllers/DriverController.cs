@@ -50,7 +50,9 @@ namespace API.Controllers
         [HttpGet]
         public List<DriverDto> GetAllDrivers()
         {
-            return ML.GetAllDrivers();
+         
+            return ML.GetAllDrivers(); 
+
         }
         //Get Driver by Identity number
 

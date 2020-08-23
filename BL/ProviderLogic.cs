@@ -34,12 +34,10 @@ namespace BL
 
         public List<ProviderDto> GetAllProviders()
         {
-            List<ProviderDto> AllProviders = new List<ProviderDto>();
-            foreach (var m in db.Provider)
-            {
-                AllProviders.Add(ProviderToDto(m));
-            }
-            return AllProviders;
+            List<Provider> AllProviders = new List<Provider>();
+            AllProviders = db.Provider.ToList();
+           
+            return ProviderListToDto(AllProviders);
         }
         public ProviderDto GetProviderIN(string companyCode)
         {

@@ -35,12 +35,7 @@ namespace BL
         
         public List<ManagerDto> GetAllManagers()
         {
-            List<ManagerDto> AllManagers = new List<ManagerDto>();
-            foreach (var m in db.Manager)
-            {
-                AllManagers.Add(ManagerToDto(m));
-            }
-            return AllManagers;
+            return ManagerListToDto(db.Manager.ToList());
         }
         public ManagerDto GetManagerIN(string identityNumber)
         {

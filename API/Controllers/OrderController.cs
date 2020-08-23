@@ -36,6 +36,16 @@ namespace API.Controllers
             return ML.GetOrdersByCustomerId(id);
         }
 
+        //get all orders
+        [Route("GetAll")]
+        [HttpGet]
+        public List<Order> getAllOrders()
+        {
+            return ML.getAllOrders();
+
+
+        }
+
         [Route("Delete")]
         [HttpGet]
         public IHttpActionResult deletOrderbyId(int id)
@@ -69,6 +79,8 @@ namespace API.Controllers
                 return BadRequest(e.ToString());
             }
         }
+
+   
 
     }
 }

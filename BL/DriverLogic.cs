@@ -33,12 +33,9 @@ namespace BL
 
         public List<DriverDto> GetAllDrivers()
         {
-            List<DriverDto> AllDrivers = new List<DriverDto>();
-            foreach (var m in db.Driver)
-            {
-                AllDrivers.Add(DriverToDto(m));
-            }
-            return AllDrivers;
+            List<Driver> AllDrivers = new List<Driver>();
+            AllDrivers = db.Driver.ToList();
+            return DriverListToDto(AllDrivers);
         }
         public DriverDto GetDriverIN(string identityNumber)
         {
@@ -177,7 +174,9 @@ namespace BL
                     Email = Mdal.Email,
                     BirthDate = Mdal.BirthDate,
                     UserName = Mdal.UserName,
-                    Password = Mdal.Password
+                    Password = Mdal.Password,
+                    IsActive=Mdal.IsActive,
+                    EntryToWorkDate=Mdal.EntryToWorkDate
                 };
             else return null;
         }

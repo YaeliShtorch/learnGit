@@ -70,6 +70,13 @@ namespace BL
 
         }
 
+        public List<Order> getAllOrders()
+        {
+            List<Order> AllOrderL = new List<Order>();
+            AllOrderL = db.Orders.ToList();
+            return AllOrderL;
+        }
+
         public bool IsExist(OrderDto order)
         {
 
