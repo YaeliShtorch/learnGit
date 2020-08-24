@@ -18,11 +18,55 @@ namespace API.Controllers
         VehicleLogic ML = new VehicleLogic();
 
         //get all vehicles
-        [Route("GetAllVehicles")]
+        [Route("GetAll")]
         [HttpGet]
-        public List<VehicleDto> GettAllVehicles()
+        public List<VehicleDto> GetAllVehicles()
         {
-            return ML.GettAllVehicles();
+            return ML.GetAllVehicles();
+        }
+
+        //get vehicle types types
+        [Route("getAllPumpTypes")]
+        [HttpGet]
+        public List<PumpTypeDto> GetPumpTypes()
+        {
+
+            return ML.GetAllPumpTypes();
+        }
+
+        //add vehicle type
+        [Route("AddPumpType")]
+        [HttpPost]
+        public IHttpActionResult addVehicleType(PumpTypeDto pT)
+        {
+            try
+            {
+                ML.addPumpType(pT);
+                Console.WriteLine("dfd");
+                return Ok("pppp0");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+
+        }
+
+        //delete vehicle type
+        [Route("DeletePumpType")]
+        [HttpGet]
+        public IHttpActionResult DeletePumpType(int id)
+        {
+            try
+            {
+                ML.deletePumpType(id);
+                return Ok("pppp0");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+
         }
     }
 }

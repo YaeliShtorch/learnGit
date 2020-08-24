@@ -96,7 +96,7 @@ namespace DAL.Migrations
                     {
                         Id = c.Int(nullable: false),
                         Description = c.String(nullable: false),
-                        PipesLengh = c.Int(nullable: false),
+                        PipesLength = c.Int(nullable: false),
                         LicenseNumber = c.String(nullable: false),
                         DriverId = c.Int(nullable: false),
                         MixerNumber = c.Int(nullable: false),

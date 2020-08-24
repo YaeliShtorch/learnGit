@@ -166,8 +166,7 @@ namespace API.Controllers
             }
         }
 
-     
-
+      
         //get vehicle types types
         [Route("getAllPumpTypes")]
         [HttpGet]

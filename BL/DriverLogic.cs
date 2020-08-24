@@ -247,7 +247,7 @@ namespace BL
             return pumpTypesDtoList;
         }
 
-      
+
 
         public void addPumpType(PumpTypeDto p)
         {
@@ -291,7 +291,6 @@ namespace BL
 
         }
 
-      
-      
+       
     }
 }
