@@ -26,7 +26,9 @@ namespace DAL
 
         [Required]
         public bool PumpNeeded { get; set; }
-        public int PumpId { get; set; }
+        [Required]
+        public int PumpTypeId { get; set; }
+        public PumpType PumpType { get; set; }
         [Required]
         public TimeSpan StartTime { get; set; }
         [Required]

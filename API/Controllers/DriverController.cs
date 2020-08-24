@@ -166,10 +166,12 @@ namespace API.Controllers
             }
         }
 
-        //get vehicle types
+     
+
+        //get vehicle types types
         [Route("getAllPumpTypes")]
         [HttpGet]
-        public List<PumpTypeDto> GetVehicleTypes()
+        public List<PumpTypeDto> GetPumpTypes()
         {
 
             return ML.GetAllPumpTypes();

@@ -40,3 +40,5 @@ C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.csproj.
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.dll
 C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.pdb
+C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\פנינה\Desktop\project\gitServer\learnGit\DAL\obj\Debug\DAL.Migrations.InitialMigrations.resources

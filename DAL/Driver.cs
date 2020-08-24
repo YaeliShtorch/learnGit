@@ -34,8 +34,10 @@ namespace DAL
         [Required]
         public bool IsActive { get; set; }
         
-        public Vehicle Vehicle { get; set; }
+        //public Vehicle Vehicle { get; set; }
         public virtual ICollection<DriverWork> DriverWork { get; set; }
-       
+        public virtual ICollection<Vehicle> Vehicle { get; set; }
+
+
     }
 }

@@ -60,7 +60,7 @@ namespace BL
             Ezer.EndTime = UpOrder.EndTime;
             Ezer.IsIssue = UpOrder.IsIssue;
             Ezer.PumpNeeded = UpOrder.PumpNeeded;
-            Ezer.PumpId = UpOrder.PumpId;
+            Ezer.PumpTypeId = UpOrder.PumpTypeId;
             Ezer.SiteAdress = UpOrder.SiteAdress;
             Ezer.StartTime = UpOrder.StartTime;
             Ezer.Status = UpOrder.Status;
@@ -99,7 +99,7 @@ namespace BL
                 EndTime = Odto.EndTime,
                 IsIssue = Odto.IsIssue,
                 PumpNeeded = Odto.PumpNeeded,
-                PumpId = Odto.PumpId,
+                PumpTypeId = Odto.PumpTypeId,
                 SiteAdress = Odto.SiteAdress,
                 StartTime = Odto.StartTime,
                 Status = Odto.Status,
@@ -119,7 +119,7 @@ namespace BL
                 EndTime=Odal.EndTime,
                 IsIssue=Odal.IsIssue,
                 PumpNeeded=Odal.PumpNeeded,
-                PumpId=Odal.PumpId,
+                PumpTypeId=Odal.PumpTypeId,
                 SiteAdress=Odal.SiteAdress,
                 StartTime=Odal.StartTime,
                 Status=Odal.Status,
@@ -141,7 +141,7 @@ namespace BL
                     EndTime = od.EndTime,
                     IsIssue = od.IsIssue,
                     PumpNeeded = od.PumpNeeded,
-                    PumpId = od.PumpId,
+                    PumpTypeId = od.PumpTypeId,
                     SiteAdress = od.SiteAdress,
                     StartTime = od.StartTime,
                     Status = od.Status,

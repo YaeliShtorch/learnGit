@@ -7,22 +7,27 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-   
- public  class Vehicle
+
+    public class Vehicle
     {
         [Key]
         [Required]
         public int Id { get; set; }
         [Required]
         public string Description { get; set; }
-        public int PipesLengh { get; set; }
+        public int PipesLength { get; set; }
         [Required]
         public string LicenseNumber { get; set; }
-      
-        public int DriverId { get; set; }
         [Required]
+        public int DriverId { get; set; }
+
         public Driver Driver { get; set; }
+        [Required]
+        public int PumpTypeId { get; set; }
+        //[Required]
+        public PumpType PumpType { get; set; }
         public int MixerNumber { get; set; }
         public virtual ICollection<DriverWork> DriverWork { get; set; }
+
     }
 }

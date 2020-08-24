@@ -239,13 +239,15 @@ namespace BL
 
         public List<PumpTypeDto> GetAllPumpTypes()
         {
-            List<PumpTypeDto> vehicleTypesDtoList = new List<PumpTypeDto>();
+            List<PumpTypeDto> pumpTypesDtoList = new List<PumpTypeDto>();
             foreach (PumpType vT in db.PumpType.ToList())
             {
-                vehicleTypesDtoList.Add(PumpTypeToDto(vT));
+                pumpTypesDtoList.Add(PumpTypeToDto(vT));
             }
-            return vehicleTypesDtoList;
+            return pumpTypesDtoList;
         }
+
+      
 
         public void addPumpType(PumpTypeDto p)
         {
@@ -266,28 +268,30 @@ namespace BL
 
         }
 
-        public PumpTypeDto PumpTypeToDto(PumpType Vtdal)
+        public PumpTypeDto PumpTypeToDto(PumpType Ptdal)
         {
-            if (Vtdal != null)
+            if (Ptdal != null)
                 return new PumpTypeDto()
                 {
-                    Id = Vtdal.Id,
-                    PType = Vtdal.PType
+                    Id = Ptdal.Id,
+                    PType = Ptdal.PType
                 };
             else return null;
         }
         
-        public PumpType PumpTypetoDal(PumpTypeDto v)
+        public PumpType PumpTypetoDal(PumpTypeDto PtDto)
         {
-            if (v != null)
+            if (PtDto != null)
                 return new PumpType()
                 {
                     //Id = v.Id,
-                    PType = v.PType
+                    PType = PtDto.PType
                 };
             else return null;
 
         }
+
+      
       
     }
 }

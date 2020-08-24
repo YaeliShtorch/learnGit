@@ -10,10 +10,12 @@ namespace DAL
     public class PumpType
     {
         [Key]
+        [Required]
         public int Id { get; set; }
         public string PType { get; set; }
-        public virtual ICollection<Vehicle> DriverWork { get; set; }
+        //public virtual ICollection<Vehicle> DriverWork { get; set; }
         public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Vehicle> Vehicle { get; set; }
 
     }
 }
