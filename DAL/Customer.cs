@@ -30,6 +30,8 @@ namespace DAL
         public string UserName { get; set; }
         [Required]
         public string Password{get; set; }
+
+
         public DateTime BirthDate { get; set; }
         public virtual ICollection<Order> CustOrders { get; set; }
     }
