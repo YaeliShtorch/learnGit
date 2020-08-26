@@ -46,7 +46,7 @@ namespace DAL.Migrations
                         IsDone = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
+                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: false)
                 .Index(t => t.CustomerId);
             
             CreateTable(
@@ -63,9 +63,9 @@ namespace DAL.Migrations
                         Amount = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Drivers", t => t.DriverId, cascadeDelete: true)
-                .ForeignKey("dbo.Vehicles", t => t.VehicleId, cascadeDelete: true)
-                .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)
+                .ForeignKey("dbo.Drivers", t => t.DriverId, cascadeDelete: false)
+                .ForeignKey("dbo.Vehicles", t => t.VehicleId, cascadeDelete: false)
+                .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: false)
                 .Index(t => t.DriverId)
                 .Index(t => t.OrderId)
                 .Index(t => t.VehicleId);
