@@ -175,7 +175,7 @@ namespace DAL.Migrations
                         PhoneNumber = c.String(),
                         CellNumber = c.String(),
                         Address = c.String(),
-                        BirthDate = c.DateTime(nullable: false),
+                        BirthDate = c.DateTime(nullable: false, defaultValueSql: " 01/01/1000"),
                         UserName = c.String(),
                         Password = c.String(),
                     })

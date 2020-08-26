@@ -44,7 +44,7 @@ namespace API
         //}
 
         protected void Application_BeginRequest(object sender, EventArgs e)
-        {
+       {
 
             if (Context.Request.Path.Contains("api/") && Context.Request.HttpMethod == "OPTIONS")
 

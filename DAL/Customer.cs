@@ -10,8 +10,7 @@ namespace DAL
 {
     public class Customer
     {
-        [Key][Required]
-      
+        [Key]
         public int Id { get; set; }
         [Required]
         public string IdentityNumber { get; set; }
