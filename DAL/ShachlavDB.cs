@@ -23,6 +23,7 @@ namespace DAL
         public virtual DbSet<Provider> Provider { get; set; }
         public virtual DbSet<Vehicle> Vehicle { get; set; }
         public virtual DbSet<PumpType> PumpType { get; set; }
+   
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,6 +31,7 @@ namespace DAL
             modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
         }
 
+     
         public ShachlavDB():base(@"data source=(localdb)\mssqllocaldb;initial catalog=DAL.ShachlavDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ShachlavDB, DAL.Migrations.Configuration>());

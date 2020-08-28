@@ -125,6 +125,8 @@ namespace BL
             Ezer.BirthDate = UpCustomer.BirthDate;
             Ezer.UserName = UpCustomer.UserName;
             Ezer.Password = UpCustomer.Password;
+            Ezer.BusinessCode = UpCustomer.BusinessCode;
+            Ezer.CompanyName = UpCustomer.CompanyName;
             db.SaveChanges();
         }
 
@@ -133,7 +135,7 @@ namespace BL
             //  ShachlavDB db = new ShachlavDB();
             foreach (var m in db.Customers)
             {
-                if (m.Id == Customer.Id)
+                if (m.Id == Customer.Id|| m.IdentityNumber ==Customer.IdentityNumber)
                     return true;
             }
             return false;

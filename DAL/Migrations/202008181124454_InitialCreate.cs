@@ -23,7 +23,7 @@ namespace DAL.Migrations
                         Address = c.String(),
                         UserName = c.String(nullable: false),
                         Password = c.String(nullable: false),
-                        BirthDate = c.DateTime(nullable: false, defaultValueSql: " 01/01/1000"),
+                        BirthDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

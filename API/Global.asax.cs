@@ -45,11 +45,8 @@ namespace API
 
         protected void Application_BeginRequest(object sender, EventArgs e)
        {
-
             if (Context.Request.Path.Contains("api/") && Context.Request.HttpMethod == "OPTIONS")
-
-            {
-
+            { 
                 Context.Response.AddHeader("Access-Control-Allow-Origin", "*");
 
                 Context.Response.AddHeader("Access-Control-Allow-Headers", "*");
@@ -59,7 +56,6 @@ namespace API
                 Context.Response.AddHeader("Access-Control-Allow-Credentials", "true");
 
                 Context.Response.End();
-
             }
             if (Context.Request.Path.Contains("api/") && Context.Request.HttpMethod == "POST")
             {
@@ -69,7 +65,6 @@ namespace API
             {
                 Context.Response.AddHeader("Access-Control-Allow-Origin", "http://localhost:4200");
             }
-
         }
 
 

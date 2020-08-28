@@ -131,7 +131,7 @@ namespace BL
             //  ShachlavDB db = new ShachlavDB();
             foreach (var m in db.Driver)
             {
-                if (m.Id == Driver.Id)
+                if (m.Id == Driver.Id || m.IdentityNumber ==Driver.IdentityNumber)
                     return true;
             }
             return false;
