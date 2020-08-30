@@ -83,9 +83,9 @@
     <Compile Include="Migrations\202008240947324_InitialMigrations.Designer.cs">
       <DependentUpon>202008240947324_InitialMigrations.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008272311158_InitialMigrations1.cs" />
-    <Compile Include="Migrations\202008272311158_InitialMigrations1.Designer.cs">
-      <DependentUpon>202008272311158_InitialMigrations1.cs</DependentUpon>
+    <Compile Include="Migrations\202008302247111_Shachlav.cs" />
+    <Compile Include="Migrations\202008302247111_Shachlav.Designer.cs">
+      <DependentUpon>202008302247111_Shachlav.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
@@ -107,8 +107,8 @@
     <EmbeddedResource Include="Migrations\202008240947324_InitialMigrations.resx">
       <DependentUpon>202008240947324_InitialMigrations.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008272311158_InitialMigrations1.resx">
-      <DependentUpon>202008272311158_InitialMigrations1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008302247111_Shachlav.resx">
+      <DependentUpon>202008302247111_Shachlav.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,18 +7,18 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialMigrations1 : IMigrationMetadata
+    public sealed partial class Shachlav : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigrations1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Shachlav));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008272311158_InitialMigrations1"; }
+            get { return "202008302247111_Shachlav"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

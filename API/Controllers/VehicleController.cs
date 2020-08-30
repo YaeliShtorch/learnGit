@@ -20,7 +20,7 @@ namespace API.Controllers
         //get all vehicles
         [Route("GetAll")]
         [HttpGet]
-        public List<VehicleDto> GetAllVehicles()
+        public List<VehicleForRequestDto> GetAllVehicles()
         {
             return ML.GetAllVehicles();
         }
