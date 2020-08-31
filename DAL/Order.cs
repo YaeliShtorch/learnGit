@@ -18,17 +18,15 @@ namespace DAL
         [Required]
         public DateTime OrderDate { get; set; }
         [Required]
-        public string Element { get; set; }
+        public DateTime OrderDueDate { get; set; }
+        [Required]
+        public DateTime OrderTime { get; set; }
+
         [Required]
         public string SiteAdress { get; set; }
         [Required]
         public bool ConcreteCheck { get; set; }
 
-        [Required]
-        public bool PumpNeeded { get; set; }
-        [Required]
-        public int PumpTypeId { get; set; }
-        public PumpType PumpType { get; set; }
         [Required]
         public TimeSpan StartTime { get; set; }
         [Required]
@@ -38,9 +36,8 @@ namespace DAL
         [Required]
         public bool Status { get; set; }
         public bool IsDone { get; set; }
-
-        public string Comments { get; set; }
-
+        public string State { get; set; }
+        public string Comment { get; set; }
         public virtual ICollection<MaterialTypeOrder> MaterialTypeOrders { get; set; }
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
         public virtual ICollection<DriverWork> DriverWorks { get; set; }

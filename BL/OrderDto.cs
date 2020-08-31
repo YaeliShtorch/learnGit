@@ -27,3 +27,30 @@ namespace BL
      
     }
 }
+
+//public int Id { get; set; }
+
+//public int CustomerId { get; set; }
+
+//public DateTime OrderDate { get; set; }
+
+//public DateTime OrderDueDate { get; set; }
+
+//public DateTime OrderTime { get; set; }
+
+
+//public string SiteAdress { get; set; }
+
+//public bool ConcreteCheck { get; set; }
+
+//public TimeSpan StartTime { get; set; }
+
+//public TimeSpan EndTime { get; set; }
+
+//public bool IsIssue { get; set; }
+
+//public bool Status { get; set; }
+//public bool IsDone { get; set; }
+//public string State { get; set; }
+//public string Comment { get; set; }
+

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-   public class DriverWork
+    public class DriverWork
     {
         [Key]
         [Required]
         public int Id { get; set; }
-       
+
         [Required]
         public int DriverId { get; set; }
         public Driver Driver { get; set; }
@@ -23,13 +23,15 @@ namespace DAL
         [Required]
         public int VehicleId { get; set; }
         public Vehicle Vehicle { get; set; }
-        
+
         [Required]
         public TimeSpan StartTime { get; set; }
         [Required]
         public TimeSpan EndTime { get; set; }
-     
+
+
         [Required]
+        [CustomValidation(typeof(Validations), "BeforeDateValid")]
         public DateTime Date { get; set; }
         [Required]
         public int Amount { get; set; }
@@ -37,3 +39,6 @@ namespace DAL
 
     }
 }
+
+
+

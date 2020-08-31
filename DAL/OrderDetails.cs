@@ -13,21 +13,20 @@ namespace DAL
         [Key]
         [Required]
         public int Id { get; set; }
-    
+
         [Required]
         public int OrderId { get; set; }
         public Order Order { get; set; }
-      
+
         [Required]
         public int ProviderId { get; set; }
         public Provider Provider { get; set; }
-       
-        [Required]
-        public int MaterialId { get; set; }
-        public Material Material { get; set; }
-        
         [Required]
         public int Amount { get; set; }
-      
+
     }
 }
+
+
+        
+
