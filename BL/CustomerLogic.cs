@@ -224,17 +224,17 @@ namespace BL
         //    }
         //    return false;
         //} 
-        public List<CustomerDto> SerachCustomer(SearchDto s)
-        {
-            List<Customer> Customers = db.Customers.ToList();
-            if (s.Name != null && s.Name != "")
-                Customers = Customers.Where(t => t.FirstName.Contains(s.Name)).ToList();
-            if (s.FromDate != null && s.FromDate != default(DateTime))
-                Customers = Customers.Where(t => t.BirthDate >= s.FromDate).ToList();
-            if (s.ToDate != null && s.ToDate != default(DateTime))
-                Customers = Customers.Where(t => t.BirthDate <= s.ToDate).ToList();
-            return CustomerListToDto(Customers);
+        //public List<CustomerDto> SerachCustomer(SearchDto s)
+        //{
+        //    List<Customer> Customers = db.Customers.ToList();
+        //    if (s.Name != null && s.Name != "")
+        //        Customers = Customers.Where(t => t.FirstName.Contains(s.Name)).ToList();
+        //    if (s.FromDate != null && s.FromDate != default(DateTime))
+        //        Customers = Customers.Where(t => t.BirthDate >= s.FromDate).ToList();
+        //    if (s.ToDate != null && s.ToDate != default(DateTime))
+        //        Customers = Customers.Where(t => t.BirthDate <= s.ToDate).ToList();
+        //    return CustomerListToDto(Customers);
 
-        }
+        //}
     }
 }

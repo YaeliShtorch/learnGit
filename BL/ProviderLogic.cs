@@ -214,15 +214,15 @@ namespace BL
         //    }
         //    return false;
         //} 
-        public List<ProviderDto> SerachProvider(SearchDto s)
-        {
-            List<Provider> Providers = db.Provider.ToList();
-            if (s.Name != null && s.Name != "")
-                Providers = Providers.Where(t => t.CompanyName.Contains(s.Name)).ToList();
+        //public List<ProviderDto> SerachProvider(SearchDto s)
+        //{
+        //    List<Provider> Providers = db.Provider.ToList();
+        //    if (s.Name != null && s.Name != "")
+        //        Providers = Providers.Where(t => t.CompanyName.Contains(s.Name)).ToList();
           
-            return ProviderListToDto(Providers);
+        //    return ProviderListToDto(Providers);
 
-        }
+        //}
         //public ProviderDto GetProvider(int id)
         //{
         //    return (ProviderToDto(db.Provider.FirstOrDefault(p=> p.Id == id)));

@@ -151,20 +151,20 @@ namespace API.Controllers
                 return BadRequest(e.ToString());
             }
         }
-        [Route("SearchProvider")]
-        [HttpPost]
-        public List<ProviderDto> SearchProvider(SearchDto um)
-        {
-            try
-            {
+        //[Route("SearchProvider")]
+        //[HttpPost]
+        //public List<ProviderDto> SearchProvider(SearchDto um)
+        //{
+        //    try
+        //    {
 
-                return ML.SerachProvider(um);
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
+        //        return ML.SerachProvider(um);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return null;
+        //    }
+        //}
 
     }
 }

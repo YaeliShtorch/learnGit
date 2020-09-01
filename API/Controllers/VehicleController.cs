@@ -25,48 +25,48 @@ namespace API.Controllers
             return ML.GetAllVehicles();
         }
 
-        //get vehicle types types
-        [Route("getAllPumpTypes")]
-        [HttpGet]
-        public List<PumpTypeDto> GetPumpTypes()
-        {
+        //    //get vehicle types types
+        //    [Route("getAllPumpTypes")]
+        //    [HttpGet]
+        //    public List<VehicleTypeDto> GetPumpTypes()
+        //    {
 
-            return ML.GetAllPumpTypes();
-        }
+        //        return ML.GetAllPumpTypes();
+        //    }
 
-        //add vehicle type
-        [Route("AddPumpType")]
-        [HttpPost]
-        public IHttpActionResult addVehicleType(PumpTypeDto pT)
-        {
-            try
-            {
-                ML.addPumpType(pT);
-                Console.WriteLine("dfd");
-                return Ok("pppp0");
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.ToString());
-            }
+        //    //add vehicle type
+        //    [Route("AddPumpType")]
+        //    [HttpPost]
+        //    public IHttpActionResult addVehicleType(PumpTypeDto pT)
+        //    {
+        //        try
+        //        {
+        //            ML.addPumpType(pT);
+        //            Console.WriteLine("dfd");
+        //            return Ok("pppp0");
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            return BadRequest(e.ToString());
+        //        }
 
-        }
+        //    }
 
-        //delete vehicle type
-        [Route("DeletePumpType")]
-        [HttpGet]
-        public IHttpActionResult DeletePumpType(int id)
-        {
-            try
-            {
-                ML.deletePumpType(id);
-                return Ok("pppp0");
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.ToString());
-            }
+        //    //delete vehicle type
+        //    [Route("DeletePumpType")]
+        //    [HttpGet]
+        //    public IHttpActionResult DeletePumpType(int id)
+        //    {
+        //        try
+        //        {
+        //            ML.deletePumpType(id);
+        //            return Ok("pppp0");
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            return BadRequest(e.ToString());
+        //        }
 
-        }
+        //    }
     }
 }

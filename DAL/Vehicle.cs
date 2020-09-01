@@ -15,7 +15,7 @@ namespace DAL
         public int Id { get; set; }
         [Required]
         public string Description { get; set; }
-        public int PipesLength { get; set; }
+        public int PipeLength { get; set; }
         [Required]
         public string LicenseNumber { get; set; }
         [Required]
@@ -23,9 +23,9 @@ namespace DAL
 
         public Driver Driver { get; set; }
         [Required]
-        public int PumpTypeId { get; set; }
+        public int VehicleTypeId { get; set; }
         //[Required]
-        public PumpType PumpType { get; set; }
+        public VehicleType VehicleType { get; set; }
         public int MixerNumber { get; set; }
         public virtual ICollection<DriverWork> DriverWork { get; set; }
 

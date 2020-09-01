@@ -11,11 +11,11 @@ namespace BL
 
         public int Id { get; set; }
         public string Description { get; set; }
-        public int PipesLength { get; set; }
+        public int PipeLength { get; set; }
         public string LicenseNumber { get; set; }
         public int DriverId { get; set; }
         public int MixerNumber { get; set; }
-        public int PumpTypeId { get; set; }
+        public int VehicleTypeId { get; set; }
 
     }
 }

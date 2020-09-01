@@ -29,7 +29,7 @@ namespace DAL
         [Required]
         public string Password { get; set; }
         [Required]
-        public string Comments { get; set; }
+        public string Comment { get; set; }
 
         [Required]
         public bool IsActive { get; set; }

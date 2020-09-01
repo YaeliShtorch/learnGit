@@ -151,39 +151,28 @@ namespace API.Controllers
                 return BadRequest(e.ToString());
             }
         }
-        [Route("SearchDriver")]
+        //[Route("SearchDriver")]
+        //[HttpPost]
+        //public List<DriverDto> SearchDriver(SearchDto um)
+        //{
+        //    try
+        //    {
+
+        //        return ML.SerachDriver(um);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return null;
+        //    }
+        //}
+
+        [Route("AddDriverWork")]
         [HttpPost]
-        public List<DriverDto> SearchDriver(SearchDto um)
+        public IHttpActionResult AddDriverWork(DriverWorkDto am)
         {
             try
             {
-
-                return ML.SerachDriver(um);
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-      
-        //get vehicle types types
-        [Route("getAllPumpTypes")]
-        [HttpGet]
-        public List<PumpTypeDto> GetPumpTypes()
-        {
-
-            return ML.GetAllPumpTypes();
-        }
-
-        //add vehicle type
-        [Route("AddPumpType")]
-        [HttpPost]
-        public IHttpActionResult addVehicleType(PumpTypeDto pT)
-        {
-            try
-            {
-                ML.addPumpType(pT);
+                ML.AddDriverWork(am);
                 Console.WriteLine("dfd");
                 return Ok("pppp0");
             }
@@ -191,25 +180,9 @@ namespace API.Controllers
             {
                 return BadRequest(e.ToString());
             }
-            
         }
 
-        //delete vehicle type
-        [Route("DeletePumpType")]
-        [HttpGet]
-        public IHttpActionResult DeletePumpType(int id)
-        {
-            try
-            {
-                ML.deletePumpType(id);
-                return Ok("pppp0");
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.ToString());
-            }
 
-        }
 
     }
 }

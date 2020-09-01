@@ -218,17 +218,17 @@ namespace BL
         //    }
         //    return false;
         //} 
-        public List<ManagerDto> SerachManager(SearchDto s)
-        {
-            List<Manager> managers = db.Manager.ToList();
-            if (s.Name != null && s.Name != "")
-                managers = managers.Where(t => t.FirstName.Contains(s.Name)).ToList();
-            if (s.FromDate != null && s.FromDate != default(DateTime))
-                managers = managers.Where(t => t.BirthDate >= s.FromDate).ToList();
-            if (s.ToDate != null && s.ToDate != default(DateTime))
-                managers = managers.Where(t => t.BirthDate <= s.ToDate).ToList();
-            return ManagerListToDto(managers);
+        //public List<ManagerDto> SerachManager(SearchDto s)
+        //{
+        //    List<Manager> managers = db.Manager.ToList();
+        //    if (s.Name != null && s.Name != "")
+        //        managers = managers.Where(t => t.FirstName.Contains(s.Name)).ToList();
+        //    if (s.FromDate != null && s.FromDate != default(DateTime))
+        //        managers = managers.Where(t => t.BirthDate >= s.FromDate).ToList();
+        //    if (s.ToDate != null && s.ToDate != default(DateTime))
+        //        managers = managers.Where(t => t.BirthDate <= s.ToDate).ToList();
+        //    return ManagerListToDto(managers);
 
-        }
+        //}
     }
 }

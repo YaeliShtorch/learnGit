@@ -8,6 +8,7 @@ namespace BL
 {
     public class DriverWorkDto 
     {
+        public int Id { get; set; }
         public int DriverId { get; set; }     
         public int OrderId { get; set; }    
         public int VehicleId { get; set; }

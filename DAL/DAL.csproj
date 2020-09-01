@@ -100,7 +100,6 @@
     <Compile Include="ShachlavDB.cs" />
     <Compile Include="Validations.cs" />
     <Compile Include="Vehicle.cs" />
-    <Compile Include="PumpType.cs" />
     <Compile Include="VehicleType.cs" />
   </ItemGroup>
   <ItemGroup>

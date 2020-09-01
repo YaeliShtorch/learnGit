@@ -152,19 +152,19 @@ namespace API.Controllers
                 return BadRequest(e.ToString());
             }
         }
-        [Route("SearchCustomer")]
-        [HttpPost]
-        public List<CustomerDto> SearchCustomer(SearchDto um)
-        {
-            try
-            {
+        //[Route("SearchCustomer")]
+        //[HttpPost]
+        //public List<CustomerDto> SearchCustomer(SearchDto um)
+        //{
+        //    try
+        //    {
 
-                return ML.SerachCustomer(um);
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
+        //        return ML.SerachCustomer(um);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return null;
+        //    }
+        //}
     }
 }

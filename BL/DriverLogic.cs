@@ -12,7 +12,7 @@ namespace BL
         {
             //  ShachlavDB db = new ShachlavDB();
 
-            return (DriverToDto(db.Driver.FirstOrDefault(m => m.Id == id)));
+            return (DriverToDto(db.Drivers.FirstOrDefault(m => m.Id == id)));
 
         }
 
@@ -20,35 +20,35 @@ namespace BL
         {
             //  ShachlavDB db = new ShachlavDB();
 
-            return (DriverToDto(db.Driver.FirstOrDefault(m => m.UserName == UserName && m.Password == Password)));
+            return (DriverToDto(db.Drivers.FirstOrDefault(m => m.UserName == UserName && m.Password == Password)));
 
         }
         public DriverDto GetDriverUN(string UserName)
         {
             //  ShachlavDB db = new ShachlavDB();
 
-            return (DriverToDto(db.Driver.FirstOrDefault(m => m.UserName == UserName)));
+            return (DriverToDto(db.Drivers.FirstOrDefault(m => m.UserName == UserName)));
 
         }
 
         public List<DriverDto> GetAllDrivers()
         {
             List<Driver> AllDrivers = new List<Driver>();
-            AllDrivers = db.Driver.ToList();
+            AllDrivers = db.Drivers.ToList();
             return DriverListToDto(AllDrivers);
         }
         public DriverDto GetDriverIN(string identityNumber)
         {
             //  ShachlavDB db = new ShachlavDB();
 
-            return (DriverToDto(db.Driver.FirstOrDefault(m => m.IdentityNumber == identityNumber)));
+            return (DriverToDto(db.Drivers.FirstOrDefault(m => m.IdentityNumber == identityNumber)));
 
         }
 
         public List<DriverDto> GetDriversFLN(string Name)
         {
             List<DriverDto> AllDrivers = new List<DriverDto>();
-            foreach (var m in db.Driver)
+            foreach (var m in db.Drivers)
             {
                 if (m.FirstName.Contains(Name) || m.LastName.Contains(Name))
                     AllDrivers.Add(DriverToDto(m));
@@ -60,7 +60,7 @@ namespace BL
         {
             // ShachlavDB db = new ShachlavDB();
 
-            return (DriverToDto(db.Driver.FirstOrDefault(m => m.Email == Email)));
+            return (DriverToDto(db.Drivers.FirstOrDefault(m => m.Email == Email)));
 
         }
 
@@ -68,14 +68,14 @@ namespace BL
         {
             //    ShachlavDB db = new ShachlavDB();
 
-            return (DriverToDto(db.Driver.FirstOrDefault(m => m.PhoneNumber == phone || m.CellNumber == phone)));
+            return (DriverToDto(db.Drivers.FirstOrDefault(m => m.PhoneNumber == phone || m.CellNumber == phone)));
 
         }
 
         public List<DriverDto> GetDriverA(string Address)
         {
             List<DriverDto> AllDrivers = new List<DriverDto>();
-            foreach (var m in db.Driver)
+            foreach (var m in db.Drivers)
             {
                 if (m.Address.Contains(Address))
                     AllDrivers.Add(DriverToDto(m));
@@ -88,7 +88,7 @@ namespace BL
         {
             //  ShachlavDB db = new ShachlavDB();
 
-            return (DriverToDto(db.Driver.FirstOrDefault(m => m.BirthDate == BirthDate)));
+            return (DriverToDto(db.Drivers.FirstOrDefault(m => m.BirthDate == BirthDate)));
 
         }
         public void AddDriver(DriverDto NewDriver)
@@ -96,7 +96,7 @@ namespace BL
             //   ShachlavDB db = new ShachlavDB();
             if (IsExist(NewDriver) == false)
             {
-                db.Driver.Add(DriverToDal(NewDriver));
+                db.Drivers.Add(DriverToDal(NewDriver));
                 db.SaveChanges();
             }
         }
@@ -105,14 +105,14 @@ namespace BL
         public void DeleteDriver(int id)
         {
             //   ShachlavDB db = new ShachlavDB();
-            db.Driver.Remove(db.Driver.FirstOrDefault(m => m.Id == id));
+            db.Drivers.Remove(db.Drivers.FirstOrDefault(m => m.Id == id));
             db.SaveChanges();
         }
 
         public void UpdateDriver(DriverDto UpDriver)
         {
             //  ShachlavDB db = new ShachlavDB();
-            Driver Ezer = db.Driver.FirstOrDefault(m => m.Id == UpDriver.Id);
+            Driver Ezer = db.Drivers.FirstOrDefault(m => m.Id == UpDriver.Id);
             Ezer.IdentityNumber = UpDriver.IdentityNumber;
             Ezer.FirstName = UpDriver.FirstName;
             Ezer.LastName = UpDriver.LastName;
@@ -129,7 +129,7 @@ namespace BL
         private bool IsExist(DriverDto Driver)
         {
             //  ShachlavDB db = new ShachlavDB();
-            foreach (var m in db.Driver)
+            foreach (var m in db.Drivers)
             {
                 if (m.Id == Driver.Id || m.IdentityNumber ==Driver.IdentityNumber)
                     return true;
@@ -220,77 +220,87 @@ namespace BL
         //    }
         //    return false;
         //} 
-        public List<DriverDto> SerachDriver(SearchDto s)
-        {
-            List<Driver> Drivers = db.Driver.ToList();
-            if (s.Name != null && s.Name != "")
-                Drivers = Drivers.Where(t => t.FirstName.Contains(s.Name)).ToList();
-            if (s.FromDate != null && s.FromDate != default(DateTime))
-                Drivers = Drivers.Where(t => t.BirthDate >= s.FromDate).ToList();
-            if (s.ToDate != null && s.ToDate != default(DateTime))
-                Drivers = Drivers.Where(t => t.BirthDate <= s.ToDate).ToList();
-            return DriverListToDto(Drivers);
+        //public List<DriverDto> SerachDriver(SearchDto s)
+        //{
+        //    List<Driver> Drivers = db.Driver.ToList();
+        //    if (s.Name != null && s.Name != "")
+        //        Drivers = Drivers.Where(t => t.FirstName.Contains(s.Name)).ToList();
+        //    if (s.FromDate != null && s.FromDate != default(DateTime))
+        //        Drivers = Drivers.Where(t => t.BirthDate >= s.FromDate).ToList();
+        //    if (s.ToDate != null && s.ToDate != default(DateTime))
+        //        Drivers = Drivers.Where(t => t.BirthDate <= s.ToDate).ToList();
+        //    return DriverListToDto(Drivers);
 
-        }
+        //}
         public void O()
         {
             Console.WriteLine("ll");
         }
 
-        public List<PumpTypeDto> GetAllPumpTypes()
+       
+        private bool IsExist(DriverWorkDto DriverWork)
         {
-            List<PumpTypeDto> pumpTypesDtoList = new List<PumpTypeDto>();
-            foreach (PumpType vT in db.PumpType.ToList())
+            //  ShachlavDB db = new ShachlavDB();
+            foreach (var m in db.DriverWork)
             {
-                pumpTypesDtoList.Add(PumpTypeToDto(vT));
+                if (m.Id == DriverWork.Id)
+                    return true;
             }
-            return pumpTypesDtoList;
+            return false;
+        }
+        private DriverWork DriverWorkToDal(DriverWorkDto Mdto)
+        {
+            if (Mdto != null)
+                return new DriverWork()
+                {
+                    DriverId = Mdto.DriverId,
+                    StartTime = Mdto.StartTime,
+                    EndTime = Mdto.EndTime,
+                    Date = Mdto.Date,
+                    Amount = Mdto.Amount,
+                    OrderId = Mdto.OrderId,
+                    VehicleId = Mdto.VehicleId
+
+                };
+            else
+                return null;
+        }
+        private DriverWorkDto DriverWorkToDto(DriverWork Mdal)
+        {
+            if (Mdal != null)
+                return new DriverWorkDto()
+                {
+
+                    DriverId = Mdal.DriverId,
+                    StartTime = Mdal.StartTime,
+                    EndTime = Mdal.EndTime,
+                    Date = Mdal.Date,
+                    Amount = Mdal.Amount,
+                    OrderId = Mdal.OrderId,
+                    VehicleId = Mdal.VehicleId
+                };
+            else return null;
         }
 
-
-
-        public void addPumpType(PumpTypeDto p)
+        public List<DriverWorkDto> GetAllDriverWork()
         {
-            //check there is no such instance;
-            PumpType ezer =db.PumpType.FirstOrDefault(x => x.PType == p.PType);
-            if (ezer == null) { 
-            db.PumpType.Add(PumpTypetoDal(p));
+            List<DriverWorkDto> AllDriverWork = new List<DriverWorkDto>();
+            foreach (var m in db.DriverWork)
+            {
+                AllDriverWork.Add(DriverWorkToDto(m));
+            }
+            return AllDriverWork;
+        }
+        public void AddDriverWork(DriverWorkDto NewDriverWork)
+        {
+            //   ShachlavDB db = new ShachlavDB();
+            if (IsExist(NewDriverWork) == false)
+            {
+                db.DriverWork.Add(DriverWorkToDal(NewDriverWork));
                 db.SaveChanges();
             }
-          
         }
 
-        //delete vehicle type
-        public void deletePumpType(int id)
-        {
-            db.PumpType.Remove(db.PumpType.FirstOrDefault(o => o.Id == id));
-            db.SaveChanges();
 
-        }
-
-        public PumpTypeDto PumpTypeToDto(PumpType Ptdal)
-        {
-            if (Ptdal != null)
-                return new PumpTypeDto()
-                {
-                    Id = Ptdal.Id,
-                    PType = Ptdal.PType
-                };
-            else return null;
-        }
-        
-        public PumpType PumpTypetoDal(PumpTypeDto PtDto)
-        {
-            if (PtDto != null)
-                return new PumpType()
-                {
-                    //Id = v.Id,
-                    PType = PtDto.PType
-                };
-            else return null;
-
-        }
-
-       
     }
 }

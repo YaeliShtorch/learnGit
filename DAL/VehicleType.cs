@@ -15,7 +15,9 @@ namespace DAL
 
         [Required]
         public string Name { get; set; }
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        //public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public virtual ICollection<Vehicle> Vehicle { get; set; }
+        public virtual ICollection<MaterialTypeOrder> MaterialTypeOrder { get; set; }
 
     }
 }

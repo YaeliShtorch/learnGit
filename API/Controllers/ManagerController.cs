@@ -153,18 +153,18 @@ namespace API.Controllers
                 return BadRequest(e.ToString());
             }
         }
-        [Route("SearchManager")]
-        [HttpPost]
-        public List<ManagerDto> SearchManager(SearchDto um)
-        {
-            try {
+        //[Route("SearchManager")]
+        //[HttpPost]
+        //public List<ManagerDto> SearchManager(SearchDto um)
+        //{
+        //    try {
 
-                return ML.SerachManager(um);
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
+        //        return ML.SerachManager(um);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return null;
+        //    }
+        //}
     }
 }

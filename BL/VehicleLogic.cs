@@ -35,11 +35,11 @@ namespace BL
                 {
                     Id = vDal.Id,
                     Description = vDal.Description,
-                    PipesLength = vDal.PipesLength,
+                    PipeLength = vDal.PipeLength,
                     LicenseNumber = vDal.LicenseNumber,
-                    Driver = db.Driver.FirstOrDefault(d => d.Id == vDal.DriverId),
+                    Driver = db.Drivers.FirstOrDefault(d => d.Id == vDal.DriverId),
                     MixerNumber = vDal.MixerNumber,
-                    PumpType = db.PumpType.FirstOrDefault(p => p.Id == vDal.PumpTypeId),
+                    VehicleType = db.VehicleType.FirstOrDefault(p => p.Id == vDal.VehicleTypeId),
 
                 };
 
@@ -55,11 +55,11 @@ namespace BL
                 {
                     Id = vReqDto.Id,
                     Description = vReqDto.Description,
-                    PipesLength = vReqDto.PipesLength,
+                    PipeLength = vReqDto.PipeLength,
                     LicenseNumber = vReqDto.LicenseNumber,
                     DriverId = vReqDto.Driver.Id,
                     MixerNumber = vReqDto.MixerNumber,
-                    PumpTypeId = vReqDto.PumpType.Id,
+                    VehicleTypeId = vReqDto.VehicleType.Id,
                     
                 };
 
@@ -75,11 +75,11 @@ namespace BL
                 {
                     Id = VDto.Id,
                     Description = VDto.Description,
-                    PipesLength = VDto.PipesLength,
+                    PipeLength = VDto.PipeLength,
                     LicenseNumber = VDto.LicenseNumber,
                     DriverId = VDto.DriverId,
                     MixerNumber = VDto.MixerNumber,
-                    PumpTypeId = VDto.PumpTypeId,
+                    VehicleTypeId = VDto.VehicleTypeId,
                 };
             }
             else return null;
@@ -94,11 +94,11 @@ namespace BL
                 {
                     Id = VDal.Id,
                     Description = VDal.Description,
-                    PipesLength = VDal.PipesLength,
+                    PipeLength = VDal.PipeLength,
                     LicenseNumber = VDal.LicenseNumber,
                     DriverId = VDal.DriverId,
                     MixerNumber = VDal.MixerNumber,
-                    PumpTypeId = VDal.PumpTypeId,
+                    VehicleTypeId = VDal.VehicleTypeId,
 
 
                 };
@@ -106,62 +106,62 @@ namespace BL
             else return null;
         }
 
-        public List<PumpTypeDto> GetAllPumpTypes()
-        {
-            List<PumpTypeDto> pumpTypesDtoList = new List<PumpTypeDto>();
-            List<PumpType> pupmTypeDalList = new List<PumpType>();
-            pupmTypeDalList = db.PumpType.ToList();
-            foreach (PumpType vT in pupmTypeDalList)
-            {
-                pumpTypesDtoList.Add(PumpTypeToDto(vT));
-            }
-            return pumpTypesDtoList;
-        }
+        //public List<PumpTypeDto> GetAllPumpTypes()
+        //{
+        //    List<PumpTypeDto> pumpTypesDtoList = new List<PumpTypeDto>();
+        //    List<PumpType> pupmTypeDalList = new List<PumpType>();
+        //    pupmTypeDalList = db.PumpType.ToList();
+        //    foreach (PumpType vT in pupmTypeDalList)
+        //    {
+        //        pumpTypesDtoList.Add(PumpTypeToDto(vT));
+        //    }
+        //    return pumpTypesDtoList;
+        //}
 
 
 
-        public void addPumpType(PumpTypeDto p)
-        {
-            //check there is no such instance;
-            PumpType ezer = db.PumpType.FirstOrDefault(x => x.PType == p.PType);
-            if (ezer == null)
-            {
-                db.PumpType.Add(PumpTypetoDal(p));
-                db.SaveChanges();
-            }
+        //public void addPumpType(PumpTypeDto p)
+        //{
+        //    //check there is no such instance;
+        //    PumpType ezer = db.PumpType.FirstOrDefault(x => x.PType == p.PType);
+        //    if (ezer == null)
+        //    {
+        //        db.PumpType.Add(PumpTypetoDal(p));
+        //        db.SaveChanges();
+        //    }
 
-        }
+        //}
 
-        //delete vehicle type
-        public void deletePumpType(int id)
-        {
-            db.PumpType.Remove(db.PumpType.FirstOrDefault(o => o.Id == id));
-            db.SaveChanges();
+        ////delete vehicle type
+        //public void deletePumpType(int id)
+        //{
+        //    db.PumpType.Remove(db.PumpType.FirstOrDefault(o => o.Id == id));
+        //    db.SaveChanges();
 
-        }
+        //}
 
-        public PumpTypeDto PumpTypeToDto(PumpType Ptdal)
-        {
-            if (Ptdal != null)
-                return new PumpTypeDto()
-                {
-                    Id = Ptdal.Id,
-                    PType = Ptdal.PType
-                };
-            else return null;
-        }
+        //public PumpTypeDto PumpTypeToDto(PumpType Ptdal)
+        //{
+        //    if (Ptdal != null)
+        //        return new PumpTypeDto()
+        //        {
+        //            Id = Ptdal.Id,
+        //            PType = Ptdal.PType
+        //        };
+        //    else return null;
+        //}
 
-        public PumpType PumpTypetoDal(PumpTypeDto PtDto)
-        {
-            if (PtDto != null)
-                return new PumpType()
-                {
-                    //Id = v.Id,
-                    PType = PtDto.PType
-                };
-            else return null;
+        //public PumpType PumpTypetoDal(PumpTypeDto PtDto)
+        //{
+        //    if (PtDto != null)
+        //        return new PumpType()
+        //        {
+        //            //Id = v.Id,
+        //            PType = PtDto.PType
+        //        };
+        //    else return null;
 
-        }
+        //}
 
 
 
