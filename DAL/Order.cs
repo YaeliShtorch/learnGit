@@ -23,20 +23,23 @@ namespace DAL
 
         [Required]
         public DateTime OrderDueDate { get; set; }
-        //[Required]
-        //public bool ConcreteCheck { get; set; }
-
         [Required]
         public TimeSpan StartTime { get; set; }
         [Required]
         public TimeSpan EndTime { get; set; }
+        public int MaterialTypeOrderId { get; set; }
+        public bool ConcreteTest { get; set; }
+        public MaterialTypeOrder MaterialTypeOrder { get; set; }
         [Required]
         public bool IsApproved { get; set; }
         public bool IsDone { get; set; }
+        public string ManagerComment { get; set; }
         public string Comment { get; set; }
-        public virtual ICollection<MaterialTypeOrder> MaterialTypeOrders { get; set; }
+
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
         public virtual ICollection<DriverWork> DriverWorks { get; set; }
+
+        public virtual ICollection<MaterialTypeOrder> MaterialTypeOrders { get; set; }
 
     }
 }

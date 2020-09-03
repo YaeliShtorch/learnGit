@@ -80,17 +80,13 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="DriverWork.cs" />
-    <Compile Include="Migrations\202008181124454_InitialCreate.cs" />
-    <Compile Include="Migrations\202008181124454_InitialCreate.Designer.cs">
-      <DependentUpon>202008181124454_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202009021351377_newDB.cs" />
+    <Compile Include="Migrations\202009021351377_newDB.Designer.cs">
+      <DependentUpon>202009021351377_newDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008240947324_InitialMigrations.cs" />
-    <Compile Include="Migrations\202008240947324_InitialMigrations.Designer.cs">
-      <DependentUpon>202008240947324_InitialMigrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008302247111_Shachlav.cs" />
-    <Compile Include="Migrations\202008302247111_Shachlav.Designer.cs">
-      <DependentUpon>202008302247111_Shachlav.cs</DependentUpon>
+    <Compile Include="Migrations\202009022138365_[202009021351377_newDB].cs" />
+    <Compile Include="Migrations\202009022138365_[202009021351377_newDB].Designer.cs">
+      <DependentUpon>202009022138365_[202009021351377_newDB].cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
@@ -107,14 +103,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008181124454_InitialCreate.resx">
-      <DependentUpon>202008181124454_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009021351377_newDB.resx">
+      <DependentUpon>202009021351377_newDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008240947324_InitialMigrations.resx">
-      <DependentUpon>202008240947324_InitialMigrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008302247111_Shachlav.resx">
-      <DependentUpon>202008302247111_Shachlav.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009022138365_[202009021351377_newDB].resx">
+      <DependentUpon>202009022138365_[202009021351377_newDB].cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

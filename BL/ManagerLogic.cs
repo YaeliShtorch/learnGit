@@ -113,17 +113,19 @@ namespace BL
         {
           //  ShachlavDB db = new ShachlavDB();
             Manager Ezer = db.Manager.FirstOrDefault(m => m.Id == UpManager.Id);
+            if (Ezer != null) { 
             Ezer.IdentityNumber = UpManager.IdentityNumber;
             Ezer.FirstName = UpManager.FirstName;
             Ezer.LastName = UpManager.LastName;
-            Ezer.Address = UpManager.Address;
+            Ezer.Email = UpManager.Email;
             Ezer.PhoneNumber = UpManager.PhoneNumber;
             Ezer.CellNumber = UpManager.CellNumber;
-            Ezer.Email = UpManager.Email;
+            Ezer.Address = UpManager.Address;
             Ezer.BirthDate = UpManager.BirthDate;
             Ezer.UserName = UpManager.UserName;
             Ezer.Password = UpManager.Password;
             db.SaveChanges();
+            }
         }
        
         private bool IsExist(ManagerDto manager)
@@ -131,7 +133,7 @@ namespace BL
           //  ShachlavDB db = new ShachlavDB();
             foreach (var m in db.Manager)
             {
-                if (m.Id == manager.Id)
+                if (m.Id == manager.Id || m.IdentityNumber ==manager.IdentityNumber)
                     return true;
             }
             return false;
@@ -148,10 +150,10 @@ namespace BL
                     IdentityNumber = Mdto.IdentityNumber,
                     FirstName = Mdto.FirstName,
                     LastName = Mdto.LastName,
-                    Address = Mdto.Address,
+                    Email = Mdto.Email,
                     PhoneNumber = Mdto.PhoneNumber,
                     CellNumber = Mdto.CellNumber,
-                    Email = Mdto.Email,
+                    Address = Mdto.Address,
                     BirthDate = Mdto.BirthDate,
                     UserName = Mdto.UserName,
                     Password = Mdto.Password
@@ -168,10 +170,10 @@ namespace BL
                 IdentityNumber = Mdal.IdentityNumber,
                 FirstName = Mdal.FirstName,
                 LastName = Mdal.LastName,
-                Address = Mdal.Address,
+                Email = Mdal.Email,
                 PhoneNumber = Mdal.PhoneNumber,
                 CellNumber = Mdal.CellNumber,
-                Email = Mdal.Email,
+                Address = Mdal.Address,
                 BirthDate = Mdal.BirthDate,
                 UserName = Mdal.UserName,
                 Password = Mdal.Password

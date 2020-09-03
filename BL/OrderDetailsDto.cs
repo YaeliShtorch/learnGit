@@ -13,8 +13,6 @@ namespace BL
        
         public int ProviderId { get; set; }
       
-       // public int MaterialId { get; set; }
-      
         public int Amount { get; set; }
     }
 }

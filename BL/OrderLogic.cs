@@ -9,11 +9,11 @@ namespace BL
 {
     public class OrderLogic:BaseLogic
     {
-        public OrderDto GetOrderById(int id)
+        public OrderDtoCreate GetOrderById(int id)
         {
             return (OrderToDto(db.Orders.FirstOrDefault(o => o.Id == id)));
         }
-        public List<OrderDto> GetOrdersByCustomerId(int Id)
+        public List<OrderDtoCreate> GetOrdersByCustomerId(int Id)
         {
             List<Order> AllOrders = new List<Order>();
            
@@ -24,16 +24,16 @@ namespace BL
             //}
             return OrdersToDto(AllOrders);
         }
-        public List<OrderDto> GetOrders()
+        public List<OrderDtoCreate> GetOrders()
         {
-            List<OrderDto> AllOrders = new List<OrderDto>();
+            List<OrderDtoCreate> AllOrders = new List<OrderDtoCreate>();
             foreach (var o in db.Orders)
             {
                 AllOrders.Add(OrderToDto(o));
             }
             return AllOrders;
         }
-        public void AddOrder(OrderDto NewOrder)
+        public void AddOrder(OrderDtoCreate NewOrder)
         {
             if (IsExist(NewOrder) == false)
             {
@@ -77,7 +77,7 @@ namespace BL
             return AllOrderL;
         }
 
-        public bool IsExist(OrderDto order)
+        public bool IsExist(OrderDtoCreate order)
         {
 
             foreach (var o in db.Orders)
@@ -87,7 +87,7 @@ namespace BL
             }
             return false;
         }
-        public Order OrderToDal(OrderDto Odto)
+        public Order OrderToDal(OrderDtoCreate Odto)
         {
             return new Order()
             {
@@ -100,14 +100,15 @@ namespace BL
                 EndTime = Odto.EndTime,
                 IsApproved = Odto.IsApproved,
                 IsDone = Odto.IsDone,
+                ManagerComment=Odto.ManagerComment,
                 Comment=Odto.Comment
             };
         }
 
-        public OrderDto OrderToDto(Order Odal)
+        public OrderDtoCreate OrderToDto(Order Odal)
         {
 
-            return new OrderDto()
+            return new OrderDtoCreate()
             {
                 Id = Odal.Id,
                 CustomerId = Odal.CustomerId,
@@ -118,15 +119,16 @@ namespace BL
                 EndTime = Odal.EndTime,
                 IsApproved = Odal.IsApproved,
                 IsDone = Odal.IsDone,
+                ManagerComment=Odal.ManagerComment,
                 Comment = Odal.Comment
             };
         }
-        public List<OrderDto> OrdersToDto(List<Order> Odal)
+        public List<OrderDtoCreate> OrdersToDto(List<Order> Odal)
         {
-            List<OrderDto> oDto = new List<OrderDto>();
+            List<OrderDtoCreate> oDto = new List<OrderDtoCreate>();
             foreach (var od in Odal)
             {
-                oDto.Add(new OrderDto()
+                oDto.Add(new OrderDtoCreate()
                 {
                     Id = od.Id,
                     CustomerId = od.CustomerId,
@@ -137,6 +139,7 @@ namespace BL
                     EndTime = od.EndTime,
                     IsApproved = od.IsApproved,
                     IsDone = od.IsDone,
+                    ManagerComment=od.ManagerComment,
                     Comment = od.Comment
                 });
 

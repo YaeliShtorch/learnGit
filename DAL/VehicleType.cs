@@ -10,7 +10,7 @@ namespace DAL
     public class VehicleType
     {
         [Key]
-        [Required]
+        //[Required]
         public int Id { get; set; }
 
         [Required]

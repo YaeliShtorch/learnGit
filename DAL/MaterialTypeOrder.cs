@@ -38,6 +38,8 @@ namespace DAL
         [Required]
         public int Amount { get; set; }
 
+        public virtual ICollection<Order> Orders { get; set; }
+
 
     }
 }

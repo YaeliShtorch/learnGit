@@ -23,7 +23,7 @@ namespace API.Controllers
         //Get Order by id
         [Route("GetId")]
         [HttpGet]
-        public OrderDto GetOrder(int id)
+        public OrderDtoCreate GetOrder(int id)
         {
             return (OM.GetOrderById(id));
         }
@@ -31,7 +31,7 @@ namespace API.Controllers
         //get AllOrders by customerId
         [Route("GetAllCO")]
         [HttpGet]
-        public List<OrderDto> GetAllCusOrders(int id)
+        public List<OrderDtoCreate> GetAllCusOrders(int id)
         {
             return OM.GetOrdersByCustomerId(id);
         }
@@ -65,7 +65,7 @@ namespace API.Controllers
 
         [Route("Update")]
         [HttpPost]
-        public IHttpActionResult updateOrder(OrderDto o)
+        public IHttpActionResult updateOrder(OrderDtoCreate o)
         {
             
             try
@@ -82,7 +82,7 @@ namespace API.Controllers
 
         [Route("AddOrder")]
         [HttpPost]
-        public IHttpActionResult AddOrder(OrderDto am, List<MaterialTypeOrderDto> mto)
+        public IHttpActionResult AddOrder(OrderDtoCreate am, List<MaterialTypeOrderDto> mto)
         {
 
             try

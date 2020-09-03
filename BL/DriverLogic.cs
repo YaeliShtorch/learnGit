@@ -113,17 +113,21 @@ namespace BL
         {
             //  ShachlavDB db = new ShachlavDB();
             Driver Ezer = db.Drivers.FirstOrDefault(m => m.Id == UpDriver.Id);
+            if (Ezer != null) { 
             Ezer.IdentityNumber = UpDriver.IdentityNumber;
             Ezer.FirstName = UpDriver.FirstName;
             Ezer.LastName = UpDriver.LastName;
-            Ezer.Address = UpDriver.Address;
+            Ezer.Email = UpDriver.Email;
             Ezer.PhoneNumber = UpDriver.PhoneNumber;
             Ezer.CellNumber = UpDriver.CellNumber;
-            Ezer.Email = UpDriver.Email;
+            Ezer.Address = UpDriver.Address;
             Ezer.BirthDate = UpDriver.BirthDate;
+            Ezer.EntryToWorkDate = UpDriver.EntryToWorkDate;
             Ezer.UserName = UpDriver.UserName;
             Ezer.Password = UpDriver.Password;
+            Ezer.IsActive = Ezer.IsActive;
             db.SaveChanges();
+            } 
         }
 
         private bool IsExist(DriverDto Driver)
@@ -148,13 +152,15 @@ namespace BL
                     IdentityNumber = Mdto.IdentityNumber,
                     FirstName = Mdto.FirstName,
                     LastName = Mdto.LastName,
-                    Address = Mdto.Address,
+                    Email = Mdto.Email,
                     PhoneNumber = Mdto.PhoneNumber,
                     CellNumber = Mdto.CellNumber,
-                    Email = Mdto.Email,
+                    Address = Mdto.Address,
                     BirthDate = Mdto.BirthDate,
+                    EntryToWorkDate=Mdto.EntryToWorkDate,
                     UserName = Mdto.UserName,
-                    Password = Mdto.Password
+                    Password = Mdto.Password,
+                    IsActive=Mdto.IsActive
                 };
             else
                 return null;
@@ -168,15 +174,15 @@ namespace BL
                     IdentityNumber = Mdal.IdentityNumber,
                     FirstName = Mdal.FirstName,
                     LastName = Mdal.LastName,
-                    Address = Mdal.Address,
+                    Email = Mdal.Email,
                     PhoneNumber = Mdal.PhoneNumber,
                     CellNumber = Mdal.CellNumber,
-                    Email = Mdal.Email,
+                    Address = Mdal.Address,
                     BirthDate = Mdal.BirthDate,
+                    EntryToWorkDate = Mdal.EntryToWorkDate,
                     UserName = Mdal.UserName,
                     Password = Mdal.Password,
-                    IsActive=Mdal.IsActive,
-                    EntryToWorkDate=Mdal.EntryToWorkDate
+                    IsActive = Mdal.IsActive
                 };
             else return null;
         }

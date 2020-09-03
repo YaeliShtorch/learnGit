@@ -15,14 +15,14 @@ public class Manager
         [Required]
         [MinLength(9)]
         [MaxLength(9)]
-        [CustomValidation(typeof(Validations), "IdOK")]
+        //[CustomValidation(typeof(Validations), "IdOK")]
         public string IdentityNumber { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
         [Required]
-        [DataType(DataType.EmailAddress)]
+        //[DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
         [Phone]
@@ -32,13 +32,12 @@ public class Manager
         [Required]
         public string Address { get; set; }
         [Required]
-        [CustomValidation(typeof(Validations), "BirthDateValid")]
+        //[CustomValidation(typeof(Validations), "BirthDateValid")]
         public DateTime BirthDate { get; set; }
         [Required]
         public string UserName { get; set; }
         [Required]
         public string Password { get; set; }
-      
-       
+
     }
 }

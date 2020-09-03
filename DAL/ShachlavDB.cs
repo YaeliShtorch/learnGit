@@ -17,8 +17,8 @@ namespace DAL
         public virtual DbSet<DriverWork> DriverWork { get; set; }
         public virtual DbSet<Manager> Manager { get; set; }
         public virtual DbSet<OrderDetails> OrderDetails { get; set; }
-        public virtual DbSet<Provider> Provider { get; set; }
-        public virtual DbSet<Vehicle> Vehicle { get; set; }
+        public virtual DbSet<Provider> Providers { get; set; }
+        public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<VehicleType> VehicleType { get; set; }
         public virtual DbSet<ClayType> ClayType { get; set; }
         public virtual DbSet<ConcDesc> ConcDesc { get; set; }

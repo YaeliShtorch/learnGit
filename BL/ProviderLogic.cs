@@ -13,7 +13,7 @@ namespace BL
         {
             //  ShachlavDB db = new ShachlavDB();
 
-            return (ProviderToDto(db.Provider.FirstOrDefault(m => m.Id == id)));
+            return (ProviderToDto(db.Providers.FirstOrDefault(m => m.Id == id)));
 
         }
 
@@ -21,21 +21,21 @@ namespace BL
         {
             //  ShachlavDB db = new ShachlavDB();
 
-            return (ProviderToDto(db.Provider.FirstOrDefault(m => m.UserName == UserName && m.Password == Password)));
+            return (ProviderToDto(db.Providers.FirstOrDefault(m => m.UserName == UserName && m.Password == Password)));
 
         }
         public ProviderDto GetProviderUN(string UserName)
         {
             //  ShachlavDB db = new ShachlavDB();
 
-            return (ProviderToDto(db.Provider.FirstOrDefault(m => m.UserName == UserName)));
+            return (ProviderToDto(db.Providers.FirstOrDefault(m => m.UserName == UserName)));
 
         }
 
         public List<ProviderDto> GetAllProviders()
         {
             List<Provider> AllProviders = new List<Provider>();
-            AllProviders = db.Provider.ToList();
+            AllProviders = db.Providers.ToList();
            
             return ProviderListToDto(AllProviders);
         }
@@ -43,14 +43,14 @@ namespace BL
         {
             //  ShachlavDB db = new ShachlavDB();
 
-            return (ProviderToDto(db.Provider.FirstOrDefault(m => m.CompanyCode == companyCode)));
+            return (ProviderToDto(db.Providers.FirstOrDefault(m => m.CompanyCode == companyCode)));
 
         }
 
         public List<ProviderDto> GetProvidersFLN(string Name)
         {
             List<ProviderDto> AllProviders = new List<ProviderDto>();
-            foreach (var m in db.Provider)
+            foreach (var m in db.Providers)
             {
                 if (m.CompanyName.Contains(Name) )
                     AllProviders.Add(ProviderToDto(m));
@@ -62,7 +62,7 @@ namespace BL
         {
             // ShachlavDB db = new ShachlavDB();
 
-            return (ProviderToDto(db.Provider.FirstOrDefault(m => m.Email == Email)));
+            return (ProviderToDto(db.Providers.FirstOrDefault(m => m.Email == Email)));
 
         }
 
@@ -70,14 +70,14 @@ namespace BL
         {
             //    ShachlavDB db = new ShachlavDB();
 
-            return (ProviderToDto(db.Provider.FirstOrDefault(m => m.PhoneNumber == phone || m.CellNumber == phone)));
+            return (ProviderToDto(db.Providers.FirstOrDefault(m => m.PhoneNumber == phone || m.CellNumber == phone)));
 
         }
 
         public List<ProviderDto> GetProviderA(string Address)
         {
             List<ProviderDto> AllProviders = new List<ProviderDto>();
-            foreach (var m in db.Provider)
+            foreach (var m in db.Providers)
             {
                 if (m.Address.Contains(Address))
                     AllProviders.Add(ProviderToDto(m));
@@ -92,7 +92,7 @@ namespace BL
             //   ShachlavDB db = new ShachlavDB();
             if (IsExist(NewProvider) == false)
             {
-                db.Provider.Add(ProviderToDal(NewProvider));
+                db.Providers.Add(ProviderToDal(NewProvider));
                 db.SaveChanges();
             }
         }
@@ -101,14 +101,14 @@ namespace BL
         public void DeleteProvider(int id)
         {
             //   ShachlavDB db = new ShachlavDB();
-            db.Provider.Remove(db.Provider.FirstOrDefault(m => m.Id == id));
+            db.Providers.Remove(db.Providers.FirstOrDefault(m => m.Id == id));
             db.SaveChanges();
         }
 
         public void UpdateProvider(ProviderDto UpProvider)
         {
             //  ShachlavDB db = new ShachlavDB();
-            Provider Ezer = db.Provider.FirstOrDefault(m => m.Id == UpProvider.Id);
+            Provider Ezer = db.Providers.FirstOrDefault(m => m.Id == UpProvider.Id);
             Ezer.CompanyCode = UpProvider.CompanyCode;
             Ezer.CompanyName = UpProvider.CompanyName;
          
@@ -125,7 +125,7 @@ namespace BL
         private bool IsExist(ProviderDto Provider)
         {
             //  ShachlavDB db = new ShachlavDB();
-            foreach (var m in db.Provider)
+            foreach (var m in db.Providers)
             {
                 if (m.Id == Provider.Id)
                     return true;

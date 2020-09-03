@@ -16,7 +16,7 @@ namespace DAL
         [Required]
         [MinLength(9)]
         [MaxLength(9)]
-        [CustomValidation(typeof(Validations), "IdOK")]
+        //[CustomValidation(typeof(Validations), "IdOK")]
         public string IdentityNumber { get; set; }
         [Required]
         public string FirstName { get; set; }
@@ -32,10 +32,10 @@ namespace DAL
         [Required]
         public string Address { get; set; }
         [Required]
-        [CustomValidation(typeof(Validations), "BirthDateValid")]
+        //[CustomValidation(typeof(Validations), "BirthDateValid")]
         public DateTime BirthDate { get; set; }
         [Required]
-        [CustomValidation(typeof(Validations), "BeforeDateValid")]
+        //[CustomValidation(typeof(Validations), "BeforeDateValid")]
         public DateTime EntryToWorkDate { get; set; }
         [Required]
         public string UserName { get; set; }

@@ -9,9 +9,7 @@ namespace DAL.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "DAL.ShachlavDB";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(DAL.ShachlavDB context)

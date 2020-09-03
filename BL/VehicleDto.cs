@@ -14,8 +14,8 @@ namespace BL
         public int PipeLength { get; set; }
         public string LicenseNumber { get; set; }
         public int DriverId { get; set; }
-        public int MixerNumber { get; set; }
         public int VehicleTypeId { get; set; }
+        public int MixerNumber { get; set; }
 
     }
 }

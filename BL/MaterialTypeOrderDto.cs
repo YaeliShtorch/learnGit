@@ -11,9 +11,7 @@ namespace BL
     {
 
         public int Id { get; set; }
-
         public int OrderId { get; set; }
-
         public bool IsConcrete { get; set; }
         public int ConcreteTypeId { get; set; }
 
@@ -30,10 +28,7 @@ namespace BL
 
         public bool IsPump { get; set; }
         public int VehicleTypeId { get; set; }
-
-
         public string Element { get; set; }
-
         public int Amount { get; set; }
 
 

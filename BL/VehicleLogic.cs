@@ -11,61 +11,22 @@ namespace BL
     {
 
         // get all vehicles with full FK objects
-        public List<VehicleForRequestDto> GetAllVehicles()
+        public List<VehicleDto> GetAllVehicles()
         {
             List<Vehicle> VehicleDalL = new List<Vehicle>();
-            VehicleDalL = db.Vehicle.ToList();
-            List<VehicleForRequestDto> VehicleReqL = new List<VehicleForRequestDto>();
+            VehicleDalL = db.Vehicles.ToList();
+            List<VehicleDto> VehicleReqL = new List<VehicleDto>();
 
             if (VehicleDalL != null) { 
              foreach (Vehicle v in VehicleDalL)
             {
                
-                VehicleReqL.Add(VehicletoVReqDto(v));
+                VehicleReqL.Add(VehicleToDto(v));
             }
             }
             return VehicleReqL;
         }
          
-        public VehicleForRequestDto VehicletoVReqDto(Vehicle vDal)
-        {
-            if (vDal != null)
-            {
-                return new VehicleForRequestDto()
-                {
-                    Id = vDal.Id,
-                    Description = vDal.Description,
-                    PipeLength = vDal.PipeLength,
-                    LicenseNumber = vDal.LicenseNumber,
-                    Driver = db.Drivers.FirstOrDefault(d => d.Id == vDal.DriverId),
-                    MixerNumber = vDal.MixerNumber,
-                    VehicleType = db.VehicleType.FirstOrDefault(p => p.Id == vDal.VehicleTypeId),
-
-                };
-
-                }
-            else return null;
-        }
-
-        public Vehicle VehicleReqDtotoDal(VehicleForRequestDto vReqDto)
-        {
-            if (vReqDto != null)
-            {
-                return new Vehicle()
-                {
-                    Id = vReqDto.Id,
-                    Description = vReqDto.Description,
-                    PipeLength = vReqDto.PipeLength,
-                    LicenseNumber = vReqDto.LicenseNumber,
-                    DriverId = vReqDto.Driver.Id,
-                    MixerNumber = vReqDto.MixerNumber,
-                    VehicleTypeId = vReqDto.VehicleType.Id,
-                    
-                };
-
-            }
-            else return null;
-        }
 
         public Vehicle VehicletoDal(VehicleDto VDto)
         {

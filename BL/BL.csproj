@@ -76,14 +76,15 @@
     <Compile Include="MaterialDto.cs" />
     <Compile Include="MaterialTypeOrderDto.cs" />
     <Compile Include="OrderDetailsDto.cs" />
-    <Compile Include="OrderDto.cs" />
+    <Compile Include="OrderDtoCreate.cs" />
+    <Compile Include="OrderDtoRead.cs" />
     <Compile Include="OrderLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProviderDto.cs" />
     <Compile Include="ProviderLogic.cs" />
     <Compile Include="VehicleDto.cs" />
-    <Compile Include="VehicleForRequestDto.cs" />
     <Compile Include="VehicleLogic.cs" />
+    <Compile Include="VehicleTypeDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
