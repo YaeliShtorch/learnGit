@@ -152,7 +152,7 @@ namespace BL
             return new MaterialTypeOrder()
             {
                 Id = Odto.Id,
-                OrderId = Odto.OrderId,
+
                 IsConcrete = Odto.IsConcrete,
                 ConcreteTypeId = Odto.ConcreteTypeId,
                 ConcDescId = Odto.ConcDescId,
@@ -174,7 +174,6 @@ namespace BL
             return new MaterialTypeOrderDto()
             {
                 Id = Odal.Id,
-                OrderId = Odal.OrderId,
                 IsConcrete = Odal.IsConcrete,
                 ConcreteTypeId = Odal.ConcreteTypeId,
                 ConcDescId = Odal.ConcDescId,

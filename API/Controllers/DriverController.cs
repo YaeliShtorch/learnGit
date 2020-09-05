@@ -119,7 +119,7 @@ namespace API.Controllers
                 return BadRequest(e.ToString());
             }
         }
-        //delete Driver
+        //update Driver to notActive
         [Route("Delete")]
         [HttpGet]
         public IHttpActionResult DeleteDriver(int id)

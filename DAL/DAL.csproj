@@ -34,6 +34,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -88,12 +91,22 @@
     <Compile Include="Migrations\202009022138365_[202009021351377_newDB].Designer.cs">
       <DependentUpon>202009022138365_[202009021351377_newDB].cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009052050165_newDB1.cs" />
+    <Compile Include="Migrations\202009052050165_newDB1.Designer.cs">
+      <DependentUpon>202009052050165_newDB1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009052252410_newDB2.cs" />
+    <Compile Include="Migrations\202009052252410_newDB2.Designer.cs">
+      <DependentUpon>202009052252410_newDB2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
-    <Compile Include="OrderDetails.cs" />
+    <Compile Include="MaterialProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider.cs" />
     <Compile Include="ShachlavDB.cs" />
+    <Compile Include="StatusMaterial.cs" />
+    <Compile Include="StatusProvider.cs" />
     <Compile Include="Validations.cs" />
     <Compile Include="Vehicle.cs" />
     <Compile Include="VehicleType.cs" />
@@ -108,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009022138365_[202009021351377_newDB].resx">
       <DependentUpon>202009022138365_[202009021351377_newDB].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009052050165_newDB1.resx">
+      <DependentUpon>202009052050165_newDB1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009052252410_newDB2.resx">
+      <DependentUpon>202009052252410_newDB2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

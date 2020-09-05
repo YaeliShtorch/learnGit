@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -66,11 +69,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseLogic.cs" />
+    <Compile Include="ClayTypeDto.cs" />
+    <Compile Include="ConcDescDto.cs" />
+    <Compile Include="ConcreteTypeDto.cs" />
     <Compile Include="CustomerDto.cs" />
     <Compile Include="CustomerLogic.cs" />
+    <Compile Include="DeepDto.cs" />
     <Compile Include="DriverDto.cs" />
     <Compile Include="DriverLogic.cs" />
     <Compile Include="DriverWorkDto.cs" />
+    <Compile Include="ExposureDto.cs" />
+    <Compile Include="ExtensionDto.cs" />
     <Compile Include="ManagerDto.cs" />
     <Compile Include="ManagerLogic.cs" />
     <Compile Include="MaterialDto.cs" />

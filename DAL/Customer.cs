@@ -17,7 +17,7 @@ namespace DAL
         [Required]
         [MinLength(9)]
         [MaxLength(9)]
-        [CustomValidation(typeof(Validations), "IdOK")]
+        //[CustomValidation(typeof(Validations), "IdOK")]
         public string IdentityNumber { get; set; }
         [Required]
         public string FirstName { get; set; }
@@ -27,7 +27,7 @@ namespace DAL
         public string CompanyName { get; set; }
         [Required]
         public string BusinessCode { get; set; }
-        [DataType(DataType.EmailAddress)]
+        //[DataType(DataType.EmailAddress)]
         [Required]
         public string Email { get; set; }
         [Phone]

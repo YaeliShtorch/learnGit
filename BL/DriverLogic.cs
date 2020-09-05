@@ -33,9 +33,13 @@ namespace BL
 
         public List<DriverDto> GetAllDrivers()
         {
-            List<Driver> AllDrivers = new List<Driver>();
-            AllDrivers = db.Drivers.ToList();
-            return DriverListToDto(AllDrivers);
+            List<Driver> ActiveDrivers = new List<Driver>();
+            foreach(Driver d in db.Drivers.ToList())
+            {
+                if (d.IsActive == true)
+                    ActiveDrivers.Add(d);
+            }
+            return DriverListToDto(ActiveDrivers);
         }
         public DriverDto GetDriverIN(string identityNumber)
         {
@@ -104,8 +108,9 @@ namespace BL
 
         public void DeleteDriver(int id)
         {
+            Driver d= db.Drivers.Find(db.Drivers.FirstOrDefault(m => m.Id == id));
             //   ShachlavDB db = new ShachlavDB();
-            db.Drivers.Remove(db.Drivers.FirstOrDefault(m => m.Id == id));
+            if (d != null) d.IsActive = false;
             db.SaveChanges();
         }
 
@@ -125,7 +130,7 @@ namespace BL
             Ezer.EntryToWorkDate = UpDriver.EntryToWorkDate;
             Ezer.UserName = UpDriver.UserName;
             Ezer.Password = UpDriver.Password;
-            Ezer.IsActive = Ezer.IsActive;
+            Ezer.IsActive = UpDriver.IsActive;
             db.SaveChanges();
             } 
         }

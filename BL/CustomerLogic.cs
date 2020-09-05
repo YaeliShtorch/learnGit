@@ -7,7 +7,7 @@ using DAL;
 
 namespace BL
 {
-    public class CustomerLogic:BaseLogic
+    public class CustomerLogic : BaseLogic
     {
 
         public CustomerDto GetCustomerId(int id)
@@ -24,7 +24,7 @@ namespace BL
 
             return (CustomerToDto(db.Customers.FirstOrDefault(m => m.UserName == UserName && m.Password == Password)));
 
-      }
+        }
         public CustomerDto GetCustomerUN(string UserName)
         {
             //  ShachlavDB db = new ShachlavDB();
@@ -35,9 +35,14 @@ namespace BL
 
         public List<CustomerDto> GetAllCustomers()
         {
-            List<Customer> AllCustomers = new List<Customer>();
-            AllCustomers = db.Customers.ToList();
-            return CustomerListToDto(AllCustomers);
+            List<Customer> ActiveCustomers = new List<Customer>();
+            foreach (Customer c in db.Customers)
+            {
+                if(c.IsActive != false)
+                ActiveCustomers.Add(c);
+            }
+          
+            return CustomerListToDto(ActiveCustomers);
         }
         public CustomerDto GetCustomerIN(string identityNumber)
         {
@@ -103,11 +108,12 @@ namespace BL
             }
         }
 
-
+        //deactivate a customer
         public void DeleteCustomer(int id)
         {
             //   ShachlavDB db = new ShachlavDB();
-            db.Customers.Remove(db.Customers.FirstOrDefault(m => m.Id == id));
+            Customer c = db.Customers.FirstOrDefault(m => m.Id == id);
+            if (c != null) c.IsActive = false;
             db.SaveChanges();
         }
 
@@ -115,6 +121,8 @@ namespace BL
         {
             //  ShachlavDB db = new ShachlavDB();
             Customer Ezer = db.Customers.FirstOrDefault(m => m.Id == UpCustomer.Id);
+            if (Ezer != null) {
+            Ezer.Id = UpCustomer.Id;
             Ezer.IdentityNumber = UpCustomer.IdentityNumber;
             Ezer.FirstName = UpCustomer.FirstName;
             Ezer.LastName = UpCustomer.LastName;
@@ -128,6 +136,7 @@ namespace BL
             Ezer.BusinessCode = UpCustomer.BusinessCode;
             Ezer.CompanyName = UpCustomer.CompanyName;
             db.SaveChanges();
+            }
         }
 
         private bool IsExist(CustomerDto Customer)
@@ -135,7 +144,7 @@ namespace BL
             //  ShachlavDB db = new ShachlavDB();
             foreach (var m in db.Customers)
             {
-                if (m.Id == Customer.Id|| m.IdentityNumber ==Customer.IdentityNumber)
+                if (m.Id == Customer.Id || m.IdentityNumber == Customer.IdentityNumber)
                     return true;
             }
             return false;
@@ -152,13 +161,16 @@ namespace BL
                     IdentityNumber = Mdto.IdentityNumber,
                     FirstName = Mdto.FirstName,
                     LastName = Mdto.LastName,
-                    Address = Mdto.Address,
+                    CompanyName = Mdto.CompanyName,
+                    BusinessCode=Mdto.BusinessCode,
+                    Email = Mdto.Email,
                     PhoneNumber = Mdto.PhoneNumber,
                     CellNumber = Mdto.CellNumber,
-                    Email = Mdto.Email,
-                    BirthDate = Mdto.BirthDate,
+                    Address = Mdto.Address,
                     UserName = Mdto.UserName,
-                    Password = Mdto.Password
+                    Password = Mdto.Password,
+                    BirthDate = Mdto.BirthDate,
+                    IsActive=Mdto.IsActive,
                 };
             else
                 return null;
@@ -172,15 +184,16 @@ namespace BL
                     IdentityNumber = Mdal.IdentityNumber,
                     FirstName = Mdal.FirstName,
                     LastName = Mdal.LastName,
-                    Address = Mdal.Address,
+                    CompanyName = Mdal.CompanyName,
+                    BusinessCode = Mdal.BusinessCode,
+                    Email = Mdal.Email,
                     PhoneNumber = Mdal.PhoneNumber,
                     CellNumber = Mdal.CellNumber,
-                    Email = Mdal.Email,
-                    BirthDate = Mdal.BirthDate,
+                    Address = Mdal.Address,
                     UserName = Mdal.UserName,
                     Password = Mdal.Password,
-                    CompanyName=Mdal.CompanyName,
-                    BusinessCode=Mdal.BusinessCode
+                    BirthDate = Mdal.BirthDate,
+                    IsActive = Mdal.IsActive,
                 };
             else return null;
         }

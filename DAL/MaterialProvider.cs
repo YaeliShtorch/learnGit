@@ -8,25 +8,33 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-   public class OrderDetails
+    public class MaterialProvider
     {
         [Key]
         [Required]
         public int Id { get; set; }
 
         [Required]
-        public int OrderId { get; set; }
-        public Order Order { get; set; }
+        public int MaterialTypeOrderId { get; set; }
+        public MaterialTypeOrder MaterialTypeOrder { get; set; }
 
         [Required]
         public int ProviderId { get; set; }
         public Provider Provider { get; set; }
         [Required]
+        public int StatusProviderId { get; set; }
+        public StatusProvider StatusProvider { get; set; }
+        [Required]
         public int Amount { get; set; }
+        [Required]
+        public bool ManagerApproval { get; set; }
+        public double Price { get; set; }
+
+
 
     }
 }
 
 
-        
+
 

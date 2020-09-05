@@ -16,7 +16,7 @@ namespace DAL
         public virtual DbSet<Driver> Drivers { get; set; }
         public virtual DbSet<DriverWork> DriverWork { get; set; }
         public virtual DbSet<Manager> Manager { get; set; }
-        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
+        public virtual DbSet<MaterialProvider> MaterialProviders { get; set; }
         public virtual DbSet<Provider> Providers { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<VehicleType> VehicleType { get; set; }
@@ -28,6 +28,9 @@ namespace DAL
         public virtual DbSet<Extension> Extension { get; set; }
 
         public virtual DbSet<MaterialTypeOrder> MaterialTypeOrder { get; set; }
+
+        public virtual DbSet<StatusMaterial> StatusMaterial { get; set; }
+        public virtual DbSet<StatusProvider> StatusProvider { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

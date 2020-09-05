@@ -13,9 +13,6 @@ namespace DAL
         [Key]
         [Required]
         public int Id { get; set; }
-        [Required]
-        public int OrderId { get; set; }
-        public Order Order { get; set; }
         public bool IsConcrete { get; set; }
         public int ConcreteTypeId { get; set; }
         public ConcreteType ConcreteType { get; set; }
@@ -33,12 +30,17 @@ namespace DAL
         public bool IsPump { get; set; }
         public int VehicleTypeId { get; set; }
         public VehicleType VehicleType { get; set; }
+        public bool ConcreteTest { get; set; }
         [Required]
         public string Element { get; set; }
         [Required]
         public int Amount { get; set; }
+        [Required]
+        public int StatusMaterialId { get; set; }
+        public StatusMaterial StatusMaterial { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<MaterialProvider> MaterialProviders { get; set; }
 
 
     }

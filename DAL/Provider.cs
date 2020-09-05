@@ -33,7 +33,7 @@ namespace DAL
 
         [Required]
         public bool IsActive { get; set; }
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        public virtual ICollection<MaterialProvider> MaterialProviders { get; set; }
     }
 }
 
