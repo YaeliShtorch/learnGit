@@ -40,7 +40,7 @@ namespace BL
                     LicenseNumber = VDto.LicenseNumber,
                     DriverId = VDto.DriverId,
                     MixerNumber = VDto.MixerNumber,
-                    VehicleTypeId = VDto.VehicleTypeId,
+                    MaterialId = VDto.MaterialId,
                 };
             }
             else return null;
@@ -59,7 +59,7 @@ namespace BL
                     LicenseNumber = VDal.LicenseNumber,
                     DriverId = VDal.DriverId,
                     MixerNumber = VDal.MixerNumber,
-                    VehicleTypeId = VDal.VehicleTypeId,
+                    MaterialId = VDal.MaterialId,
 
 
                 };

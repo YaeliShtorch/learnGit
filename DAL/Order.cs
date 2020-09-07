@@ -12,7 +12,7 @@ namespace DAL
         [Key]
         [Required]
         public int Id { get; set; }
-        [Required]
+        //[Required]
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
 
@@ -23,19 +23,19 @@ namespace DAL
 
         [Required]
         public DateTime OrderDueDate { get; set; }
-        [Required]
+        //[Required]
         public TimeSpan StartTime { get; set; }
-        [Required]
+        //[Required]
         public TimeSpan EndTime { get; set; }
-        public int MaterialTypeOrderId { get; set; }
-        public MaterialTypeOrder MaterialTypeOrder { get; set; }
-
-        [Required]
         public bool IsApproved { get; set; }
         public bool IsDone { get; set; }
         public string ManagerComment { get; set; }
         public string Comment { get; set; }
+        public bool ConcreteTest { get; set; }
+
         public virtual ICollection<DriverWork> DriverWorks { get; set; }
+
+        public virtual ICollection<MaterialTypeOrder> MaterialTypeOrder { get; set; }
 
 
     }

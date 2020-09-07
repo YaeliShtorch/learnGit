@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    class ExtensionDto
+    public class MaterialCategoryDto
     {
-        public int Id;
-        public string Name;
+        public int Id {get;set;}
+        public string Name { get; set; }
+      
     }
 }

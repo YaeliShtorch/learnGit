@@ -43,29 +43,29 @@ namespace API
         //    }
         //}
 
-       // protected void Application_BeginRequest(object sender, EventArgs e)
-       //{
-       //     if (Context.Request.Path.Contains("api/") && Context.Request.HttpMethod == "OPTIONS")
-       //     { 
-       //         Context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+        //protected void Application_BeginRequest(object sender, EventArgs e)
+        //{
+        //    if (Context.Request.Path.Contains("api/") && Context.Request.HttpMethod == "OPTIONS")
+        //    {
+        //        Context.Response.AddHeader("Access-Control-Allow-Origin", "*");
 
-       //         Context.Response.AddHeader("Access-Control-Allow-Headers", "*");
+        //        Context.Response.AddHeader("Access-Control-Allow-Headers", "*");
 
-       //         Context.Response.AddHeader("Access-Control-Allow-Methods", "*");
+        //        Context.Response.AddHeader("Access-Control-Allow-Methods", "*");
 
-       //         Context.Response.AddHeader("Access-Control-Allow-Credentials", "true");
+        //        Context.Response.AddHeader("Access-Control-Allow-Credentials", "true");
 
-       //         Context.Response.End();
-       //     }
-       //     if (Context.Request.Path.Contains("api/") && Context.Request.HttpMethod == "POST")
-       //     {
-       //         Context.Response.AddHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-       //     }
-       //     if (Context.Request.Path.Contains("api/") && Context.Request.HttpMethod == "GET")
-       //     {
-       //         Context.Response.AddHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-       //     }
-       // }
+        //        Context.Response.End();
+        //    }
+        //    if (Context.Request.Path.Contains("api/") && Context.Request.HttpMethod == "POST")
+        //    {
+        //        Context.Response.AddHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        //    }
+        //    if (Context.Request.Path.Contains("api/") && Context.Request.HttpMethod == "GET")
+        //    {
+        //        Context.Response.AddHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        //    }
+        //}
 
 
         //public j Application_BeginRequest(object sender, EventArgs e)

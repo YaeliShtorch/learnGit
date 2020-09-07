@@ -19,15 +19,11 @@ namespace DAL
         public virtual DbSet<MaterialProvider> MaterialProviders { get; set; }
         public virtual DbSet<Provider> Providers { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
-        public virtual DbSet<VehicleType> VehicleType { get; set; }
-        public virtual DbSet<ClayType> ClayType { get; set; }
-        public virtual DbSet<ConcDesc> ConcDesc { get; set; }
-        public virtual DbSet<ConcreteType> ConcreteType { get; set; }
-        public virtual DbSet<Deep> Deep { get; set; }
-        public virtual DbSet<Exposure> Exposure { get; set; }
-        public virtual DbSet<Extension> Extension { get; set; }
-
         public virtual DbSet<MaterialTypeOrder> MaterialTypeOrder { get; set; }
+
+        public virtual DbSet<Material> Material { get; set; }
+
+        public virtual DbSet<MaterialCategory> MaterialCategory { get; set; }
 
         public virtual DbSet<StatusMaterial> StatusMaterial { get; set; }
         public virtual DbSet<StatusProvider> StatusProvider { get; set; }

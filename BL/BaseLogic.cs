@@ -14,7 +14,7 @@ namespace BL
         {
             using (ShachlavDB TestDb = new ShachlavDB())
             {
-                TestDb.Extension.Add(new Extension() { Id = 1, Name = "tt" });
+                TestDb.MaterialCategory.Add(new MaterialCategory() { Id = 1, Name = "tt" });
                 TestDb.SaveChanges();
             }
         }

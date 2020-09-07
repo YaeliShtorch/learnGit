@@ -23,10 +23,10 @@ namespace DAL
 
         public Driver Driver { get; set; }
         [Required]
-        public int VehicleTypeId { get; set; }
-        //[Required]
-        public VehicleType VehicleType { get; set; }
         public int MixerNumber { get; set; }
+
+        public int MaterialId { get; set; }
+        public Material Material { get; set; }
         public virtual ICollection<DriverWork> DriverWork { get; set; }
 
     }

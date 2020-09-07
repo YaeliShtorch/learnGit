@@ -23,7 +23,7 @@ namespace API.Controllers
         //Get Order by id
         [Route("GetId")]
         [HttpGet]
-        public OrderDtoCreate GetOrder(int id)
+        public OrderDto GetOrder(int id)
         {
             return (OM.GetOrderById(id));
         }
@@ -31,7 +31,7 @@ namespace API.Controllers
         //get AllOrders by customerId
         [Route("GetAllCO")]
         [HttpGet]
-        public List<OrderDtoCreate> GetAllCusOrders(int id)
+        public List<OrderDto> GetAllCusOrders(int id)
         {
             return OM.GetOrdersByCustomerId(id);
         }
@@ -39,7 +39,7 @@ namespace API.Controllers
         //get all orders
         [Route("GetAll")]
         [HttpGet]
-        public List<Order> getAllOrders()
+        public List<OrderDto> getAllOrders()
         {
             return OM.getAllOrders();
 
@@ -65,7 +65,7 @@ namespace API.Controllers
 
         [Route("Update")]
         [HttpPost]
-        public IHttpActionResult updateOrder(OrderDtoCreate o)
+        public IHttpActionResult updateOrder(OrderDto o)
         {
             
             try
@@ -82,200 +82,339 @@ namespace API.Controllers
 
         [Route("AddOrder")]
         [HttpPost]
-        public IHttpActionResult AddOrder(OrderDtoCreate am, List<MaterialTypeOrderDto> mto)
+        [AcceptVerbs("GET", "POST")]
+        public IHttpActionResult AddOrder(OrderDto am)
         {
 
             try
             {
-                //OM.AddOrder(am, mto);
                 OM.AddOrder(am);
+                //OM.AddOrder(am);
                 Console.WriteLine("dfd");
                 return Ok("pppp0");
+                //return Content(HttpStatusCode.Created, am);
             }
             catch (Exception e)
             {
                 return BadRequest(e.ToString());
             }
         }
-        [Route("AddVehicleType")]
-        [HttpPost]
-        public IHttpActionResult AddVehicleType(MaterialDto am)
-        {
 
+        [Route("GetAllM")]
+        [HttpGet]
+        public List<MaterialDto> getAllMaterials()
+        {
+            return OM.getAllMaterials();
+        }
+
+        [Route("getMaterialsByCategoryName")]
+        [HttpGet]
+        public List<MaterialDto> getMaterialsByCategory(string name)
+        {
+            return OM.getMaterialsByCategoryName(name);
+        }
+
+        [Route("getMaterialById")]
+        [HttpGet]
+        public MaterialDto getMaterialbyId(int id)
+        {
+            return OM.getMaterialbyId(id);
+
+        }
+        [Route ("getMaterialIdByName")]
+        [HttpGet]
+        public MaterialDto getMaterialIdByName(string name)
+        {
+            return OM.getMaterialIdByName(name);
+        }
+
+
+        [Route("DeleteMaterial")]
+        [HttpGet]
+        public IHttpActionResult deleteMaterial(MaterialDto m) {
             try
             {
-                OM.AddVehicleType(am);
-                Console.WriteLine("dfd");
+                OM.deleteMaterial(m); ;
                 return Ok("pppp0");
             }
             catch (Exception e)
             {
                 return BadRequest(e.ToString());
             }
-        }
-        [Route("AddClay")]
-        [HttpPost]
-        public IHttpActionResult AddClay(MaterialDto am)
-        {
 
+        }
+
+
+        [Route("AddMaterial")]
+        [HttpPost]
+        public IHttpActionResult addMaterial(MaterialDto m)
+        {
             try
             {
-                OM.AddClay(am);
-                Console.WriteLine("dfd");
+                OM.addOrder(m); ;
                 return Ok("pppp0");
             }
             catch (Exception e)
             {
                 return BadRequest(e.ToString());
             }
-        }
-        [Route("AddConcrete")]
-        [HttpPost]
-        public IHttpActionResult AddConcrete(MaterialDto am)
-        {
 
+        }
+
+        [Route("UpdateMaterial")]
+        [HttpPost]
+        public IHttpActionResult updateMaterial(MaterialDto m)
+        {
             try
             {
-                OM.AddConcreteType(am);
-                Console.WriteLine("dfd");
+                OM.UpdateMaterial(m) ;
                 return Ok("pppp0");
             }
             catch (Exception e)
             {
                 return BadRequest(e.ToString());
             }
-        }
-        [Route("AddConcDesc")]
-        [HttpPost]
-        public IHttpActionResult AddConcDesc(MaterialDto am)
-        {
 
+        }
+
+        [Route("GetMaterialCategories")]
+        [HttpGet]
+        public List<MaterialCategoryDto> getCategories()
+        {
+            return OM.getCategories();
+        }
+
+        [Route("AddMaterialCategory")]
+        [HttpPost]
+
+        public IHttpActionResult addMaterialCategory(MaterialCategoryDto m)
+        {
             try
             {
-                OM.AddConcDesc(am);
-                Console.WriteLine("dfd");
+                OM.addMaterialCategory(m);
                 return Ok("pppp0");
             }
             catch (Exception e)
             {
                 return BadRequest(e.ToString());
             }
+
         }
 
-        [Route("AddDeep")]
-        [HttpPost]
-        public IHttpActionResult AddDeep(MaterialDto am)
-        {
+        [Route("DeleteMaterialCategory")]
+        [HttpGet]
 
+        public IHttpActionResult deleteMaterialCategory(MaterialCategoryDto m)
+        {
             try
             {
-                OM.AddDeep(am);
-                Console.WriteLine("dfd");
+                OM.deleteMaterialCategory(m);
                 return Ok("pppp0");
             }
             catch (Exception e)
             {
                 return BadRequest(e.ToString());
             }
-        }
-        [Route("AddExposue")]
-        [HttpPost]
-        public IHttpActionResult AddExposue(MaterialDto am)
-        {
 
+        }
+
+        [Route("UpdateMaterialCategory")]
+        [HttpPost]
+
+        public IHttpActionResult updateMaterialCat(MaterialCategoryDto m)
+        {
             try
             {
-                OM.AddExposure(am);
-                Console.WriteLine("dfd");
+                OM.UpdateMaterialCategory(m);
                 return Ok("pppp0");
             }
             catch (Exception e)
             {
                 return BadRequest(e.ToString());
             }
-        }
-        [Route("AddExtension")]
-        [HttpPost]
-        public IHttpActionResult AddExtension(MaterialDto am)
-        {
-
-            try
-            {
-                OM.AddExtension(am);
-                Console.WriteLine("dfd");
-                return Ok("pppp0");
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.ToString());
-            }
-        }
-
-
-
-        [Route("GetVehicleType")]
-        [HttpGet]
-        public List<MaterialDto> GetVehicleType()
-        {
-
-
-            return OM.GetVehicleType();
-
-        }
-        [Route("GetClay")]
-        [HttpGet]
-        public List<MaterialDto> GetClay()
-        {
-
-
-            return OM.GetClay();
-
-        }
-        [Route("GetConcrete")]
-        [HttpGet]
-        public List<MaterialDto> GetConcrete()
-        {
-
-
-            return OM.GetConcreteType();
-
-        }
-        [Route("GetConcDesc")]
-        [HttpGet]
-        public List<MaterialDto> GetConcDesc()
-        {
-
-            return OM.GetConcDesc();
 
         }
 
-        [Route("GetDeep")]
-        [HttpGet]
-        public List<MaterialDto> GetDeep()
-        {
+
+        //[Route("AddVehicleType")]
+        //[HttpPost]
+        //public IHttpActionResult AddVehicleType(MaterialDto am)
+        //{
+
+        //    try
+        //    {
+        //        OM.AddVehicleType(am);
+        //        Console.WriteLine("dfd");
+        //        return Ok("pppp0");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.ToString());
+        //    }
+        //}
+        //[Route("AddClay")]
+        //[HttpPost]
+        //public IHttpActionResult AddClay(MaterialDto am)
+        //{
+
+        //    try
+        //    {
+        //        OM.AddClay(am);
+        //        Console.WriteLine("dfd");
+        //        return Ok("pppp0");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.ToString());
+        //    }
+        //}
+        //[Route("AddConcrete")]
+        //[HttpPost]
+        //public IHttpActionResult AddConcrete(MaterialDto am)
+        //{
+
+        //    try
+        //    {
+        //        OM.AddConcreteType(am);
+        //        Console.WriteLine("dfd");
+        //        return Ok("pppp0");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.ToString());
+        //    }
+        //}
+        //[Route("AddConcDesc")]
+        //[HttpPost]
+        //public IHttpActionResult AddConcDesc(MaterialDto am)
+        //{
+
+        //    try
+        //    {
+        //        OM.AddConcDesc(am);
+        //        Console.WriteLine("dfd");
+        //        return Ok("pppp0");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.ToString());
+        //    }
+        //}
+
+        //[Route("AddDeep")]
+        //[HttpPost]
+        //public IHttpActionResult AddDeep(MaterialDto am)
+        //{
+
+        //    try
+        //    {
+        //        OM.AddDeep(am);
+        //        Console.WriteLine("dfd");
+        //        return Ok("pppp0");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.ToString());
+        //    }
+        //}
+        //[Route("AddExposue")]
+        //[HttpPost]
+        //public IHttpActionResult AddExposue(MaterialDto am)
+        //{
+
+        //    try
+        //    {
+        //        OM.AddExposure(am);
+        //        Console.WriteLine("dfd");
+        //        return Ok("pppp0");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.ToString());
+        //    }
+        //}
+        //[Route("AddExtension")]
+        //[HttpPost]
+        //public IHttpActionResult AddExtension(MaterialDto am)
+        //{
+
+        //    try
+        //    {
+        //        OM.AddExtension(am);
+        //        Console.WriteLine("dfd");
+        //        return Ok("pppp0");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return BadRequest(e.ToString());
+        //    }
+        //}
 
 
-            return OM.GetDeep();
 
-        }
-        [Route("GetExposue")]
-        [HttpGet]
-        public List<MaterialDto> GetExposue()
-        {
+        //[Route("GetVehicleType")]
+        //[HttpGet]
+        //public List<MaterialDto> GetVehicleType()
+        //{
 
 
-            return OM.GetExposure();
+        //    return OM.GetVehicleType();
 
-        }
-        [Route("GetExtension")]
-        [HttpGet]
-        public List<MaterialDto> GetExtension()
-        {
+        //}
+        //[Route("GetClay")]
+        //[HttpGet]
+        //public List<MaterialDto> GetClay()
+        //{
 
 
-            return OM.GetExtension();
+        //    return OM.GetClay();
 
-        }
+        //}
+        //[Route("GetConcrete")]
+        //[HttpGet]
+        //public List<MaterialDto> GetConcrete()
+        //{
+
+
+        //    return OM.GetConcreteType();
+
+        //}
+        //[Route("GetConcDesc")]
+        //[HttpGet]
+        //public List<MaterialDto> GetConcDesc()
+        //{
+
+        //    return OM.GetConcDesc();
+
+        //}
+
+        //[Route("GetDeep")]
+        //[HttpGet]
+        //public List<MaterialDto> GetDeep()
+        //{
+
+
+        //    return OM.GetDeep();
+
+        //}
+        //[Route("GetExposue")]
+        //[HttpGet]
+        //public List<MaterialDto> GetExposue()
+        //{
+
+
+        //    return OM.GetExposure();
+
+        //}
+        //[Route("GetExtension")]
+        //[HttpGet]
+        //public List<MaterialDto> GetExtension()
+        //{
+
+
+        //    return OM.GetExtension();
+
+        //}
 
 
     }

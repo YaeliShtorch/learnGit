@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class newDB1 : IMigrationMetadata
+    public sealed partial class newDB8 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(newDB1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(newDB8));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009052050165_newDB1"; }
+            get { return "202009061654520_newDB8"; }
         }
         
         string IMigrationMetadata.Source

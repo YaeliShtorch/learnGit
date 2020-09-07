@@ -7,17 +7,16 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class VehicleType
+    public class Material
     {
         [Key]
-        //[Required]
         public int Id { get; set; }
 
-        [Required]
         public string Name { get; set; }
-        //public virtual ICollection<OrderDetails> OrderDetails { get; set; }
-        public virtual ICollection<Vehicle> Vehicle { get; set; }
-        public virtual ICollection<MaterialTypeOrder> MaterialTypeOrder { get; set; }
 
+        public int MaterialCategoryId { get; set; }
+        public MaterialCategory MaterialCategory { get; set; }
+
+        public virtual ICollection<Vehicle> Vehicle { get; set; }
     }
 }
