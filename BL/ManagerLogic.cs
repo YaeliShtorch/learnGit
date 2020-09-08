@@ -28,7 +28,6 @@ namespace BL
         public ManagerDto GetManagerUN(string UserName)
         {
             //  ShachlavDB db = new ShachlavDB();
-
             return (ManagerToDto(db.Manager.FirstOrDefault(m => m.UserName == UserName)));
 
         }

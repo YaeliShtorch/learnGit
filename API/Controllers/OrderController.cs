@@ -17,7 +17,7 @@ namespace API.Controllers
 
     public class OrderController : ApiController
     {
-        OrderLogic OM = new OrderLogic();
+       OrderLogic OM = new OrderLogic();
 
 
         //Get Order by id
@@ -100,6 +100,7 @@ namespace API.Controllers
             }
         }
 
+        //get
         [Route("GetAllM")]
         [HttpGet]
         public List<MaterialDto> getAllMaterials()
@@ -121,7 +122,7 @@ namespace API.Controllers
             return OM.getMaterialbyId(id);
 
         }
-        [Route ("getMaterialIdByName")]
+        [Route ("getMaterialByName")]
         [HttpGet]
         public MaterialDto getMaterialIdByName(string name)
         {
@@ -131,10 +132,10 @@ namespace API.Controllers
 
         [Route("DeleteMaterial")]
         [HttpGet]
-        public IHttpActionResult deleteMaterial(MaterialDto m) {
+        public IHttpActionResult deleteMaterial(int id) {
             try
             {
-                OM.deleteMaterial(m); ;
+                OM.deleteMaterial(id); ;
                 return Ok("pppp0");
             }
             catch (Exception e)
@@ -204,11 +205,11 @@ namespace API.Controllers
         [Route("DeleteMaterialCategory")]
         [HttpGet]
 
-        public IHttpActionResult deleteMaterialCategory(MaterialCategoryDto m)
+        public IHttpActionResult deleteMaterialCategory(int id)
         {
             try
             {
-                OM.deleteMaterialCategory(m);
+                OM.deleteMaterialCategory(id);
                 return Ok("pppp0");
             }
             catch (Exception e)

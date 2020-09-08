@@ -67,8 +67,8 @@ namespace BL
             Ezer.SiteAdress = UpOrder.SiteAdress;
             Ezer.OrderDate = UpOrder.OrderDate;
             Ezer.OrderDueDate = UpOrder.OrderDueDate;
-            Ezer.StartTime = UpOrder.StartTime;
-            Ezer.EndTime = UpOrder.EndTime;
+            Ezer.StartTime = UpOrder.StartTime.TimeOfDay;
+            Ezer.EndTime = UpOrder.EndTime.TimeOfDay;
             Ezer.IsApproved = UpOrder.IsApproved;
             Ezer.IsDone = UpOrder.IsDone;
             Ezer.ManagerComment = UpOrder.ManagerComment;
@@ -120,14 +120,15 @@ namespace BL
                 SiteAdress = Odto.SiteAdress,
                 OrderDate = Odto.OrderDate,
                 OrderDueDate = Odto.OrderDueDate,
-                StartTime = Odto.StartTime,
-                EndTime = Odto.EndTime,
+                StartTime = Odto.StartTime.TimeOfDay,
+                EndTime = Odto.EndTime.TimeOfDay,
                 IsApproved = Odto.IsApproved,
                 IsDone = Odto.IsDone,
                 ManagerComment = Odto.ManagerComment,
                 Comment = Odto.Comment,
                 ConcreteTest = Odto.ConcreteTest,
             };
+            if (Odto.MaterialTypeOrderDtoL != null) { 
             Odto.MaterialTypeOrderDtoL.ForEach(x =>
             {
 
@@ -140,6 +141,7 @@ namespace BL
 
                 });
             });
+            }
             return order;
         }
 
@@ -153,8 +155,8 @@ namespace BL
                 SiteAdress = Odal.SiteAdress,
                 OrderDate = Odal.OrderDate,
                 OrderDueDate = Odal.OrderDueDate,
-                StartTime = Odal.StartTime,
-                EndTime = Odal.EndTime,
+                StartTime = Odal.OrderDueDate +Odal.StartTime,
+                EndTime = Odal.OrderDueDate + Odal.EndTime,
                 IsApproved = Odal.IsApproved,
                 IsDone = Odal.IsDone,
                 ManagerComment = Odal.ManagerComment,
@@ -174,7 +176,7 @@ namespace BL
         public List<MaterialDto> getAllMaterials()
         {
             List<MaterialDto> MaterialL = new List<MaterialDto>();
-            foreach (Material m in db.Material)
+            foreach (Material m in db.Material.ToList())
                 MaterialL.Add(MaterialToDto(m));
             return MaterialL;
         }
@@ -211,9 +213,9 @@ namespace BL
 
         }
 
-        public void deleteMaterial(MaterialDto m)
+        public void deleteMaterial(int id)
         {
-            db.Material.Remove(db.Material.FirstOrDefault(x => x.Id == m.Id));
+            db.Material.Remove(db.Material.FirstOrDefault(x => x.Id == id));
             db.SaveChanges();
         }
 
@@ -296,9 +298,9 @@ namespace BL
 
         }
 
-        public void deleteMaterialCategory(MaterialCategoryDto mCat)
+        public void deleteMaterialCategory(int id)
         {
-            db.MaterialCategory.Remove(db.MaterialCategory.FirstOrDefault(x => x.Id == mCat.Id));
+            db.MaterialCategory.Remove(db.MaterialCategory.FirstOrDefault(x => x.Id == id));
             db.SaveChanges();
         }
 
