@@ -292,7 +292,7 @@ namespace BL
         public List<MaterialCategoryDto> getCategories()
         {
             List<MaterialCategoryDto> MaterialCatL = new List<MaterialCategoryDto>();
-            foreach(MaterialCategory mCat in db.MaterialCategory)
+            foreach(MaterialCategory mCat in db.MaterialCategory.ToList())
                 MaterialCatL.Add(MaterialCategorytoDto(mCat));
             return MaterialCatL;
 

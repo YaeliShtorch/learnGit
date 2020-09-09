@@ -1,17 +1,22 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using DAL;
 
 namespace API
 {
     public static class WebApiConfig
     {
-       
+    
 
         public static void Register(HttpConfiguration config)
         {
+
+
             var corsAttr = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(corsAttr);
             // Web API configuration and services

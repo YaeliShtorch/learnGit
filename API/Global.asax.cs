@@ -12,7 +12,8 @@ namespace API
     {
         protected void Application_Start()
         {
-          
+            
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
             //var context = HttpContext.Current;
             //var response = context.Response;

@@ -40,6 +40,10 @@ namespace DAL
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ShachlavDB, DAL.Migrations.Configuration>());
 
+            //checking if the following solves this error nMessage":"The context cannot be used while the model is being created.
+            Database.Initialize(force: false);
+
+
         }
 
     }
