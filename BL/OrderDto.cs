@@ -20,7 +20,7 @@ namespace BL
         public string ManagerComment { get; set; }
         public string Comment { get; set; }  
         public bool ConcreteTest { get; set; }
-        public  List<MaterialTypeOrderDto> MaterialTypeOrderDtoL { get; set; }
+        public  List<MaterialTypeOrderDto> MaterialOrderL { get; set; }
 
     }
 }

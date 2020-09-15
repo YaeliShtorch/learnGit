@@ -82,7 +82,7 @@ namespace API.Controllers
 
         [Route("AddOrder")]
         [HttpPost]
-        [AcceptVerbs("GET", "POST")]
+        //[AcceptVerbs("GET", "POST")]
         public IHttpActionResult AddOrder(OrderDto am)
         {
 

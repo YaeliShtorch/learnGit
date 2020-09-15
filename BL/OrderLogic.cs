@@ -75,7 +75,7 @@ namespace BL
             Ezer.Comment = UpOrder.Comment;
             Ezer.ConcreteTest = UpOrder.ConcreteTest;
 
-            foreach(MaterialTypeOrderDto mDto in UpOrder.MaterialTypeOrderDtoL)
+            foreach(MaterialTypeOrderDto mDto in UpOrder.MaterialOrderL)
             {   
                 foreach(MaterialTypeOrder mDal in db.MaterialTypeOrder)
                   if(mDto.OrderId==mDal.OrderId)
@@ -128,15 +128,15 @@ namespace BL
                 Comment = Odto.Comment,
                 ConcreteTest = Odto.ConcreteTest,
             };
-            if (Odto.MaterialTypeOrderDtoL != null) { 
-            Odto.MaterialTypeOrderDtoL.ForEach(x =>
+            if (Odto.MaterialOrderL != null) { 
+            Odto.MaterialOrderL.ForEach(x =>
             {
 
                 order.MaterialTypeOrder.Add(new MaterialTypeOrder()
                 {
                     Element = x.Element,
                     Amount = x.Amount,
-                    StatusMaterialId = 0,
+                    StatusMaterialId = x.StatusMaterialId,
                     MaterialId = x.MaterialId,
 
                 });
@@ -167,7 +167,7 @@ namespace BL
             {
                 if (m.OrderId == order.Id)
                 {
-                    order.MaterialTypeOrderDtoL.Add(MaterialTypeOrderToDto(m));
+                    order.MaterialOrderL.Add(MaterialTypeOrderToDto(m));
                 }
             }
             return order;
