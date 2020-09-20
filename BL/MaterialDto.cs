@@ -12,5 +12,6 @@ namespace BL
         public string Name { get; set; }
          
         public int MaterialCategoryId { get; set; }
+        //public int? PipeLength { get; set; }
     }
 }

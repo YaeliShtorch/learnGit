@@ -128,7 +128,8 @@ namespace BL
                 Comment = Odto.Comment,
                 ConcreteTest = Odto.ConcreteTest,
             };
-            if (Odto.MaterialOrderL != null) { 
+            if (Odto.MaterialOrderL != null) {
+                order.MaterialTypeOrder = new List<MaterialTypeOrder>();
             Odto.MaterialOrderL.ForEach(x =>
             {
 
@@ -176,8 +177,9 @@ namespace BL
         public List<MaterialDto> getAllMaterials()
         {
             List<MaterialDto> MaterialL = new List<MaterialDto>();
-            foreach (Material m in db.Material.ToList())
-                MaterialL.Add(MaterialToDto(m));
+            db.Material.ToList().ForEach(x=> {
+                MaterialL.Add(MaterialToDto(x));
+            });
             return MaterialL;
         }
 

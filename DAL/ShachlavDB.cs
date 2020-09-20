@@ -20,11 +20,8 @@ namespace DAL
         public virtual DbSet<Provider> Providers { get; set; }
         public virtual DbSet<Vehicle> Vehicles { get; set; }
         public virtual DbSet<MaterialTypeOrder> MaterialTypeOrder { get; set; }
-
         public virtual DbSet<Material> Material { get; set; }
-
         public virtual DbSet<MaterialCategory> MaterialCategory { get; set; }
-
         public virtual DbSet<StatusMaterial> StatusMaterial { get; set; }
         public virtual DbSet<StatusProvider> StatusProvider { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -32,7 +29,7 @@ namespace DAL
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
 
-   
+
         }
 
 
