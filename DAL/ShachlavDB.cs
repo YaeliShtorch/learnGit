@@ -36,8 +36,6 @@ namespace DAL
         public ShachlavDB() : base(@"data source=(localdb)\mssqllocaldb;initial catalog=DAL.ShachlavDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ShachlavDB, DAL.Migrations.Configuration>());
-            //Database.Connection.Open();
-            //checking if the following solves this error nMessage":"The context cannot be used while the model is being created.
             Database.Initialize(force: false);
 
 

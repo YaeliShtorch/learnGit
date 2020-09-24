@@ -9,9 +9,8 @@ namespace BL
     public class MaterialDto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-         
+        public string Name { get; set; }      
         public int MaterialCategoryId { get; set; }
-        //public int? PipeLength { get; set; }
+        public int? PipeLength { get; set; }
     }
 }

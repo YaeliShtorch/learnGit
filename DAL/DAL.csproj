@@ -127,6 +127,10 @@
     <Compile Include="Migrations\202009152011196_check2.Designer.cs">
       <DependentUpon>202009152011196_check2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009212321466_updateDB.cs" />
+    <Compile Include="Migrations\202009212321466_updateDB.Designer.cs">
+      <DependentUpon>202009212321466_updateDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="MaterialProvider.cs" />
@@ -140,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009152011196_check2.resx">
       <DependentUpon>202009152011196_check2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009212321466_updateDB.resx">
+      <DependentUpon>202009212321466_updateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

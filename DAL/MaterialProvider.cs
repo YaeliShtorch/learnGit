@@ -13,11 +13,9 @@ namespace DAL
         [Key]
         [Required]
         public int Id { get; set; }
-
         [Required]
         public int MaterialTypeOrderId { get; set; }
         public MaterialTypeOrder MaterialTypeOrder { get; set; }
-
         [Required]
         public int ProviderId { get; set; }
         public Provider Provider { get; set; }
@@ -28,10 +26,7 @@ namespace DAL
         public int Amount { get; set; }
         [Required]
         public bool ManagerApproval { get; set; }
-        public double Price { get; set; }
-
-
-
+        public string ProviderComment { get; set; }
     }
 }
 

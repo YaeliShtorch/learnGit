@@ -32,10 +32,10 @@ namespace DAL
         [Required]
         public string Address { get; set; }
         [Required]
-        //[CustomValidation(typeof(Validations), "BirthDateValid")]
+        [CustomValidation(typeof(Validations), "BirthDateValid")]
         public DateTime BirthDate { get; set; }
         [Required]
-        //[CustomValidation(typeof(Validations), "BeforeDateValid")]
+        [CustomValidation(typeof(Validations), "BeforeDateValid")]
         public DateTime EntryToWorkDate { get; set; }
         [Required]
         public string UserName { get; set; }
@@ -43,8 +43,6 @@ namespace DAL
         public string Password { get; set; }
         [Required]
         public bool IsActive { get; set; }
-
-        //public Vehicle Vehicle { get; set; }
         public virtual ICollection<DriverWork> DriverWork { get; set; }
         public virtual ICollection<Vehicle> Vehicle { get; set; }
 

@@ -11,14 +11,10 @@ namespace DAL
     {
         [Key]
         public int Id { get; set; }
-
         public string Name { get; set; }
-
         public int MaterialCategoryId { get; set; }
-
         public int ? PipeLength { get; set; }
         public MaterialCategory MaterialCategory { get; set; }
-
         public virtual ICollection<Vehicle> Vehicle { get; set; }
     }
 }

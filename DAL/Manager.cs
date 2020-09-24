@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-public class Manager
+    public class Manager
     {
         [Key]
         [Required]
@@ -22,7 +22,7 @@ public class Manager
         [Required]
         public string LastName { get; set; }
         [Required]
-        //[DataType(DataType.EmailAddress)]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
         [Phone]
@@ -32,7 +32,7 @@ public class Manager
         [Required]
         public string Address { get; set; }
         [Required]
-        //[CustomValidation(typeof(Validations), "BirthDateValid")]
+        [CustomValidation(typeof(Validations), "BirthDateValid")]
         public DateTime BirthDate { get; set; }
         [Required]
         public string UserName { get; set; }

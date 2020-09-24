@@ -10,12 +10,14 @@ namespace DAL
 
     public class Validations : ValidationAttribute
     {
-
-        //public static ValidationResult CustUserNaneExist(string NewUser)
+         //checks if userName exists
+        //public static ValidationResult CustUserNameExist(string NewUser)
         //{
-
+        //    return  return ValidationResult.Success;
 
         //}
+
+        //checks if age is valid
         public static ValidationResult BirthDateValid(DateTime date)
         {
             try {
@@ -33,6 +35,7 @@ namespace DAL
             return new ValidationResult("Not old enoughf");
 
         }
+        //checks date is before current date
         public static ValidationResult BeforeDateValid(DateTime date)
         {
             var dt = date;
@@ -42,6 +45,7 @@ namespace DAL
             else
                 return new ValidationResult("Not old enoughf");
         }
+        //checks if Identity number is correct
         public static ValidationResult IdOK(string id)
         {
             //try {

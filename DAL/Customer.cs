@@ -12,7 +12,6 @@ namespace DAL
     {
         [Key]
         [Required]
-
         public int Id { get; set; }
         [Required]
         [MinLength(9)]
@@ -27,7 +26,7 @@ namespace DAL
         public string CompanyName { get; set; }
         [Required]
         public string BusinessCode { get; set; }
-        //[DataType(DataType.EmailAddress)]
+        [DataType(DataType.EmailAddress)]
         [Required]
         public string Email { get; set; }
         [Phone]
@@ -44,7 +43,6 @@ namespace DAL
         [CustomValidation(typeof(Validations), "BirthDateValid")]
         [Required]
         public DateTime BirthDate { get; set; }
-
         [Required]
         public bool IsActive { get; set; }
         public virtual ICollection<Order> CustOrders { get; set; }
