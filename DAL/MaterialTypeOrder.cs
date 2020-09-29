@@ -22,6 +22,7 @@ namespace DAL
         public int MaterialId { get; set; }
         public Material Material { get; set; }
         public string ManagerComment { get; set; }
+        public int? PipeLength { get; set; }
         public virtual ICollection<MaterialProvider> MaterialProviders { get; set; }
 
 

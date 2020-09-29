@@ -10,7 +10,7 @@ namespace DAL
 
     public class Validations : ValidationAttribute
     {
-         //checks if userName exists
+        //checks if userName exists
         //public static ValidationResult CustUserNameExist(string NewUser)
         //{
         //    return  return ValidationResult.Success;
@@ -20,14 +20,15 @@ namespace DAL
         //checks if age is valid
         public static ValidationResult BirthDateValid(DateTime date)
         {
-            try {
+            try
+            {
                 var dt = date;
                 if (dt.Year <= DateTime.Now.Year - 18)
                     return ValidationResult.Success;
-                 
+
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 e.ToString();
 
@@ -48,6 +49,41 @@ namespace DAL
         //checks if Identity number is correct
         public static ValidationResult IdOK(string id)
         {
+
+            try
+            {
+                int[] id_12_digits = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
+                int count = 0;
+
+                if (id == null)
+                    return new ValidationResult("no number entered");
+
+            //incase of short id number it fills the number with 0 to the left
+                id = id.PadLeft(9, '0');
+
+                for (int i = 0; i < 9; i++)
+                {
+                    //converts each digit to int and multiply with the equal number 1 or 2 from declared array.
+                    int num = Int32.Parse(id.Substring(i, 1)) * id_12_digits[i];
+
+                    //when the multiply is a 2 digit number we should sum the digits.
+                    if (num > 9)
+                        num = (num / 10) + (num % 10);
+
+                    //add to count sum of id *number from array
+                    count += num;
+                }
+                //the total number should be one that is devided by 10 without reminder
+                if (count % 10 == 0)
+                    return ValidationResult.Success;
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+
+
+
             //try {
             //    char[] digits = id.ToCharArray();
             //    int[] oneTwo = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };

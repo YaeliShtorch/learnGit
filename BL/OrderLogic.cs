@@ -37,6 +37,13 @@ namespace BL
 
         public void AddOrder(OrderDto NewOrder)
         {
+            NewOrder.OrderDate = DateTime.UtcNow.ToLocalTime();
+            NewOrder.IsApproved = false;
+            NewOrder.IsDone = false;
+            NewOrder.MaterialOrderL.ForEach(x =>
+            {
+                x.StatusMaterialId = 1;
+            });
             if (IsExist(NewOrder) == false)
             {
                 db.Orders.Add(OrderToDal(NewOrder));
@@ -57,10 +64,12 @@ namespace BL
 
         public void UpdateOrder(OrderDto UpOrder)
         {
+            //storing the existing order in a tmp variable that referenced to the same one in DB
             Order Ezer = db.Orders.FirstOrDefault(o => o.Id == UpOrder.Id);
 
+       
             if (Ezer != null)
-            {
+            {//updating the new values
                 Ezer.CustomerId = UpOrder.CustomerId;
                 Ezer.SiteAdress = UpOrder.SiteAdress;
                 Ezer.OrderDate = UpOrder.OrderDate;
@@ -72,13 +81,14 @@ namespace BL
                 Ezer.ManagerComment = UpOrder.ManagerComment;
                 Ezer.Comment = UpOrder.Comment;
                 Ezer.ConcreteTest = UpOrder.ConcreteTest;
+                //security check that there is actually materials to the order
                 if (UpOrder.MaterialOrderL != null)
                 {
                     Ezer.MaterialTypeOrder = new List<MaterialTypeOrder>();
 
                     //adding materials of order from db
                     db.MaterialTypeOrder.ToList().ForEach(x =>
-                    {
+                    { 
                         if (x.OrderId == UpOrder.Id) Ezer.MaterialTypeOrder.Add(x);
                     });
 
@@ -92,6 +102,8 @@ namespace BL
                                 m.Amount = x.Amount;
                                 m.StatusMaterialId = x.StatusMaterialId;
                                 m.MaterialId = x.MaterialId;
+                                if(x.PipeLength!=null)
+                                m.PipeLength = x.PipeLength;
                             }
                         });
 
@@ -120,7 +132,7 @@ namespace BL
 
             foreach (var o in db.Orders)
             {
-                if (o.CustomerId == order.CustomerId && o.OrderDate == order.OrderDate && o.SiteAdress == o.SiteAdress)
+                if (o.Id==order.Id)
                     return true;
             }
             return false;
@@ -153,8 +165,9 @@ namespace BL
                         Amount = x.Amount,
                         StatusMaterialId = x.StatusMaterialId,
                         MaterialId = x.MaterialId,
+                        PipeLength=x.PipeLength,
 
-                    });
+                });
                 });
             }
             return order;
@@ -191,8 +204,9 @@ namespace BL
                         Amount = x.Amount,
                         StatusMaterialId = x.StatusMaterialId,
                         MaterialId = x.MaterialId,
+                        PipeLength = x.PipeLength,
 
-                    });
+                });
                 });
             }
             return order;
@@ -286,7 +300,6 @@ namespace BL
                 Id = mDal.Id,
                 MaterialCategoryId = mDal.MaterialCategoryId,
                 Name = mDal.Name,
-                PipeLength = mDal.PipeLength,
             };
         }
 

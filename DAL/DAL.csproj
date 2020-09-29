@@ -79,57 +79,9 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="DriverWork.cs" />
-    <Compile Include="Migrations\202009021351377_newDB.cs" />
-    <Compile Include="Migrations\202009021351377_newDB.Designer.cs">
-      <DependentUpon>202009021351377_newDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009022138365_[202009021351377_newDB].cs" />
-    <Compile Include="Migrations\202009022138365_[202009021351377_newDB].Designer.cs">
-      <DependentUpon>202009022138365_[202009021351377_newDB].cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061631594_newDB5.cs" />
-    <Compile Include="Migrations\202009061631594_newDB5.Designer.cs">
-      <DependentUpon>202009061631594_newDB5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061640196_newDB6.cs" />
-    <Compile Include="Migrations\202009061640196_newDB6.Designer.cs">
-      <DependentUpon>202009061640196_newDB6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061644400_newDB7.cs" />
-    <Compile Include="Migrations\202009061644400_newDB7.Designer.cs">
-      <DependentUpon>202009061644400_newDB7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061654520_newDB8.cs" />
-    <Compile Include="Migrations\202009061654520_newDB8.Designer.cs">
-      <DependentUpon>202009061654520_newDB8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009061704416_newDB9.cs" />
-    <Compile Include="Migrations\202009061704416_newDB9.Designer.cs">
-      <DependentUpon>202009061704416_newDB9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009071652188_newDB10.cs" />
-    <Compile Include="Migrations\202009071652188_newDB10.Designer.cs">
-      <DependentUpon>202009071652188_newDB10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009071816259_newDB11.cs" />
-    <Compile Include="Migrations\202009071816259_newDB11.Designer.cs">
-      <DependentUpon>202009071816259_newDB11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009071818242_newDB12.cs" />
-    <Compile Include="Migrations\202009071818242_newDB12.Designer.cs">
-      <DependentUpon>202009071818242_newDB12.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009081129450_Check.cs" />
-    <Compile Include="Migrations\202009081129450_Check.Designer.cs">
-      <DependentUpon>202009081129450_Check.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009152011196_check2.cs" />
-    <Compile Include="Migrations\202009152011196_check2.Designer.cs">
-      <DependentUpon>202009152011196_check2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009212321466_updateDB.cs" />
-    <Compile Include="Migrations\202009212321466_updateDB.Designer.cs">
-      <DependentUpon>202009212321466_updateDB.cs</DependentUpon>
+    <Compile Include="Migrations\202009292219078_status.cs" />
+    <Compile Include="Migrations\202009292219078_status.Designer.cs">
+      <DependentUpon>202009292219078_status.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
@@ -148,44 +100,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009021351377_newDB.resx">
-      <DependentUpon>202009021351377_newDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009022138365_[202009021351377_newDB].resx">
-      <DependentUpon>202009022138365_[202009021351377_newDB].cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061631594_newDB5.resx">
-      <DependentUpon>202009061631594_newDB5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061640196_newDB6.resx">
-      <DependentUpon>202009061640196_newDB6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061644400_newDB7.resx">
-      <DependentUpon>202009061644400_newDB7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061654520_newDB8.resx">
-      <DependentUpon>202009061654520_newDB8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061704416_newDB9.resx">
-      <DependentUpon>202009061704416_newDB9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009071652188_newDB10.resx">
-      <DependentUpon>202009071652188_newDB10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009071816259_newDB11.resx">
-      <DependentUpon>202009071816259_newDB11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009071818242_newDB12.resx">
-      <DependentUpon>202009071818242_newDB12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009081129450_Check.resx">
-      <DependentUpon>202009081129450_Check.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009152011196_check2.resx">
-      <DependentUpon>202009152011196_check2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009212321466_updateDB.resx">
-      <DependentUpon>202009212321466_updateDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009292219078_status.resx">
+      <DependentUpon>202009292219078_status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -105,7 +105,7 @@ namespace API.Controllers
         [HttpGet]
         public List<MaterialDto> getAllMaterials()
         {
-            return OM.getAllMaterials();
+             return OM.getAllMaterials();
         }
 
         [Route("getMaterialsByCategoryName")]
