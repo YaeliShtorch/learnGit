@@ -14,7 +14,7 @@ namespace BL
         {
           //  ShachlavDB db = new ShachlavDB();
 
-            return (ManagerToDto(db.Manager.FirstOrDefault(m => m.Id == id)));
+            return (ManagerToDto(db.Managers.FirstOrDefault(m => m.Id == id)));
 
         }
       
@@ -22,32 +22,32 @@ namespace BL
         {
           //  ShachlavDB db = new ShachlavDB();
 
-            return (ManagerToDto(db.Manager.FirstOrDefault(m => m.UserName == UserName && m.Password == Password)));
+            return (ManagerToDto(db.Managers.FirstOrDefault(m => m.UserName == UserName && m.Password == Password)));
 
         }
         public ManagerDto GetManagerUN(string UserName)
         {
             //  ShachlavDB db = new ShachlavDB();
-            return (ManagerToDto(db.Manager.FirstOrDefault(m => m.UserName == UserName)));
+            return (ManagerToDto(db.Managers.FirstOrDefault(m => m.UserName == UserName)));
 
         }
         
         public List<ManagerDto> GetAllManagers()
         {
-            return ManagerListToDto(db.Manager.ToList());
+            return ManagerListToDto(db.Managers.ToList());
         }
         public ManagerDto GetManagerIN(string identityNumber)
         {
           //  ShachlavDB db = new ShachlavDB();
 
-            return (ManagerToDto(db.Manager.FirstOrDefault(m => m.IdentityNumber == identityNumber)));
+            return (ManagerToDto(db.Managers.FirstOrDefault(m => m.IdentityNumber == identityNumber)));
 
         }
       
         public List<ManagerDto> GetManagersFLN(string Name)
         {
             List<ManagerDto> AllManagers = new List<ManagerDto>();
-            foreach (var m in db.Manager)
+            foreach (var m in db.Managers)
             {
                 if (m.FirstName.Contains(Name) || m.LastName.Contains(Name))
                     AllManagers.Add(ManagerToDto(m));
@@ -59,7 +59,7 @@ namespace BL
         {
            // ShachlavDB db = new ShachlavDB();
 
-            return (ManagerToDto(db.Manager.FirstOrDefault(m => m.Email == Email)));
+            return (ManagerToDto(db.Managers.FirstOrDefault(m => m.Email == Email)));
 
         }
 
@@ -67,14 +67,14 @@ namespace BL
         {
         //    ShachlavDB db = new ShachlavDB();
 
-            return (ManagerToDto(db.Manager.FirstOrDefault(m => m.PhoneNumber == phone || m.CellNumber == phone)));
+            return (ManagerToDto(db.Managers.FirstOrDefault(m => m.PhoneNumber == phone || m.CellNumber == phone)));
 
         }
 
         public List<ManagerDto> GetManagerA(string Address)
         {
             List<ManagerDto> AllManagers = new List<ManagerDto>();
-            foreach (var m in db.Manager)
+            foreach (var m in db.Managers)
             {
                 if (m.Address.Contains(Address))
                     AllManagers.Add(ManagerToDto(m));
@@ -87,7 +87,7 @@ namespace BL
         {
           //  ShachlavDB db = new ShachlavDB();
 
-            return (ManagerToDto(db.Manager.FirstOrDefault(m => m.BirthDate == BirthDate)));
+            return (ManagerToDto(db.Managers.FirstOrDefault(m => m.BirthDate == BirthDate)));
 
         }
         public void AddManager(ManagerDto NewManager)
@@ -95,7 +95,7 @@ namespace BL
          //   ShachlavDB db = new ShachlavDB();
             if (IsExist(NewManager) == false)
             {
-                db.Manager.Add(ManagerToDal(NewManager));
+                db.Managers.Add(ManagerToDal(NewManager));
                 db.SaveChanges();
             }
         }
@@ -104,14 +104,14 @@ namespace BL
         public void DeleteManager(int id)
         {
          //   ShachlavDB db = new ShachlavDB();
-            db.Manager.Remove(db.Manager.FirstOrDefault(m => m.Id == id));
+            db.Managers.Remove(db.Managers.FirstOrDefault(m => m.Id == id));
             db.SaveChanges();
         }
 
         public void UpdateManager(ManagerDto UpManager)
         {
           //  ShachlavDB db = new ShachlavDB();
-            Manager Ezer = db.Manager.FirstOrDefault(m => m.Id == UpManager.Id);
+            Manager Ezer = db.Managers.FirstOrDefault(m => m.Id == UpManager.Id);
             if (Ezer != null) { 
             Ezer.IdentityNumber = UpManager.IdentityNumber;
             Ezer.FirstName = UpManager.FirstName;
@@ -130,7 +130,7 @@ namespace BL
         private bool IsExist(ManagerDto manager)
         {
           //  ShachlavDB db = new ShachlavDB();
-            foreach (var m in db.Manager)
+            foreach (var m in db.Managers)
             {
                 if (m.Id == manager.Id || m.IdentityNumber ==manager.IdentityNumber)
                     return true;

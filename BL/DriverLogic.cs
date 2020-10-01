@@ -252,7 +252,7 @@ namespace BL
         private bool IsExist(DriverWorkDto DriverWork)
         {
             //  ShachlavDB db = new ShachlavDB();
-            foreach (var m in db.DriverWork)
+            foreach (var m in db.DriverWorks)
             {
                 if (m.Id == DriverWork.Id)
                     return true;
@@ -296,7 +296,7 @@ namespace BL
         public List<DriverWorkDto> GetAllDriverWork()
         {
             List<DriverWorkDto> AllDriverWork = new List<DriverWorkDto>();
-            foreach (var m in db.DriverWork)
+            foreach (var m in db.DriverWorks)
             {
                 AllDriverWork.Add(DriverWorkToDto(m));
             }
@@ -307,7 +307,7 @@ namespace BL
             //   ShachlavDB db = new ShachlavDB();
             if (IsExist(NewDriverWork) == false)
             {
-                db.DriverWork.Add(DriverWorkToDal(NewDriverWork));
+                db.DriverWorks.Add(DriverWorkToDal(NewDriverWork));
                 db.SaveChanges();
             }
         }

@@ -3,7 +3,7 @@ namespace DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class status : DbMigration
+    public partial class viewCheck : DbMigration
     {
         public override void Up()
         {

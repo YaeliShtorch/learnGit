@@ -79,13 +79,15 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="DriverWork.cs" />
-    <Compile Include="Migrations\202009292219078_status.cs" />
-    <Compile Include="Migrations\202009292219078_status.Designer.cs">
-      <DependentUpon>202009292219078_status.cs</DependentUpon>
+    <Compile Include="MaterialTypeOrderView.cs" />
+    <Compile Include="Migrations\202010010500525_viewCheck.cs" />
+    <Compile Include="Migrations\202010010500525_viewCheck.Designer.cs">
+      <DependentUpon>202010010500525_viewCheck.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="MaterialProvider.cs" />
+    <Compile Include="OrderViewDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider.cs" />
     <Compile Include="ShachlavDB.cs" />
@@ -100,8 +102,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009292219078_status.resx">
-      <DependentUpon>202009292219078_status.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202010010500525_viewCheck.resx">
+      <DependentUpon>202010010500525_viewCheck.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

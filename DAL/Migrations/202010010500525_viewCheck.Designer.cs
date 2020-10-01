@@ -7,13 +7,13 @@ namespace DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class status : IMigrationMetadata
+    public sealed partial class viewCheck : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(status));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(viewCheck));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009292219078_status"; }
+            get { return "202010010500525_viewCheck"; }
         }
         
         string IMigrationMetadata.Source

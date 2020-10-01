@@ -54,9 +54,9 @@ namespace BL
 
         public void DeleteOrder(int id)
         {
-            db.MaterialTypeOrder.ToList().ForEach(x =>
+            db.MaterialTypeOrders.ToList().ForEach(x =>
             {
-                if (x.OrderId == id) db.MaterialTypeOrder.Remove(x);
+                if (x.OrderId == id) db.MaterialTypeOrders.Remove(x);
             });
             db.Orders.Remove(db.Orders.FirstOrDefault(o => o.Id == id));
             db.SaveChanges();
@@ -87,7 +87,7 @@ namespace BL
                     Ezer.MaterialTypeOrder = new List<MaterialTypeOrder>();
 
                     //adding materials of order from db
-                    db.MaterialTypeOrder.ToList().ForEach(x =>
+                    db.MaterialTypeOrders.ToList().ForEach(x =>
                     { 
                         if (x.OrderId == UpOrder.Id) Ezer.MaterialTypeOrder.Add(x);
                     });
@@ -215,7 +215,7 @@ namespace BL
         public List<MaterialDto> getAllMaterials()
         {
             List<MaterialDto> MaterialL = new List<MaterialDto>();
-            db.Material.ToList().ForEach(x =>
+            db.Materials.ToList().ForEach(x =>
             {
                 MaterialL.Add(MaterialToDto(x));
             });
@@ -224,9 +224,9 @@ namespace BL
 
         public List<MaterialDto> getMaterialsByCategoryName(string name)
         {
-            MaterialCategory mCat = db.MaterialCategory.FirstOrDefault(x => x.Name.Equals(name));
+            MaterialCategory mCat = db.MaterialCategorys.FirstOrDefault(x => x.Name.Equals(name));
             List<MaterialDto> MaterialL = new List<MaterialDto>();
-            foreach (Material m in db.Material)
+            foreach (Material m in db.Materials)
             {
                 if (m.MaterialCategoryId == mCat.Id)
                     MaterialL.Add(MaterialToDto(m));
@@ -236,12 +236,12 @@ namespace BL
 
         public MaterialDto getMaterialbyId(int id)
         {
-            return MaterialToDto(db.Material.FirstOrDefault(x => x.Id == id));
+            return MaterialToDto(db.Materials.FirstOrDefault(x => x.Id == id));
         }
 
         public MaterialDto getMaterialIdByName(string name)
         {
-            return MaterialToDto(db.Material.FirstOrDefault(x => x.Name.Equals(name)));
+            return MaterialToDto(db.Materials.FirstOrDefault(x => x.Name.Equals(name)));
         }
         public Material MaterialToDal(MaterialDto mDto)
         {
@@ -256,7 +256,7 @@ namespace BL
 
         public void deleteMaterial(int id)
         {
-            db.Material.Remove(db.Material.FirstOrDefault(x => x.Id == id));
+            db.Materials.Remove(db.Materials.FirstOrDefault(x => x.Id == id));
             db.SaveChanges();
         }
 
@@ -264,7 +264,7 @@ namespace BL
         {
             if (IsExist(m) == false)
             {
-                db.Material.Add(MaterialToDal(m));
+                db.Materials.Add(MaterialToDal(m));
                 db.SaveChanges();
             }
 
@@ -272,7 +272,7 @@ namespace BL
 
         public void UpdateMaterial(MaterialDto m)
         {
-            Material Ezer = db.Material.FirstOrDefault(x => x.Id == m.Id);
+            Material Ezer = db.Materials.FirstOrDefault(x => x.Id == m.Id);
             if (Ezer != null)
             {
                 Ezer.MaterialCategoryId = m.MaterialCategoryId;
@@ -283,7 +283,7 @@ namespace BL
 
         bool IsExist(MaterialDto m)
         {
-            foreach (Material mat in db.Material)
+            foreach (Material mat in db.Materials)
             {
                 if (m.MaterialCategoryId == mat.MaterialCategoryId && m.Name.Equals(mat.MaterialCategoryId))
                     return true;
@@ -333,7 +333,7 @@ namespace BL
         public List<MaterialCategoryDto> getCategories()
         {
             List<MaterialCategoryDto> MaterialCatL = new List<MaterialCategoryDto>();
-            foreach (MaterialCategory mCat in db.MaterialCategory.ToList())
+            foreach (MaterialCategory mCat in db.MaterialCategorys.ToList())
                 MaterialCatL.Add(MaterialCategorytoDto(mCat));
             return MaterialCatL;
 
@@ -341,13 +341,13 @@ namespace BL
 
         public void deleteMaterialCategory(int id)
         {
-            db.MaterialCategory.Remove(db.MaterialCategory.FirstOrDefault(x => x.Id == id));
+            db.MaterialCategorys.Remove(db.MaterialCategorys.FirstOrDefault(x => x.Id == id));
             db.SaveChanges();
         }
 
         public void UpdateMaterialCategory(MaterialCategoryDto mCat)
         {
-            MaterialCategory Ezer = db.MaterialCategory.FirstOrDefault(x => x.Id == mCat.Id);
+            MaterialCategory Ezer = db.MaterialCategorys.FirstOrDefault(x => x.Id == mCat.Id);
             if (Ezer != null)
             {
                 Ezer.Name = mCat.Name;
@@ -359,7 +359,7 @@ namespace BL
         {
             if (IsExist(mCat) == false)
             {
-                db.MaterialCategory.Add(MaterialCategoryDtoToDal(mCat));
+                db.MaterialCategorys.Add(MaterialCategoryDtoToDal(mCat));
                 db.SaveChanges();
             }
 
@@ -367,7 +367,7 @@ namespace BL
 
         bool IsExist(MaterialCategoryDto mCat)
         {
-            foreach (MaterialCategory m in db.MaterialCategory)
+            foreach (MaterialCategory m in db.MaterialCategorys)
             {
                 if (m.Name.Equals(mCat.Name))
                     return true;
