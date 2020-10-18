@@ -15,16 +15,26 @@ namespace BL
         {
             return (OrderToDto(db.Orders.FirstOrDefault(o => o.Id == id)));
         }
-        public List<OrderDto> GetOrdersByCustomerId(int Id)
+        public List<OrderViewDTO> GetOrdersByCustomerId(int Id)
         {
-            List<Order> AllOrders = new List<Order>();
-            List<OrderDto> CustOrders = new List<OrderDto>();
+            OrderViewDTO o;
+            List<MaterialTypeOrderView> AllMaterials = new List<MaterialTypeOrderView>();
+            List<OrderViewDTO> CustOrders = new List<OrderViewDTO>();
+            //look for customer order
             db.Orders.Where(o1 => o1.CustomerId == Id).ToList().ForEach(x =>
             {
-                CustOrders.Add(OrderToDto(x));
+            db.MaterialForview.ToList().ForEach(m => { if (x.Id == m.OrderId)
+                    AllMaterials.Add(m);
+                    });
+                o=db.OrderViewDto.FirstOrDefault(or => x.Id == or.Id);
+                if (o != null) { 
+                o.MaterialOrderL = AllMaterials;
+                CustOrders.Add(o);
+                }
             });
             return CustOrders;
         }
+
         //public List<OrderDto> GetOrders()
         //{
         //    List<OrderDto> AllOrders = new List<OrderDto>();

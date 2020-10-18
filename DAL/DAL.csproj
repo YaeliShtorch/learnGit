@@ -84,6 +84,10 @@
     <Compile Include="Migrations\202010010500525_viewCheck.Designer.cs">
       <DependentUpon>202010010500525_viewCheck.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010151213588_categories.cs" />
+    <Compile Include="Migrations\202010151213588_categories.Designer.cs">
+      <DependentUpon>202010151213588_categories.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="MaterialProvider.cs" />
@@ -104,6 +108,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010010500525_viewCheck.resx">
       <DependentUpon>202010010500525_viewCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010151213588_categories.resx">
+      <DependentUpon>202010151213588_categories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

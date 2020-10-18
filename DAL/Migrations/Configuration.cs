@@ -33,7 +33,11 @@ namespace DAL.Migrations
 
         protected override void Seed(ShachlavDB shachlav)
         {
-
+            //for debugging
+            //if (System.Diagnostics.Debugger.IsAttached == false)
+            //{
+            //    System.Diagnostics.Debugger.Launch();
+            //}
             #region Material Status
             //for the first time only
             if (shachlav.StatusMaterials.Any() != true)
@@ -65,11 +69,30 @@ namespace DAL.Migrations
             }
             #endregion
 
+            #region MaterialCategory
+
+            if (shachlav.MaterialCategorys.Any() != true)
+            {
+                var Categories= new List<MaterialCategory>()
+            {
+                new MaterialCategory(){Name="משאבה"},
+                new MaterialCategory(){Name="בטון הרחבה"},
+                new MaterialCategory(){Name="בטון חשיפה"},
+                new MaterialCategory(){Name="בטון שקיעה"},
+                new MaterialCategory(){Name="בטון תוספת"},
+                new MaterialCategory(){Name="טיט"}
+            };
+                Categories.ForEach(x => { shachlav.MaterialCategorys.Add(x); });
+                shachlav.SaveChanges();
+            }
+
+            #endregion
+
             #region orderView
 
-            int isExist = 0;
+            int isExist = -1;
             // check- var ExistVW4 = context.Database.SqlQuery<int>(@"SELECT CASE WHEN NOT exists  (SELECT * FROM sys.views WHERE name ='Report1-4') THEN 0 ELSE 1 END "); if (ExistVW4.First() == 0)
-            //isExist = shachlav.Database.ExecuteSqlCommand<int>("select count(*)from INFORMATION_SCHEMA.VIEWS where table_name = 'dbo.MaterialDTO'");
+           //isExist = shachlav.Database.ExecuteSqlCommand("IF object_id('dbo.OrderDTO') is not null PRINT '1' ELSE PRINT '0'");
             //to check why not working
             //var  isExist = shachlav.Database.SqlQuery<int>("select count(*)from INFORMATION_SCHEMA.VIEWS where table_name = 'dbo.OrderDTO'");
             if (isExist==0)
@@ -80,6 +103,7 @@ namespace DAL.Migrations
             }
 
             //isExist = shachlav.Database.SqlQuery<int>("select count(*)from INFORMATION_SCHEMA.VIEWS where table_name = 'dbo.MaterialDTO'");
+            //isExist = shachlav.Database.ExecuteSqlCommand("IF object_id('dbo.MaterialDTO') is not null PRINT '1' ELSE PRINT '0'");
             if (isExist==0)
             {
                 shachlav.Database.ExecuteSqlCommand("CREATE VIEW dbo.MaterialDTO AS SELECT mt.Id, o.Id AS OrderId, mt.Element, mt.Amount, sm.Name as StatusMaterial," +
