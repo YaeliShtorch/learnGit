@@ -31,7 +31,7 @@ namespace API.Controllers
         //get AllOrders by customerId
         [Route("GetAllCO")]
         [HttpGet]
-        public List<OrderViewDTO> GetAllCusOrders(int id)
+        public List<OrderDTO> GetAllCusOrders(int id)
         {
             return OM.GetOrdersByCustomerId(id);
         }

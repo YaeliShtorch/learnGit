@@ -26,18 +26,23 @@ namespace DAL
         public virtual DbSet<StatusMaterial> StatusMaterials { get; set; }
         public virtual DbSet<StatusProvider> StatusProviders { get; set; }
 
-       public virtual DbSet<OrderViewDTO> OrderViewDto { get; set; }
-        public virtual DbSet<MaterialTypeOrderView> MaterialForview { get; set; }
+       public virtual DbSet<OrderDTO> OrderDTO { get; set; }
+        public virtual DbSet<MaterialDTO> MaterialDTO { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
 
             //making sure these tables wont be created in DB
-            modelBuilder.Ignore<OrderViewDTO>();
-            modelBuilder.Ignore<MaterialTypeOrderView>();
-
-
+            modelBuilder.Ignore<OrderDTO>();
+            modelBuilder.Ignore<MaterialDTO>();
+            // modelBuilder.Ignore<MaterialDTO>();
+            modelBuilder.Entity<OrderDTO>().HasKey(k => k.Id);
+            modelBuilder.Entity<OrderDTO>().MapToStoredProcedures();
+            modelBuilder.Entity<MaterialDTO>().HasKey(k => k.Id);
+            modelBuilder.Entity<MaterialDTO>().MapToStoredProcedures();
+            modelBuilder.Entity<MaterialDTO>().ToTable("dbo.MaterialDTO");
+            modelBuilder.Entity<MaterialDTO>().ToTable("dbo.OrderDTO");
 
         }
 

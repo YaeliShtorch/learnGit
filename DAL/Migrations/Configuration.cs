@@ -90,7 +90,7 @@ namespace DAL.Migrations
 
             #region orderView
 
-            int isExist = -1;
+            int isExist =-1;
             // check- var ExistVW4 = context.Database.SqlQuery<int>(@"SELECT CASE WHEN NOT exists  (SELECT * FROM sys.views WHERE name ='Report1-4') THEN 0 ELSE 1 END "); if (ExistVW4.First() == 0)
            //isExist = shachlav.Database.ExecuteSqlCommand("IF object_id('dbo.OrderDTO') is not null PRINT '1' ELSE PRINT '0'");
             //to check why not working

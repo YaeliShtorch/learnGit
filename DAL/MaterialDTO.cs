@@ -7,8 +7,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL
 {
-    [Table("dbo.MaterialDTO")]
-    public class MaterialTypeOrderView
+    //[Table("dbo.MaterialDTO")]
+    public class MaterialDTO
     {
         public int Id { get; set; }
         public int OrderId { get; set; }

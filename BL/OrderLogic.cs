@@ -15,18 +15,30 @@ namespace BL
         {
             return (OrderToDto(db.Orders.FirstOrDefault(o => o.Id == id)));
         }
-        public List<OrderViewDTO> GetOrdersByCustomerId(int Id)
+        public List<OrderDTO> GetOrdersByCustomerId(int Id)
         {
-            OrderViewDTO o;
-            List<MaterialTypeOrderView> AllMaterials = new List<MaterialTypeOrderView>();
-            List<OrderViewDTO> CustOrders = new List<OrderViewDTO>();
+            OrderDTO o;
+            List<Order> orders = new List<Order>();
+            List<MaterialDTO> AllMaterials = new List<MaterialDTO>();
+            List<OrderDTO> CustOrders = new List<OrderDTO>();
+
+            //test
+
+            orders= db.Orders.ToList();
+            //CustOrders = db.OrderDTO.ToList();
+           // AllMaterials = db.MaterialDTO.ToList();
+            var sql = @"SELECT * FROM dbo.OrderDTO WHERE ID > {0} ";
+            var peopleViaCommand =
+             db.Database.SqlQuery<OrderDTO>(
+               sql, 0);
+            CustOrders= peopleViaCommand.ToList();
             //look for customer order
             db.Orders.Where(o1 => o1.CustomerId == Id).ToList().ForEach(x =>
             {
-            db.MaterialForview.ToList().ForEach(m => { if (x.Id == m.OrderId)
+            db.MaterialDTO.ToList().ForEach(m => { if (x.Id == m.OrderId)
                     AllMaterials.Add(m);
                     });
-                o=db.OrderViewDto.FirstOrDefault(or => x.Id == or.Id);
+                o=db.OrderDTO.FirstOrDefault(or => x.Id == or.Id);
                 if (o != null) { 
                 o.MaterialOrderL = AllMaterials;
                 CustOrders.Add(o);
