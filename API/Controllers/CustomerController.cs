@@ -29,7 +29,7 @@ namespace API.Controllers
         [HttpGet]
         public CustomerDto GetCustomerUP(string UserName, string Password)
         {
-            return ML.GetCustomerUP(UserName, Password);
+             return ML.GetCustomerUP(UserName, Password);
        }
         //Get Customer by user name
         [Route("GetUN")]

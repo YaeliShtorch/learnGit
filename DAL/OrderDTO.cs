@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace DAL
 {
     //[Table("dbo.OrderDTO")]
+    //[NotMapped]
     public class OrderDTO
     {  
         public int Id { get; set; }

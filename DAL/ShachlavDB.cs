@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Remoting.Contexts;
+using System.Data.Entity.Infrastructure;
 
 namespace DAL
 {
@@ -26,23 +27,25 @@ namespace DAL
         public virtual DbSet<StatusMaterial> StatusMaterials { get; set; }
         public virtual DbSet<StatusProvider> StatusProviders { get; set; }
 
-       public virtual DbSet<OrderDTO> OrderDTO { get; set; }
-        public virtual DbSet<MaterialDTO> MaterialDTO { get; set; }
+       public virtual DbQuery<OrderDTO> OrderDTO { get; set; }
+        public virtual DbQuery<MaterialDTO> MaterialDTO { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
 
             //making sure these tables wont be created in DB
-            modelBuilder.Ignore<OrderDTO>();
-            modelBuilder.Ignore<MaterialDTO>();
-            // modelBuilder.Ignore<MaterialDTO>();
-            modelBuilder.Entity<OrderDTO>().HasKey(k => k.Id);
-            modelBuilder.Entity<OrderDTO>().MapToStoredProcedures();
-            modelBuilder.Entity<MaterialDTO>().HasKey(k => k.Id);
-            modelBuilder.Entity<MaterialDTO>().MapToStoredProcedures();
             modelBuilder.Entity<MaterialDTO>().ToTable("dbo.MaterialDTO");
             modelBuilder.Entity<MaterialDTO>().ToTable("dbo.OrderDTO");
+           modelBuilder.Ignore<OrderDTO>();
+          modelBuilder.Ignore<MaterialDTO>();
+            // modelBuilder.Ignore<MaterialDTO>();
+            modelBuilder.Entity<OrderDTO>().HasKey(k => k.Id);
+          //  modelBuilder.Entity<OrderDTO>().MapToStoredProcedures();
+            modelBuilder.Entity<MaterialDTO>().HasKey(k => k.Id);
+           // modelBuilder.Entity<MaterialDTO>().MapToStoredProcedures();
+           
+         
 
         }
 

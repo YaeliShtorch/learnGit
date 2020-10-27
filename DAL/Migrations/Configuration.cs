@@ -107,7 +107,7 @@ namespace DAL.Migrations
             if (isExist==0)
             {
                 shachlav.Database.ExecuteSqlCommand("CREATE VIEW dbo.MaterialDTO AS SELECT mt.Id, o.Id AS OrderId, mt.Element, mt.Amount, sm.Name as StatusMaterial," +
-                    " m.Name as MaterialName, mt.ManagerComment, mt.PipeLength FROM dbo.Orders o INNER JOIN dbo.MaterialTypeOrders mt ON mt.OrderId = o.Id INNER JOIN dbo.StatusMaterials AS sm ON sm.Id = mt.StatusMaterialId INNER JOIN dbo.Materials AS m ON sm.Id = mt.StatusMaterialId");
+                    " m.Name as MaterialName, mt.ManagerComment, mt.PipeLength FROM dbo.Orders o INNER JOIN dbo.MaterialTypeOrders mt ON mt.OrderId = o.Id INNER JOIN dbo.StatusMaterials AS sm ON sm.Id = mt.StatusMaterialId INNER JOIN dbo.Materials AS m ON m.Id = mt.MaterialId");
 
             }
             #endregion

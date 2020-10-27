@@ -24,26 +24,40 @@ namespace BL
 
             //test
 
-            orders= db.Orders.ToList();
-            //CustOrders = db.OrderDTO.ToList();
-           // AllMaterials = db.MaterialDTO.ToList();
-            var sql = @"SELECT * FROM dbo.OrderDTO WHERE ID > {0} ";
-            var peopleViaCommand =
+            Customer c = db.Customers.FirstOrDefault(c1 => c1.Id == Id);
+           //AllMaterials = db.MaterialDTO.ToList();
+           //working
+            var sql = @"SELECT * FROM dbo.OrderDTO WHERE CustomerName like '"+ c.FirstName+ c.LastName+"' ";
+           var orderViaCommand =
              db.Database.SqlQuery<OrderDTO>(
-               sql, 0);
-            CustOrders= peopleViaCommand.ToList();
-            //look for customer order
-            db.Orders.Where(o1 => o1.CustomerId == Id).ToList().ForEach(x =>
+               sql).ToList();
+           CustOrders= orderViaCommand.ToList();
+
+            
+            foreach(OrderDTO or in CustOrders)
             {
-            db.MaterialDTO.ToList().ForEach(m => { if (x.Id == m.OrderId)
-                    AllMaterials.Add(m);
-                    });
-                o=db.OrderDTO.FirstOrDefault(or => x.Id == or.Id);
-                if (o != null) { 
-                o.MaterialOrderL = AllMaterials;
-                CustOrders.Add(o);
-                }
-            });
+                var sql2 = @"SELECT * FROM dbo.MaterialDTO WHERE OrderId=" + or.Id + " ";
+                var materialViaCommand = db.Database.SqlQuery<MaterialDTO>(sql2).ToList();
+                AllMaterials = materialViaCommand.ToList();
+                or.MaterialOrderL = AllMaterials;
+
+            }
+         
+
+
+            
+            //look for customer order
+            //db.Orders.Where(o1 => o1.CustomerId == Id).ToList().ForEach(x =>
+            //{
+            //db.MaterialDTO.ToList().ForEach(m => { if (x.Id == m.OrderId)
+            //        AllMaterials.Add(m);
+            //        });
+            //    o=db.OrderDTO.FirstOrDefault(or => x.Id == or.Id);
+            //    if (o != null) { 
+            //    o.MaterialOrderL = AllMaterials;
+            //    CustOrders.Add(o);
+            //    }
+            //});
             return CustOrders;
         }
 

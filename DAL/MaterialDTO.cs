@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DAL
 {
     //[Table("dbo.MaterialDTO")]
+    [NotMapped]
     public class MaterialDTO
     {
         public int Id { get; set; }
