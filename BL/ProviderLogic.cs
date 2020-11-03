@@ -7,26 +7,20 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class ProviderLogic:BaseLogic
+    public class ProviderLogic : BaseLogic
     {
         public ProviderDto GetProviderId(int id)
         {
-            //  ShachlavDB db = new ShachlavDB();
-
             return (ProviderToDto(db.Providers.FirstOrDefault(m => m.Id == id)));
-
         }
 
         public ProviderDto GetProviderUP(string UserName, string Password)
         {
-            //  ShachlavDB db = new ShachlavDB();
-
-            return (ProviderToDto(db.Providers.FirstOrDefault(m => m.UserName == UserName && m.Password == Password)));
-
+            return ProviderToDto(db.Providers.FirstOrDefault(m => m.UserName == UserName && m.Password == Password));
         }
         public ProviderDto GetProviderUN(string UserName)
         {
-            //  ShachlavDB db = new ShachlavDB();
+
 
             return (ProviderToDto(db.Providers.FirstOrDefault(m => m.UserName == UserName)));
 
@@ -34,16 +28,21 @@ namespace BL
 
         public List<ProviderDto> GetAllProviders()
         {
-            List<Provider> AllProviders = new List<Provider>();
-            AllProviders = db.Providers.ToList();
-           
-            return ProviderListToDto(AllProviders);
+            List<ProviderDto> ActiveProvidersL = new List<ProviderDto>();
+
+            db.Providers.ToList().ForEach(x =>
+            {
+                if (x.IsActive == true)
+                {
+                    ActiveProvidersL.Add(ProviderToDto(x));
+                }
+            });
+
+            return ActiveProvidersL;
         }
         public ProviderDto GetProviderIN(string companyCode)
         {
-            //  ShachlavDB db = new ShachlavDB();
-
-            return (ProviderToDto(db.Providers.FirstOrDefault(m => m.CompanyCode == companyCode)));
+            return ProviderToDto(db.Providers.FirstOrDefault(m => m.CompanyCode == companyCode));
 
         }
 
@@ -52,7 +51,7 @@ namespace BL
             List<ProviderDto> AllProviders = new List<ProviderDto>();
             foreach (var m in db.Providers)
             {
-                if (m.CompanyName.Contains(Name) )
+                if (m.CompanyName.Contains(Name))
                     AllProviders.Add(ProviderToDto(m));
             }
             return AllProviders;
@@ -86,10 +85,9 @@ namespace BL
 
 
         }
-      
+
         public void AddProvider(ProviderDto NewProvider)
         {
-            //   ShachlavDB db = new ShachlavDB();
             if (IsExist(NewProvider) == false)
             {
                 db.Providers.Add(ProviderToDal(NewProvider));
@@ -100,37 +98,36 @@ namespace BL
 
         public void DeleteProvider(int id)
         {
-            //   ShachlavDB db = new ShachlavDB();
-            db.Providers.Remove(db.Providers.FirstOrDefault(m => m.Id == id));
+            Provider p = db.Providers.Find(db.Drivers.FirstOrDefault(m => m.Id == id));
+            if (p != null) p.IsActive = false;
             db.SaveChanges();
         }
 
         public void UpdateProvider(ProviderDto UpProvider)
         {
-            //  ShachlavDB db = new ShachlavDB();
             Provider Ezer = db.Providers.FirstOrDefault(m => m.Id == UpProvider.Id);
+            if (Ezer != null) {
             Ezer.CompanyCode = UpProvider.CompanyCode;
             Ezer.CompanyName = UpProvider.CompanyName;
-         
             Ezer.Address = UpProvider.Address;
             Ezer.PhoneNumber = UpProvider.PhoneNumber;
             Ezer.CellNumber = UpProvider.CellNumber;
             Ezer.Email = UpProvider.Email;
-         
             Ezer.UserName = UpProvider.UserName;
             Ezer.Password = UpProvider.Password;
             db.SaveChanges();
+            }
         }
 
-        private bool IsExist(ProviderDto Provider)
+        private bool IsExist(ProviderDto provider)
         {
-            //  ShachlavDB db = new ShachlavDB();
-            foreach (var m in db.Providers)
+            Boolean exist = false;
+            db.Providers.ToList().ForEach(x =>
             {
-                if (m.Id == Provider.Id)
-                    return true;
-            }
-            return false;
+                if (x.CompanyCode == provider.CompanyCode && x.CompanyName == provider.CompanyName)
+                    exist = true;
+            });
+            return exist;
         }
 
 
@@ -139,16 +136,13 @@ namespace BL
             if (Mdto != null)
                 return new Provider()
                 {
-
                     //Id = Mdto.Id,
                     CompanyCode = Mdto.CompanyCode,
                     CompanyName = Mdto.CompanyName,
-                    
                     Address = Mdto.Address,
                     PhoneNumber = Mdto.PhoneNumber,
                     CellNumber = Mdto.CellNumber,
                     Email = Mdto.Email,
-                
                     UserName = Mdto.UserName,
                     Password = Mdto.Password
                 };
@@ -163,12 +157,12 @@ namespace BL
                     Id = Mdal.Id,
                     CompanyCode = Mdal.CompanyCode,
                     CompanyName = Mdal.CompanyName,
-                
+
                     Address = Mdal.Address,
                     PhoneNumber = Mdal.PhoneNumber,
                     CellNumber = Mdal.CellNumber,
                     Email = Mdal.Email,
-                 
+
                     UserName = Mdal.UserName,
                     Password = Mdal.Password
                 };
@@ -219,7 +213,7 @@ namespace BL
         //    List<Provider> Providers = db.Provider.ToList();
         //    if (s.Name != null && s.Name != "")
         //        Providers = Providers.Where(t => t.CompanyName.Contains(s.Name)).ToList();
-          
+
         //    return ProviderListToDto(Providers);
 
         //}

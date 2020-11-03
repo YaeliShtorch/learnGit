@@ -35,14 +35,16 @@ namespace BL
 
         public List<CustomerDto> GetAllCustomers()
         {
-            List<Customer> ActiveCustomers = new List<Customer>();
-            foreach (Customer c in db.Customers)
+            List<CustomerDto> ActiveCustomersL = new List<CustomerDto>();
+            db.Customers.ToList().ForEach(x =>
             {
-                if(c.IsActive != false)
-                ActiveCustomers.Add(c);
-            }
-          
-            return CustomerListToDto(ActiveCustomers);
+                if (x.IsActive == true)
+                {
+                    ActiveCustomersL.Add(CustomerToDto(x));
+                }
+            });
+
+            return ActiveCustomersL;
         }
         public CustomerDto GetCustomerIN(string identityNumber)
         {
@@ -108,10 +110,9 @@ namespace BL
             }
         }
 
-        //deactivate a customer
+        //deActivate a customer
         public void DeleteCustomer(int id)
         {
-            //   ShachlavDB db = new ShachlavDB();
             Customer c = db.Customers.FirstOrDefault(m => m.Id == id);
             if (c != null) c.IsActive = false;
             db.SaveChanges();
@@ -121,33 +122,34 @@ namespace BL
         {
             //  ShachlavDB db = new ShachlavDB();
             Customer Ezer = db.Customers.FirstOrDefault(m => m.Id == UpCustomer.Id);
-            if (Ezer != null) {
-            Ezer.Id = UpCustomer.Id;
-            Ezer.IdentityNumber = UpCustomer.IdentityNumber;
-            Ezer.FirstName = UpCustomer.FirstName;
-            Ezer.LastName = UpCustomer.LastName;
-            Ezer.Address = UpCustomer.Address;
-            Ezer.PhoneNumber = UpCustomer.PhoneNumber;
-            Ezer.CellNumber = UpCustomer.CellNumber;
-            Ezer.Email = UpCustomer.Email;
-            Ezer.BirthDate = UpCustomer.BirthDate;
-            Ezer.UserName = UpCustomer.UserName;
-            Ezer.Password = UpCustomer.Password;
-            Ezer.BusinessCode = UpCustomer.BusinessCode;
-            Ezer.CompanyName = UpCustomer.CompanyName;
-            db.SaveChanges();
+            if (Ezer != null)
+            {
+                Ezer.Id = UpCustomer.Id;
+                Ezer.IdentityNumber = UpCustomer.IdentityNumber;
+                Ezer.FirstName = UpCustomer.FirstName;
+                Ezer.LastName = UpCustomer.LastName;
+                Ezer.Address = UpCustomer.Address;
+                Ezer.PhoneNumber = UpCustomer.PhoneNumber;
+                Ezer.CellNumber = UpCustomer.CellNumber;
+                Ezer.Email = UpCustomer.Email;
+                Ezer.BirthDate = UpCustomer.BirthDate;
+                Ezer.UserName = UpCustomer.UserName;
+                Ezer.Password = UpCustomer.Password;
+                Ezer.BusinessCode = UpCustomer.BusinessCode;
+                Ezer.CompanyName = UpCustomer.CompanyName;
+                db.SaveChanges();
             }
         }
 
-        private bool IsExist(CustomerDto Customer)
+        private bool IsExist(CustomerDto customer)
         {
-            //  ShachlavDB db = new ShachlavDB();
-            foreach (var m in db.Customers)
+            Boolean exist = false;
+            db.Customers.ToList().ForEach(x =>
             {
-                if (m.Id == Customer.Id || m.IdentityNumber == Customer.IdentityNumber)
-                    return true;
-            }
-            return false;
+                if (x.IdentityNumber == customer.IdentityNumber && x.FirstName == customer.FirstName && x.LastName == customer.LastName)
+                    exist = true;
+            });
+            return exist;
         }
 
 
@@ -162,7 +164,7 @@ namespace BL
                     FirstName = Mdto.FirstName,
                     LastName = Mdto.LastName,
                     CompanyName = Mdto.CompanyName,
-                    BusinessCode=Mdto.BusinessCode,
+                    BusinessCode = Mdto.BusinessCode,
                     Email = Mdto.Email,
                     PhoneNumber = Mdto.PhoneNumber,
                     CellNumber = Mdto.CellNumber,
@@ -170,7 +172,7 @@ namespace BL
                     UserName = Mdto.UserName,
                     Password = Mdto.Password,
                     BirthDate = Mdto.BirthDate,
-                    IsActive=Mdto.IsActive,
+                    IsActive = Mdto.IsActive,
                 };
             else
                 return null;
@@ -197,16 +199,7 @@ namespace BL
                 };
             else return null;
         }
-        private List<CustomerDto> CustomerListToDto(List<Customer> Mdal)
-        {
-            List<CustomerDto> CustomerDtoList = new List<CustomerDto>();
-            if (Mdal != null)
-            {
-                foreach (var m in Mdal)
-                    CustomerDtoList.Add(CustomerToDto(m));
-            }
-            return CustomerDtoList;
-        }
+
         //private bool IsExist(int id)
         //{
         //    ShachlavDB db = new ShachlavDB();

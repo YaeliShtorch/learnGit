@@ -49,15 +49,14 @@ namespace API.Controllers
             return ML.GetManagerUN(UserName);
         }
         //Get all managers
-
         [Route("GetAll")]
         [HttpGet]
         public List<ManagerDto> GetAllManagers()
         {
             return ML.GetAllManagers();
         }
-        //Get manager by Identity number
 
+        //Get manager by Identity number
         [Route("GetIN")]
         [HttpGet]
         public ManagerDto GetManagerIN(string identityNumber)
@@ -138,9 +137,9 @@ namespace API.Controllers
             }
         }
         //update manager
-        [Route("UpDate")]
+        [Route("Update")]
         [HttpPost]
-        public IHttpActionResult UpDateManager(ManagerDto um)
+        public IHttpActionResult UpdateManager(ManagerDto um)
         {
             try
             {

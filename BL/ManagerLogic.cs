@@ -129,13 +129,13 @@ namespace BL
        
         private bool IsExist(ManagerDto manager)
         {
-          //  ShachlavDB db = new ShachlavDB();
-            foreach (var m in db.Managers)
+            Boolean exist = false;
+            db.Managers.ToList().ForEach(x =>
             {
-                if (m.Id == manager.Id || m.IdentityNumber ==manager.IdentityNumber)
-                    return true;
-            }
-            return false;
+                if (x.IdentityNumber == manager.IdentityNumber && x.FirstName == manager.FirstName && x.LastName == manager.LastName)
+                    exist = true;
+            });
+            return exist;
         }
 
 

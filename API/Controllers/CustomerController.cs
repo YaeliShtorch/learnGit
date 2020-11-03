@@ -29,7 +29,7 @@ namespace API.Controllers
         [HttpGet]
         public CustomerDto GetCustomerUP(string UserName, string Password)
         {
-             return ML.GetCustomerUP(UserName, Password);
+           return ML.GetCustomerUP(UserName, Password);
        }
         //Get Customer by user name
         [Route("GetUN")]
@@ -130,9 +130,9 @@ namespace API.Controllers
         }
 
         //update Customer
-        [Route("UpDate")]
+        [Route("Update")]
         [HttpPost]
-        public IHttpActionResult UpDateCustomer(CustomerDto um)
+        public IHttpActionResult UpdateCustomer(CustomerDto um)
         {
             try
             {

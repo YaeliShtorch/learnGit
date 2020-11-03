@@ -27,7 +27,7 @@ namespace API.Controllers
         [HttpGet]
         public DriverDto GetDriver(int id)
         {
-            return (ML.GetDriverId(id));
+            return ML.GetDriverId(id);
         }
         //Get Driver by user name ans password
 
@@ -55,7 +55,6 @@ namespace API.Controllers
 
         }
         //Get Driver by Identity number
-
         [Route("GetIN")]
         [HttpGet]
         public DriverDto GetDriverIN(string identityNumber)
@@ -94,16 +93,16 @@ namespace API.Controllers
         {
             return ML.GetDriverA(Address);
         }
-        //Get Driver by his birthdate
 
+        //Get Driver by his birthdate
         [Route("GetBD")]
         [HttpGet]
         public DriverDto GetDriverBD(DateTime BirthDate)
         {
             return ML.GetDriverBD(BirthDate);
         }
-        //Add Driver
 
+        //Add Driver
         [Route("Add")]
         [HttpPost]
         public IHttpActionResult AddDriver(DriverDto am)
@@ -136,9 +135,9 @@ namespace API.Controllers
             }
         }
         //update Driver
-        [Route("UpDate")]
+        [Route("Update")]
         [HttpPost]
-        public IHttpActionResult UpDateDriver(DriverDto um)
+        public IHttpActionResult UpdateDriver(DriverDto um)
         {
             try
             {

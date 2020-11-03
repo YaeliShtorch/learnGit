@@ -29,7 +29,7 @@ namespace API.Controllers
         [HttpGet]
         public ProviderDto GetProvider(int id)
         {
-            return (ML.GetProviderId(id));
+            return ML.GetProviderId(id);
         }
         //Get Provider by user name ans password
 
@@ -136,9 +136,9 @@ namespace API.Controllers
             }
         }
         //update Provider
-        [Route("UpDate")]
+        [Route("Update")]
         [HttpPost]
-        public IHttpActionResult UpDateProvider(ProviderDto um)
+        public IHttpActionResult UpdateProvider(ProviderDto um)
         {
             try
             {

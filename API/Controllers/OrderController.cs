@@ -39,16 +39,16 @@ namespace API.Controllers
         //get all orders
         [Route("GetAll")]
         [HttpGet]
-        public List<OrderDto> getAllOrders()
+        public List<OrderDto> GetAllOrders()
         {
-            return OM.getAllOrders();
+            return OM.GetAllOrders();
 
 
         }
 
         [Route("Delete")]
         [HttpGet]
-        public IHttpActionResult deletOrderbyId(int id)
+        public IHttpActionResult DeletOrderbyId(int id)
         {
          
             try
@@ -63,14 +63,45 @@ namespace API.Controllers
 
         }
 
+        [Route("DeleteMat")]
+        [HttpGet]
+        public IHttpActionResult DeleteMaterialOrder(int id)
+        {
+            try
+            {
+                OM.DeleteOrderMat(id); ;
+                return Ok("pppp0");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+        }
+
         [Route("Update")]
         [HttpPost]
-        public IHttpActionResult updateOrder(OrderDto o)
+        public IHttpActionResult UpdateOrder(OrderDto o)
         {
             
             try
             {
                 //OM.UpdateOrder(o);
+                Console.WriteLine("dfd");
+                return Ok("pppp0");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+        }
+
+        [Route("UpdateMat")]
+        [HttpPost]
+        public IHttpActionResult UpdateOrderMat(MaterialTypeOrderDto m)
+        {
+            try
+            {
+                OM.UpdateOrderMaterial(m);
                 Console.WriteLine("dfd");
                 return Ok("pppp0");
             }
@@ -103,39 +134,39 @@ namespace API.Controllers
         //get
         [Route("GetAllM")]
         [HttpGet]
-        public List<MaterialDto> getAllMaterials()
+        public List<MaterialDto> GetAllMaterials()
         {
-             return OM.getAllMaterials();
+             return OM.GetAllMaterials();
         }
 
         [Route("getMaterialsByCategoryName")]
         [HttpGet]
-        public List<MaterialDto> getMaterialsByCategory(string name)
+        public List<MaterialDto> GetMaterialsByCategory(string name)
         {
-            return OM.getMaterialsByCategoryName(name);
+            return OM.GetMaterialsByCategoryName(name);
         }
 
         [Route("getMaterialById")]
         [HttpGet]
-        public MaterialDto getMaterialbyId(int id)
+        public MaterialDto GetMaterialbyId(int id)
         {
-            return OM.getMaterialbyId(id);
+            return OM.GetMaterialbyId(id);
 
         }
         [Route ("getMaterialByName")]
         [HttpGet]
-        public MaterialDto getMaterialIdByName(string name)
+        public MaterialDto GetMaterialIdByName(string name)
         {
-            return OM.getMaterialIdByName(name);
+            return OM.GetMaterialIdByName(name);
         }
 
 
         [Route("DeleteMaterial")]
         [HttpGet]
-        public IHttpActionResult deleteMaterial(int id) {
+        public IHttpActionResult DeleteMaterial(int id) {
             try
             {
-                OM.deleteMaterial(id); ;
+                OM.DeleteMaterial(id); ;
                 return Ok("pppp0");
             }
             catch (Exception e)
@@ -148,11 +179,11 @@ namespace API.Controllers
 
         [Route("AddMaterial")]
         [HttpPost]
-        public IHttpActionResult addMaterial(MaterialDto m)
+        public IHttpActionResult AddMaterial(MaterialDto m)
         {
             try
             {
-                OM.addOrder(m); ;
+                OM.AddOrder(m); ;
                 return Ok("pppp0");
             }
             catch (Exception e)
@@ -164,7 +195,7 @@ namespace API.Controllers
 
         [Route("UpdateMaterial")]
         [HttpPost]
-        public IHttpActionResult updateMaterial(MaterialDto m)
+        public IHttpActionResult UpdateMaterial(MaterialDto m)
         {
             try
             {
@@ -180,19 +211,19 @@ namespace API.Controllers
 
         [Route("GetMaterialCategories")]
         [HttpGet]
-        public List<MaterialCategoryDto> getCategories()
+        public List<MaterialCategoryDto> GetCategories()
         {
-            return OM.getCategories();
+            return OM.GetCategories();
         }
 
         [Route("AddMaterialCategory")]
         [HttpPost]
 
-        public IHttpActionResult addMaterialCategory(MaterialCategoryDto m)
+        public IHttpActionResult AddMaterialCategory(MaterialCategoryDto m)
         {
             try
             {
-                OM.addMaterialCategory(m);
+                OM.AddMaterialCategory(m);
                 return Ok("pppp0");
             }
             catch (Exception e)
@@ -205,11 +236,11 @@ namespace API.Controllers
         [Route("DeleteMaterialCategory")]
         [HttpGet]
 
-        public IHttpActionResult deleteMaterialCategory(int id)
+        public IHttpActionResult DeleteMaterialCategory(int id)
         {
             try
             {
-                OM.deleteMaterialCategory(id);
+                OM.DeleteMaterialCategory(id);
                 return Ok("pppp0");
             }
             catch (Exception e)
@@ -222,7 +253,7 @@ namespace API.Controllers
         [Route("UpdateMaterialCategory")]
         [HttpPost]
 
-        public IHttpActionResult updateMaterialCat(MaterialCategoryDto m)
+        public IHttpActionResult UpdateMaterialCat(MaterialCategoryDto m)
         {
             try
             {
@@ -234,6 +265,13 @@ namespace API.Controllers
                 return BadRequest(e.ToString());
             }
 
+        }
+
+        [Route("GetStatusMaterials")]
+        [HttpGet]
+        public List<StatusDto> GetStatus()
+        {
+            return OM.StatusMaterials();
         }
 
 

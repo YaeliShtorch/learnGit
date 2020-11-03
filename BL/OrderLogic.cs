@@ -98,6 +98,13 @@ namespace BL
             db.SaveChanges();
         }
 
+        public void DeleteOrderMat(int id)
+        {
+            db.MaterialTypeOrders.Remove(db.MaterialTypeOrders.FirstOrDefault(m => m.Id == id));
+            db.SaveChanges();
+           
+        }
+
         public void UpdateOrder(OrderDto UpOrder)
         {
             //storing the existing order in a tmp variable that referenced to the same one in DB
@@ -150,9 +157,25 @@ namespace BL
             }
         }
 
+        public void UpdateOrderMaterial(MaterialTypeOrderDto m)
+        {
+            MaterialTypeOrder mat;
+            mat=db.MaterialTypeOrders.FirstOrDefault(mo => mo.Id == m.Id);
+            if (mat != null) { 
+            mat.PipeLength = m.PipeLength;
+            mat.StatusMaterialId = m.StatusMaterialId;
+                mat.MaterialId = m.MaterialId;
+                mat.Amount = m.Amount;
+                mat.Element = m.Element;
+                mat.ManagerComment = m.ManagerComment;
+               
+            }
+            db.SaveChanges();
+        }
 
 
-        public List<OrderDto> getAllOrders()
+
+        public List<OrderDto> GetAllOrders()
         {
             List<OrderDto> AllOrderL = new List<OrderDto>();
             foreach (Order o in db.Orders)
@@ -248,7 +271,7 @@ namespace BL
             return order;
         }
 
-        public List<MaterialDto> getAllMaterials()
+        public List<MaterialDto> GetAllMaterials()
         {
             List<MaterialDto> MaterialL = new List<MaterialDto>();
             db.Materials.ToList().ForEach(x =>
@@ -258,7 +281,7 @@ namespace BL
             return MaterialL;
         }
 
-        public List<MaterialDto> getMaterialsByCategoryName(string name)
+        public List<MaterialDto> GetMaterialsByCategoryName(string name)
         {
             MaterialCategory mCat = db.MaterialCategorys.FirstOrDefault(x => x.Name.Equals(name));
             List<MaterialDto> MaterialL = new List<MaterialDto>();
@@ -270,12 +293,12 @@ namespace BL
             return MaterialL;
         }
 
-        public MaterialDto getMaterialbyId(int id)
+        public MaterialDto GetMaterialbyId(int id)
         {
             return MaterialToDto(db.Materials.FirstOrDefault(x => x.Id == id));
         }
 
-        public MaterialDto getMaterialIdByName(string name)
+        public MaterialDto GetMaterialIdByName(string name)
         {
             return MaterialToDto(db.Materials.FirstOrDefault(x => x.Name.Equals(name)));
         }
@@ -290,13 +313,14 @@ namespace BL
 
         }
 
-        public void deleteMaterial(int id)
+
+        public void DeleteMaterial(int id)
         {
             db.Materials.Remove(db.Materials.FirstOrDefault(x => x.Id == id));
             db.SaveChanges();
         }
 
-        public void addOrder(MaterialDto m)
+        public void AddOrder(MaterialDto m)
         {
             if (IsExist(m) == false)
             {
@@ -366,7 +390,7 @@ namespace BL
             };
         }
 
-        public List<MaterialCategoryDto> getCategories()
+        public List<MaterialCategoryDto> GetCategories()
         {
             List<MaterialCategoryDto> MaterialCatL = new List<MaterialCategoryDto>();
             foreach (MaterialCategory mCat in db.MaterialCategorys.ToList())
@@ -375,7 +399,22 @@ namespace BL
 
         }
 
-        public void deleteMaterialCategory(int id)
+        public List<StatusDto> StatusMaterials()
+        {
+            List<StatusDto> statusL = new List<StatusDto>();
+            db.StatusMaterials.ToList().ForEach(x =>
+            {
+                StatusDto s = new StatusDto()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                };
+                statusL.Add(s);
+            });
+  
+            return statusL;
+        }
+        public void DeleteMaterialCategory(int id)
         {
             db.MaterialCategorys.Remove(db.MaterialCategorys.FirstOrDefault(x => x.Id == id));
             db.SaveChanges();
@@ -391,7 +430,7 @@ namespace BL
             }
         }
 
-        public void addMaterialCategory(MaterialCategoryDto mCat)
+        public void AddMaterialCategory(MaterialCategoryDto mCat)
         {
             if (IsExist(mCat) == false)
             {

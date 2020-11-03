@@ -85,6 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProviderDto.cs" />
     <Compile Include="ProviderLogic.cs" />
+    <Compile Include="StatusDto.cs" />
     <Compile Include="VehicleDto.cs" />
     <Compile Include="VehicleLogic.cs" />
   </ItemGroup>
