@@ -131,7 +131,7 @@ namespace API.Controllers
             }
         }
 
-        //get
+        //get materials
         [Route("GetAllM")]
         [HttpGet]
         public List<MaterialDto> GetAllMaterials()

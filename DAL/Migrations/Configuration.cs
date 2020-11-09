@@ -88,6 +88,29 @@ namespace DAL.Migrations
 
             #endregion
 
+            #region MaterialsTbl
+
+            if (shachlav.Materials.Any() != true)
+            {
+                var Materials = new List<Material>()
+            {
+
+
+                    //new Material(){Name="1 משאבה", MaterialCategoryId=1},
+                    //new MaterialCategory(){Name=""},
+                    //new MaterialCategory(){Name="בטון חשיפה"},
+                    //new MaterialCategory(){Name="בטון שקיעה"},
+                    //new MaterialCategory(){Name="בטון תוספת"},
+                    //new MaterialCategory(){Name="טיט"}
+
+
+                };
+                //    Materials.ForEach(x => { shachlav.Materials.Add(x); });
+                //    shachlav.SaveChanges();
+            }
+
+            #endregion
+
             #region orderView
 
             int isExist =-1;
