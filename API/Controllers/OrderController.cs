@@ -39,7 +39,7 @@ namespace API.Controllers
         //get all orders
         [Route("GetAll")]
         [HttpGet]
-        public List<OrderDto> GetAllOrders()
+        public List<OrderDTO> GetAllOrders()
         {
             return OM.GetAllOrders();
 
@@ -85,7 +85,7 @@ namespace API.Controllers
             
             try
             {
-                //OM.UpdateOrder(o);
+                OM.UpdateOrder(o);
                 Console.WriteLine("dfd");
                 return Ok("pppp0");
             }
@@ -120,10 +120,8 @@ namespace API.Controllers
             try
             {
                 OM.AddOrder(am);
-                //OM.AddOrder(am);
                 Console.WriteLine("dfd");
                 return Ok("pppp0");
-                //return Content(HttpStatusCode.Created, am);
             }
             catch (Exception e)
             {
