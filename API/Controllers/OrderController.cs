@@ -21,12 +21,12 @@ namespace API.Controllers
 
 
         //Get Order by id
-        [Route("GetId")]
-        [HttpGet]
-        public OrderDto GetOrder(int id)
-        {
-            return (OM.GetOrderById(id));
-        }
+        //[Route("GetId")]
+        //[HttpGet]
+        //public OrderDto GetOrder(int id)
+        //{
+            //return (OM.GetOrderById(id));
+        //}
 
         //get AllOrders by customerId
         [Route("GetAllCO")]
@@ -45,7 +45,24 @@ namespace API.Controllers
 
 
         }
+        //get orders by city 
+        [Route("GetCityOrders")]
+        [HttpGet]
+        public List<OrderDTO> GetCityOrders(string city)
+        {
+            return OM.GetCityOrders(city);
+        }
 
+        //get orders by Order date
+        [Route("GetOrdersByOrderDate")]
+        [HttpGet]
+        public List<OrderDTO> GetOrdersByDate(DateTime date)
+        {
+            return OM.GetOrdersByDate(date);
+
+        }
+
+        //delete whole order + its materials
         [Route("Delete")]
         [HttpGet]
         public IHttpActionResult DeletOrderbyId(int id)
@@ -62,8 +79,8 @@ namespace API.Controllers
             }
 
         }
-
-        [Route("DeleteMat")]
+        //delete material order
+        [Route("DeleteOrderMat")]
         [HttpGet]
         public IHttpActionResult DeleteMaterialOrder(int id)
         {
@@ -95,7 +112,8 @@ namespace API.Controllers
             }
         }
 
-        [Route("UpdateMat")]
+        //update a specific order material
+        [Route("UpdateOrderMat")]
         [HttpPost]
         public IHttpActionResult UpdateOrderMat(MaterialTypeOrderDto m)
         {
@@ -129,6 +147,21 @@ namespace API.Controllers
             }
         }
 
+        [Route("AddOrderMat")]
+        [HttpPost]
+        public IHttpActionResult AddOrderMat(MaterialTypeOrderDto m)
+        {
+            try
+            {
+                OM.AddOrderMat(m);
+                Console.WriteLine("dfd");
+                return Ok("pppp0");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+        }
         //get materials
         [Route("GetAllM")]
         [HttpGet]
@@ -273,185 +306,6 @@ namespace API.Controllers
         }
 
 
-        //[Route("AddVehicleType")]
-        //[HttpPost]
-        //public IHttpActionResult AddVehicleType(MaterialDto am)
-        //{
-
-        //    try
-        //    {
-        //        OM.AddVehicleType(am);
-        //        Console.WriteLine("dfd");
-        //        return Ok("pppp0");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest(e.ToString());
-        //    }
-        //}
-        //[Route("AddClay")]
-        //[HttpPost]
-        //public IHttpActionResult AddClay(MaterialDto am)
-        //{
-
-        //    try
-        //    {
-        //        OM.AddClay(am);
-        //        Console.WriteLine("dfd");
-        //        return Ok("pppp0");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest(e.ToString());
-        //    }
-        //}
-        //[Route("AddConcrete")]
-        //[HttpPost]
-        //public IHttpActionResult AddConcrete(MaterialDto am)
-        //{
-
-        //    try
-        //    {
-        //        OM.AddConcreteType(am);
-        //        Console.WriteLine("dfd");
-        //        return Ok("pppp0");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest(e.ToString());
-        //    }
-        //}
-        //[Route("AddConcDesc")]
-        //[HttpPost]
-        //public IHttpActionResult AddConcDesc(MaterialDto am)
-        //{
-
-        //    try
-        //    {
-        //        OM.AddConcDesc(am);
-        //        Console.WriteLine("dfd");
-        //        return Ok("pppp0");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest(e.ToString());
-        //    }
-        //}
-
-        //[Route("AddDeep")]
-        //[HttpPost]
-        //public IHttpActionResult AddDeep(MaterialDto am)
-        //{
-
-        //    try
-        //    {
-        //        OM.AddDeep(am);
-        //        Console.WriteLine("dfd");
-        //        return Ok("pppp0");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest(e.ToString());
-        //    }
-        //}
-        //[Route("AddExposue")]
-        //[HttpPost]
-        //public IHttpActionResult AddExposue(MaterialDto am)
-        //{
-
-        //    try
-        //    {
-        //        OM.AddExposure(am);
-        //        Console.WriteLine("dfd");
-        //        return Ok("pppp0");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest(e.ToString());
-        //    }
-        //}
-        //[Route("AddExtension")]
-        //[HttpPost]
-        //public IHttpActionResult AddExtension(MaterialDto am)
-        //{
-
-        //    try
-        //    {
-        //        OM.AddExtension(am);
-        //        Console.WriteLine("dfd");
-        //        return Ok("pppp0");
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest(e.ToString());
-        //    }
-        //}
-
-
-
-        //[Route("GetVehicleType")]
-        //[HttpGet]
-        //public List<MaterialDto> GetVehicleType()
-        //{
-
-
-        //    return OM.GetVehicleType();
-
-        //}
-        //[Route("GetClay")]
-        //[HttpGet]
-        //public List<MaterialDto> GetClay()
-        //{
-
-
-        //    return OM.GetClay();
-
-        //}
-        //[Route("GetConcrete")]
-        //[HttpGet]
-        //public List<MaterialDto> GetConcrete()
-        //{
-
-
-        //    return OM.GetConcreteType();
-
-        //}
-        //[Route("GetConcDesc")]
-        //[HttpGet]
-        //public List<MaterialDto> GetConcDesc()
-        //{
-
-        //    return OM.GetConcDesc();
-
-        //}
-
-        //[Route("GetDeep")]
-        //[HttpGet]
-        //public List<MaterialDto> GetDeep()
-        //{
-
-
-        //    return OM.GetDeep();
-
-        //}
-        //[Route("GetExposue")]
-        //[HttpGet]
-        //public List<MaterialDto> GetExposue()
-        //{
-
-
-        //    return OM.GetExposure();
-
-        //}
-        //[Route("GetExtension")]
-        //[HttpGet]
-        //public List<MaterialDto> GetExtension()
-        //{
-
-
-        //    return OM.GetExtension();
-
-        //}
 
 
     }

@@ -80,6 +80,10 @@
     <Compile Include="Driver.cs" />
     <Compile Include="DriverWork.cs" />
     <Compile Include="MaterialDTO.cs" />
+    <Compile Include="Migrations\202011181739576_C.cs" />
+    <Compile Include="Migrations\202011181739576_C.Designer.cs">
+      <DependentUpon>202011181739576_C.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="MaterialProvider.cs" />
@@ -96,6 +100,11 @@
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011181739576_C.resx">
+      <DependentUpon>202011181739576_C.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,10 +11,10 @@ namespace BL
     {
         private object Odto;
 
-        public OrderDto GetOrderById(int id)
-        {
-            return (OrderToDto(db.Orders.FirstOrDefault(o => o.Id == id)));
-        }
+        //public OrderDto GetOrderById(int id)
+        //{
+        //    //return (OrderToDto(db.Orders.FirstOrDefault(o => o.Id == id)));
+        //}
         public List<OrderDTO> GetOrdersByCustomerId(int Id)
         {
             OrderDTO o;
@@ -42,9 +42,6 @@ namespace BL
                 or.MaterialOrderL = AllMaterials;
 
             }
-
-
-
 
             //look for customer order
             //db.Orders.Where(o1 => o1.CustomerId == Id).ToList().ForEach(x =>
@@ -86,7 +83,16 @@ namespace BL
                 db.SaveChanges();
             }
         }
+        public void AddOrderMat(MaterialTypeOrderDto m)
+        {
+            Order o = db.Orders.FirstOrDefault(x => x.Id == m.OrderId);
+            if (o != null)
+            {
+                db.MaterialTypeOrders.Add(MaterialTypeOrderToDal(m));
+                db.SaveChanges();
+            }
 
+        }
 
         public void DeleteOrder(int id)
         {
@@ -174,14 +180,71 @@ namespace BL
             db.SaveChanges();
         }
 
-
-
-        public List<OrderDto> GetAllOrders()
+        public List<OrderDTO> GetCityOrders(string city)
         {
-            List<OrderDto> AllOrderL = new List<OrderDto>();
-            foreach (Order o in db.Orders)
+            List<OrderDTO> AllOrderL = new List<OrderDTO>();
+            List<Order> orders = new List<Order>();
+            List<MaterialDTO> AllMaterials = new List<MaterialDTO>();
+            var sql = @"SELECT * FROM dbo.OrderDTO Where SiteAdress like"+ city+"";
+            var orderViaCommand =
+              db.Database.SqlQuery<OrderDTO>(
+                sql).ToList();
+            AllOrderL = orderViaCommand.ToList();
+            foreach (OrderDTO or in AllOrderL)
             {
-                AllOrderL.Add(OrderToDto(o));
+                var sql2 = @"SELECT * FROM dbo.MaterialDTO WHERE OrderId=" + or.Id + " ";
+                var materialViaCommand = db.Database.SqlQuery<MaterialDTO>(sql2).ToList();
+                AllMaterials = materialViaCommand.ToList();
+                or.MaterialOrderL = AllMaterials;
+
+            }
+
+            return AllOrderL;
+
+
+        }
+        public List<OrderDTO> GetOrdersByDate(DateTime date)
+        {
+            List<OrderDTO> AllOrderL = new List<OrderDTO>();
+            List<Order> orders = new List<Order>();
+            List<MaterialDTO> AllMaterials = new List<MaterialDTO>();
+            var sql = @"SELECT * FROM dbo.OrderDTO Where OrderDate =" + date + "";
+            var orderViaCommand =
+              db.Database.SqlQuery<OrderDTO>(
+                sql).ToList();
+            AllOrderL = orderViaCommand.ToList();
+            foreach (OrderDTO or in AllOrderL)
+            {
+                var sql2 = @"SELECT * FROM dbo.MaterialDTO WHERE OrderId=" + or.Id + " ";
+                var materialViaCommand = db.Database.SqlQuery<MaterialDTO>(sql2).ToList();
+                AllMaterials = materialViaCommand.ToList();
+                or.MaterialOrderL = AllMaterials;
+
+            }
+
+            return AllOrderL;
+
+        }
+
+        public List<OrderDTO> GetAllOrders()
+        {
+            List<OrderDTO> AllOrderL = new List<OrderDTO>();
+            List<Order> orders = new List<Order>();
+            List<MaterialDTO> AllMaterials = new List<MaterialDTO>();
+
+            //working
+            var sql = @"SELECT * FROM dbo.OrderDTO";
+            var orderViaCommand =
+              db.Database.SqlQuery<OrderDTO>(
+                sql).ToList();
+            AllOrderL = orderViaCommand.ToList();
+            foreach (OrderDTO or in AllOrderL)
+            {
+                var sql2 = @"SELECT * FROM dbo.MaterialDTO WHERE OrderId=" + or.Id + " ";
+                var materialViaCommand = db.Database.SqlQuery<MaterialDTO>(sql2).ToList();
+                AllMaterials = materialViaCommand.ToList();
+                or.MaterialOrderL = AllMaterials;
+
             }
 
             return AllOrderL;
@@ -189,13 +252,31 @@ namespace BL
 
         public bool IsExist(OrderDto order)
         {
+            Boolean exist = false;
+            //convert material list of new order for comparing with existing ones
+            List<MaterialTypeOrder> compareMaterials = new List<MaterialTypeOrder>();
+            order.MaterialOrderL.ToList().ForEach(y => compareMaterials.Add(MaterialTypeOrderToDal(y)));
 
-            foreach (var o in db.Orders)
-            {
-                if (o.Id == order.Id)
-                    return true;
-            }
-            return false;
+            //searching in db if threr is an order for same date and same customer
+            db.Orders.ToList().ForEach(x => {         
+                if (x.CustomerId==order.CustomerId&& x.OrderDueDate == order.OrderDueDate)
+                {
+                    db.MaterialTypeOrders.ToList().ForEach(m =>
+                    {
+                        //if finds such order compare lists of materials by name and amounts
+                        if(m.OrderId == x.Id)
+                        {
+                            compareMaterials.ForEach(mat => { if (mat.MaterialId == m.MaterialId && mat.Amount == m.Amount)
+                                    exist = true;
+
+                                    });
+
+                        }
+
+                    });
+                }
+            });
+            return exist;
         }
         public Order OrderToDal(OrderDto Odto)
         {
@@ -388,6 +469,8 @@ namespace BL
                 Amount = Odto.Amount,
                 StatusMaterialId = Odto.StatusMaterialId,
                 MaterialId = Odto.MaterialId,
+                ManagerComment=Odto.ManagerComment,
+                PipeLength=Odto.PipeLength
 
             };
         }
