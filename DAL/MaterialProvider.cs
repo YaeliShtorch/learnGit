@@ -27,6 +27,8 @@ namespace DAL
         [Required]
         public bool ManagerApproval { get; set; }
         public string ProviderComment { get; set; }
+        public DateTime datePApproved { get; set; }
+        public DateTime datePSend{ get; set; }
     }
 }
 

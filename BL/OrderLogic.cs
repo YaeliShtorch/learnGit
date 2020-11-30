@@ -17,7 +17,6 @@ namespace BL
         //}
         public List<OrderDTO> GetOrdersByCustomerId(int Id)
         {
-            OrderDTO o;
             List<Order> orders = new List<Order>();
             List<MaterialDTO> AllMaterials = new List<MaterialDTO>();
             List<OrderDTO> CustOrders = new List<OrderDTO>();

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-   public class CustomerDto
+    public class CustomerDto
     {
-        
+
         public int Id { get; set; }
         public string IdentityNumber { get; set; }
         public string FirstName { get; set; }
@@ -23,6 +23,8 @@ namespace BL
         public string Password { get; set; }
         public DateTime BirthDate { get; set; }
         public bool IsActive { get; set; }
+        public DateTime registeredDate { get; set; }
+        public string Token { get; set; }
 
     }
 }

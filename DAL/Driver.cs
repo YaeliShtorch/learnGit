@@ -46,5 +46,7 @@ namespace DAL
         public virtual ICollection<DriverWork> DriverWork { get; set; }
         public virtual ICollection<Vehicle> Vehicle { get; set; }
 
+        public string Token { get; set; }
+
     }
 }

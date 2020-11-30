@@ -45,6 +45,8 @@ namespace DAL
         public DateTime BirthDate { get; set; }
         [Required]
         public bool IsActive { get; set; }
+        public DateTime registeredDate { get; set; }
+        public string Token { get; set; }
         public virtual ICollection<Order> CustOrders { get; set; }
     }
 }

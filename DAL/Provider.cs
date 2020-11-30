@@ -30,6 +30,8 @@ namespace DAL
         public string Password { get; set; }
         [Required]
         public bool IsActive { get; set; }
+
+        public string Token { get; set; }
         public virtual ICollection<MaterialProvider> MaterialProviders { get; set; }
     }
 }
