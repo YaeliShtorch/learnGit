@@ -84,6 +84,10 @@
     <Compile Include="Migrations\202011181739576_C.Designer.cs">
       <DependentUpon>202011181739576_C.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012011812375_NEWDB.cs" />
+    <Compile Include="Migrations\202012011812375_NEWDB.Designer.cs">
+      <DependentUpon>202012011812375_NEWDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="MaterialProvider.cs" />
@@ -104,6 +108,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202011181739576_C.resx">
       <DependentUpon>202011181739576_C.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012011812375_NEWDB.resx">
+      <DependentUpon>202012011812375_NEWDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

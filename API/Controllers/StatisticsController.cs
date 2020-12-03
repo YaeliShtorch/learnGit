@@ -13,14 +13,14 @@ namespace API.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
 
     [RoutePrefix("api/Statistics")]
-    public class StatisticsController
+    public class StatisticsController: ApiController
     {
         StatisticsLogic ST = new StatisticsLogic();
 
         //get order percentage by company
         [Route("GetOrderPCTByComp")]
         [HttpGet]
-        public Dictionary<string, double> OrderPercentByCompany(DateTime date)
+        public Dictionary<string, double> OrderPercentByCompany(string date)
         {
                 return ST.getOrderPercentByProvider(date);
         }

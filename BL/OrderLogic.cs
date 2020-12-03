@@ -9,7 +9,7 @@ namespace BL
 {
     public class OrderLogic : BaseLogic
     {
-        private object Odto;
+        
 
         //public OrderDto GetOrderById(int id)
         //{

@@ -12,12 +12,13 @@ namespace BL
     public class StatisticsLogic : BaseLogic
     {
         //returns name of companies and their order percentage from a certain date to current date
-        public Dictionary<String, double> getOrderPercentByProvider(DateTime date)
+        public Dictionary<String, double> getOrderPercentByProvider(string date)
         {
+            DateTime parseDate = DateTime.Parse(date);
             Dictionary<String, double> results = new Dictionary<string, double>();
             string company;
             double count = 0;
-            var orderP = db.MaterialProviders.Where(i => i.datePApproved >= date).GroupBy(p => p.ProviderId).ToList();
+            var orderP = db.MaterialProviders.Where(i => i.datePApproved >= parseDate).GroupBy(p => p.ProviderId).ToList();
 
             if (orderP != null)
             {

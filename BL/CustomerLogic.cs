@@ -102,7 +102,6 @@ namespace BL
         }
         public void AddCustomer(CustomerDto NewCustomer)
         {
-            //   ShachlavDB db = new ShachlavDB();
             if (IsExist(NewCustomer) == false)
             {
                 db.Customers.Add(CustomerToDal(NewCustomer));
